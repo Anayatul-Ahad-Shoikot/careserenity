@@ -1,0 +1,542 @@
+.container {
+    min-height: 80vh;
+    margin: 3% 15%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+
+.accounnt-information-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--background-color);
+    backdrop-filter: blur(10px);
+    border-radius: 120px 15px 15px 120px;
+    box-shadow: 1rem 1rem 5rem rgba(0, 0, 0, 0.2);
+    
+}
+.account-picture{
+    display: flex;
+    align-items: center;
+    margin-left: 1rem;
+}
+.account-picture img {
+    width: 14rem;
+    height: 14rem;
+    margin: 1rem;
+    border-radius: 50%;
+    border: 5px solid black;
+    box-shadow: 0px 0px 13px 1px rgb(0, 0, 0, .7);
+}
+.account-data {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem 2.5rem;
+}
+.account-data h1 {
+    font-size: 3rem;
+    color: var(--primary-title-color);
+    text-transform: capitalize;
+    margin: 10px 0px 20px 0px;
+}
+.account-data p {
+    font-size: 15px;
+    color: var(--text-color-lighter);
+    font-family: 'Segoe UI';
+    padding-left: 2px;
+}
+.biography {
+    width: 30%;
+    padding: 2rem;
+    border-left: 1px solid lightgray;
+}
+.biography h1{
+    width: 100%;
+    color: var(--primary-color-dark);
+    font-size: 23px;
+    font-weight: bold;
+    padding-bottom: 10px;
+    border-bottom: 1px dotted var(--text-color-lighter);
+    text-transform: capitalize;
+}
+.biography p{
+    width: 100%;
+    margin-top: 10px;
+    color: var(--text-color-lighter);
+}
+
+
+
+
+
+
+
+
+
+.container .options {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    border-bottom: 2px solid var(--text-color-dark);
+    gap: 10px;
+    padding: 10px;
+}
+.options .btn {
+    padding: 10px 15px;
+    font-size: 1rem;
+    font-family: 'Segoe UI';
+    text-decoration: none;
+    background-color: var(--primary-color-light);
+    cursor: pointer;
+    font-weight: 500;
+    text-align: center;
+    color: #fff;
+    margin: 1.5rem .5rem;
+    border-radius: 8px;
+    transition: .7s;
+}
+.options .btn:hover {
+    background-color: var(--secondary-color-light);
+    color: var(--text-color-dark);
+    transform: scale(1.1);
+    transition: .7s;
+}
+
+
+
+
+
+
+
+
+
+
+.container .short-report {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    margin-top: 36px;
+    gap: 35px;
+}
+.short-report li {
+    padding: 15px;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    box-shadow: 1rem 1rem 4rem rgba(0, 0, 0, 0.3);
+    transition: .6s;
+}
+.short-report li:hover {
+    transform: scale(1.1) translateY(7px);
+    transition: .6s;
+}
+.short-report li a{
+    text-decoration: none;
+}
+.short-report li i {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    height: 80px;
+    border-radius: 10px;
+    font-size: 36px;
+}
+.short-report li:nth-child(1) i {
+    font-size: 4rem;
+    background: rgb(218, 218, 218);
+    color: black;
+    transition: .8s;
+}
+.short-report li:nth-child(1) i:hover {
+    background: transparent;
+    color: black;
+    transform: scale(1.3);
+    transition: .8s;
+}
+.short-report li:nth-child(2) i {
+    font-size: 4rem;
+    background: rgb(218, 218, 218);
+    color: black;
+    transition: .8s;
+}
+.short-report li:nth-child(2) i:hover {
+    background: transparent;
+    color: black;
+    transform: scale(1.3);
+    transition: .8s;
+}
+.short-report li:nth-child(3) i {
+    font-size: 4rem;
+    background: rgb(218, 218, 218);
+    color: black;
+    transition: .8s;
+}
+.short-report li:nth-child(3) i:hover {
+    background: transparent;
+    color: black;
+    transform: scale(1.3);
+    transition: .8s;
+}
+.short-report li:nth-child(4) i {
+    font-size: 4rem;
+    background: rgb(218, 218, 218);
+    color: black;
+    transition: .8s;
+}
+.short-report li:nth-child(4) i:hover {
+    background: transparent;
+    color: black;
+    transform: scale(1.3);
+    transition: .8s;
+}
+.short-report h3 {
+    font-size: 35px;
+    font-weight: 800;
+    color: var(--primary-color-light);
+    transition: .8s;
+}
+.short-report p {
+    color: var(--dark);
+    font-family: monospace;
+}
+
+
+
+
+
+
+
+.info-containers {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    gap: 24px;
+}
+.inbox{
+    display: flex;
+    flex-direction: column;
+    margin-top: 24px;
+    width: 50%;
+    border-radius: 20px;
+    box-shadow: 1rem 1rem 4rem rgba(0, 0, 0, 0.3);
+    padding: 15px;
+}
+.inbox .search input{
+    width: 100%;
+    border: none;
+    background: transparent;
+    background-color: lightpink;
+    font-size: 15px;
+    padding: 10px 10px 10px 20px;
+    border-radius: 11px 11px 0px 0px;
+    outline: none;
+    color: white;
+}
+.inbox .content {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 5px 10px;
+    border-bottom: 1px solid lightgrey;
+}
+.content:hover{
+    background-color: rgb(0, 0, 0, 0.1);
+}
+.content img {
+    width: 50px;
+    height: 50px;
+    border-radius: 30%;
+}
+.content span {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+.adoption-donation {
+    display: flex;
+    flex-direction: column;
+    margin-top: 24px;
+    width: 100%;
+    color: var(--text-color-dark);
+}
+.adoption {
+    border-radius: 20px;
+    padding: 24px;
+    box-shadow: 1rem 1rem 4rem rgba(0, 0, 0, 0.3);
+}
+.adoption table {
+    width: 100%;
+    display: block;
+    height: 350px;
+}
+.adoption table thead {
+    width: 100%;
+    position: sticky;
+    top: 0;
+    background-color: lightblue;
+    border-radius: 8px 8px 0px 0px
+}
+.adoption table th {
+    padding: 12px 0px;
+    font-size: 13px;
+}
+.adoption table .x {
+    display: flex;
+    justify-content: center;
+}
+.adoption table tbody tr {
+    border-bottom: 1px solid lightgray;
+    transition: .5s;
+}
+.adoption table tbody tr:hover {
+    transform: scale(1.05);
+    transition: .5s;
+}
+.adoption table td {
+    padding: 8px 10px;
+    text-align: center;
+    width: 2%;
+}
+.adoption table td a {
+    text-decoration: none;
+    text-transform: capitalize;
+    color: var(--text-dark);
+    transition: .5s;
+}
+.adoption table td p {
+    padding: 2px 11px;
+    border-radius: 26px;
+    font-size: small;
+    text-align: center;
+}
+.adoption .done-status {
+    background-color: lightgreen;
+    color: darkgreen;
+}
+.adoption .pending-status {
+    background-color: lightpink;
+    color: darkred;
+}
+.adoption table td a:hover {
+    color: var(--color5);
+    transition: .5s;
+}
+.adoption table td img {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.adoption table tr:hover {
+    background: var(--grey);
+}
+.adoption table tr td .status {
+    font-size: 10px;
+    padding: 6px 16px;
+    color: var(--light);
+    border-radius: 20px;
+    font-weight: 700;
+}
+.adoption .dropbtn {
+    background-color: #3498db;
+    color: white;
+    padding: 6px 12px;
+    font-size: 13px;
+    border: none;
+    cursor: pointer;
+    z-index: 500;
+    transition: .4s;
+    border-radius: 7px;
+}
+.adoption .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #dfdfdf;
+    min-width: 100px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 9999999999;
+    border-radius: 8px;
+    top: -35px;
+    left: 310px;
+}
+.dropdown-content a {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: black;
+    transition: .4s;
+    border: 1px solid lightgray;
+}
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+    transition: .4s;
+}
+.dropdown:hover .dropdown-content {
+    display: block;
+    transition: .8s;
+}
+
+
+
+
+
+
+
+
+
+
+.container .donation {
+    border-radius: 20px;
+    padding: 24px;
+    box-shadow: 1rem 1rem 4rem rgba(0, 0, 0, 0.3);
+}
+.donation .donation-list {
+    height: 350px;
+    display: block;
+    width: 100%;
+    overflow-Y: auto;
+}
+.donation-list li {
+    width: 100%;
+    margin-bottom: 16px;
+    background: rgb(238, 238, 238);
+    border-radius: 8px 0px 0px 8px;
+    padding: 14px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: .6s;
+}
+.donation-list li:hover {
+    background: rgb(238, 238, 238, 0.2);
+    transition: .6s;
+}
+.donation-list .organization {
+    border-right: 7px solid rgb(0, 121, 161);
+}
+.donation-list .orphan {
+    border-right: 7px solid rgb(254, 110, 0);
+}
+.donation-list p {
+    font-size: 13px;
+    font-family: Verdana;
+}
+.donation-list li a {
+    font-weight: 600;
+    cursor: pointer;
+}
+
+
+
+
+
+
+.chatbox {
+    display: hidden;
+    position: absolute;
+    top: 0;
+    width: 600px;
+    height: 100vh;
+    background-color: red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    left: 32.5%;
+    z-index: 9999999999999999;
+}
+.hide {
+    display: none;
+}
+
+#heading {
+    font-size: 29px;
+    font-weight: 700;
+    margin: 20px 0px;
+    text-align: center;
+    color: var(--secondary-color-dark);
+}
+
+
+
+
+.details {
+    width: 75%;
+    margin: 3% 25%;
+    padding: 3rem;
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 0 60px rgba(0, 0, 0, 0.13);
+}
+.details h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    color: var(--primary-title-color);
+    padding: 0;
+    margin: 30px 0px;
+    text-shadow: 2px 5px 30px hsl(0, 0%, 100%);
+}
+.details form {
+    display: flex;
+    flex-direction: column;
+}
+form .form_row{
+    width: 100%;
+    display: flex;
+}
+.form_row label {
+    width: 30%;
+    font-size: 14px;
+}
+.form_row input , select{
+    background-color: #f8f8f8;
+    margin-bottom: 20px;
+    width: -webkit-fill-available;
+    padding: .375rem .75rem;
+    font-size: 15px;
+    color: #212529;
+    border: 1px solid #ced4da;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+.details .btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.details button {
+    width: 50%;
+    background-color: var(--primary-color-dark);
+    color: #fff;
+    border: none;
+    padding: 10px 10px;
+    margin: 10px 0px;
+    border-radius: 4px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+button:hover {
+    background-color: var(--primary-color-light);
+}

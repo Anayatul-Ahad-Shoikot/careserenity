@@ -1,0 +1,206 @@
+
+body {
+    height: 100vh;
+    background-image: linear-gradient(to bottom,
+            rgba(0, 0, 0, 0.9),
+            rgba(0, 0, 0, 0.3)),
+        url("../assets/bg_4.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.negative h5 {
+    width: 340px;
+    padding: 8px;
+    text-align: center;
+    border-radius: 8px;
+    color: rgb(0, 0, 0);
+    font-weight: 600;
+    font-size: medium;
+    margin-bottom: 30px;
+    background-color: rgba(255, 170, 170, 0.5);
+    border: 1px solid rgb(255, 0, 0);
+}
+
+.positive h5 {
+    width: 340px;
+    padding: 8px;
+    text-align: center;
+    border-radius: 8px;
+    color: rgb(0, 0, 0);
+    font-weight: 600;
+    font-size: medium;
+    margin-bottom: 30px;
+    background-color: rgb(170, 255, 170, 0.5);
+    border: 1px solid rgb(0, 255, 0);
+}
+
+
+.login-container {
+    padding: 20px 30px 30px 30px;
+    background-color: rgba(255, 255, 255, 0.35);
+    border-radius: 15px;
+    min-width: 330px;
+    max-width: 435px;
+}
+
+.login-container .container {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+.container  .slide {
+    width: 100%;
+}
+.slide label{
+    margin-bottom: 40px;
+    color: #fcfcfd;
+    font-size: 20px;
+    font-weight: 500;
+}
+.container  .hidden {
+    display: none;
+}
+
+.login-container h1 {
+    margin: 5px 0px 40px 0px;
+    text-align: center;
+    font-size: 4rem;
+    font-family: var(--secondary-font);
+    color: var(--primary-color-dark);
+    font-weight: 900;
+}
+.login-container h2{
+    margin: 5px 0px 40px 0px;
+    text-align: center;
+    font-size: 3rem;
+    font-family: var(--secondary-font);
+    color: var(--primary-color-dark);
+    font-weight: 600;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container form{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}
+
+.row {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+form input {
+    border: none;
+    width: 100%;
+    padding: 10px 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+form button{
+    width: 100%;
+    align-items: center;
+    appearance: none;
+    background-color: #FCFCFD;
+    border-radius: 4px;
+    border-width: 0;
+    box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+    box-sizing: border-box;
+    color: #36395A;
+    cursor: pointer;
+    display: inline-flex;
+    font-family: "JetBrains Mono", monospace;
+    justify-content: center;
+    line-height: 1;
+    list-style: none;
+    overflow: hidden;
+    padding: 10px 15px;
+    position: relative;
+    text-align: left;
+    text-decoration: none;
+    transition: box-shadow .15s, transform .15s;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    white-space: nowrap;
+    will-change: box-shadow, transform;
+    font-size: 18px;
+    margin-bottom: 15px;
+    outline: none;
+}
+form button:active {
+    box-shadow: #D6D6E7 0 3px 7px inset;
+    transform: translateY(2px);
+}
+form button:hover {
+    box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+    transform: translateY(-2px);
+}
+form button:focus {
+    box-shadow: #D6D6E7 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+}
+
+.forgetPass,
+.forgetPass a {
+    text-align: right;
+    font-size: 13px;
+    text-decoration: none;
+    color: black;
+    margin-bottom: 20px;
+    font-weight: 500;
+}
+
+.signup {
+    text-align: center;
+    font-weight: 500;
+}
+
+.login-container span {
+    display: flex;
+    justify-content: center;
+}
+
+span a {
+    text-decoration: none;
+    color: #f3254e;
+    font-weight: 500;
+}
+
+#signup {
+    text-decoration: none;
+    color: #f3254e;
+    font-weight: 500;
+}
+
+
+.user-type {
+    padding-left: 5px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 15px;
+}
+.user-type label {
+    width: 170px;
+}
+
+.user-type select {
+    width: 100%;
+    border-radius: 5px;
+    border: none;
+    padding: 5px;
+}
+

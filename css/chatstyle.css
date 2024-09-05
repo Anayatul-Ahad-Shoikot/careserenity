@@ -1,0 +1,28 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 1% 35%;
+}
+.container header{
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.chat-box {
+    display: flex;
+    height: 75vh;
+    background-color: red;
+    padding: 15px;
+    flex-direction: column;
+    overflow: auto;
+}
+
+.chat-input{
+    padding: 10px;
+}
+.chat-input input{
+    width: 80%;
+}
+

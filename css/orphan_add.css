@@ -1,0 +1,77 @@
+.container {
+    margin: 3% 15%;
+    padding: 3rem;
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 0 60px rgba(0, 0, 0, 0.13);
+    min-height: 65vh;
+}
+.container h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    color: var(--primary-title-color);
+    padding: 0;
+    margin: 30px 0px;
+    text-shadow: 2px 5px 30px hsl(0, 0%, 100%);
+}
+.container form {
+    display: flex;
+    flex-direction: column;
+}
+.container label {
+    font-size: small;
+    color: gray;
+    padding-bottom: -5px;
+}
+.container input {
+    outline: none;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    transition: .3s;
+}
+.container input:hover{
+  background-color: rgb(235, 235, 235);
+  transition: .3s;
+}
+.container select {
+  color: gray;
+  padding: 8px;
+  border-color: gray;
+  border-radius: 8px;
+}
+
+.container .btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.container button {
+  width: 35%;
+  background-color: var(--primary-color-light);
+  color: #fff;
+  border: none;
+  padding: 10px 10px;
+  margin-top: 30px;
+  border-radius: 4px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: .4s;
+}
+
+button:hover {
+  background-color: var(--primary-color-dark);
+  transition: .4s;
+}
+
+.part select {
+  width: 100%;
+}
+
+.basic_info {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 20px;
+  row-gap: 10px;
+}

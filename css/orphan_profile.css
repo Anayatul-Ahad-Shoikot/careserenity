@@ -1,0 +1,183 @@
+.container {
+    min-height: 80vh;
+    margin: 3% 15%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+
+
+
+
+
+
+
+.accounnt-information-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    border-radius: 120px 15px 15px 120px;
+    box-shadow: 1rem 1rem 5rem rgba(0, 0, 0, 0.2);
+    
+}
+.account-picture{
+    display: flex;
+    align-items: center;
+    margin-left: 1rem;
+}
+.account-picture img {
+    width: 14rem;
+    height: 14rem;
+    margin: 1rem;
+    border-radius: 50%;
+    border: 5px solid black;
+    box-shadow: 0px 0px 13px 1px rgb(0, 0, 0, .7);
+}
+.account-data {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem 2.5rem;
+}
+.account-data h1 {
+    font-size: 3rem;
+    color: var(--primary-title-color);
+    text-transform: capitalize;
+    margin: 10px 0px 20px 0px;
+}
+.account-data p {
+    font-size: 15px;
+    color: var(--text-color-lighter);
+    font-family: 'Segoe UI';
+    padding-left: 2px;
+}
+.biography {
+    width: 30%;
+    padding: 2rem;
+    border-left: 1px solid lightgray;
+}
+.biography h1{
+    width: 100%;
+    color: var(--primary-color-dark);
+    font-size: 23px;
+    font-weight: bold;
+    padding-bottom: 10px;
+    border-bottom: 1px dotted var(--text-color-lighter);
+    text-transform: capitalize;
+}
+.biography p{
+    width: 100%;
+    margin-top: 10px;
+    color: var(--text-color-lighter);
+}
+
+
+
+
+
+
+
+
+
+.container .options {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    border-bottom: 2px solid var(--text-color-dark);
+    gap: 10px;
+    padding: 10px;
+}
+.options .btn {
+    padding: 10px 15px;
+    font-size: 1rem;
+    font-family: 'Segoe UI';
+    text-decoration: none;
+    background-color: var(--primary-color-light);
+    cursor: pointer;
+    font-weight: 500;
+    text-align: center;
+    color: #fff;
+    margin: 1.5rem .5rem;
+    border-radius: 8px;
+    transition: .7s;
+}
+.options .btn:hover {
+    background-color: var(--secondary-color-light);
+    color: var(--text-color-dark);
+    transform: scale(1.1);
+    transition: .7s;
+}
+
+
+
+
+
+
+.container .form{
+    width: 80%;
+    padding: 3rem;
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 0 60px rgba(0, 0, 0, 0.13);
+    margin-top: 3%;
+}
+.form h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    color: var(--primary-title-color);
+    padding: 0;
+    margin: 30px 0px;
+    text-shadow: 2px 5px 30px hsl(0, 0%, 100%);
+}
+.form form {
+    display: flex;
+    flex-direction: column;
+}
+.form .form_row{
+    width: 100%;
+    display: flex;
+}
+.form_row label {
+    width: 30%;
+    font-size: 14px;
+}
+.form_row input , select{
+    background-color: #f8f8f8;
+    margin-bottom: 20px;
+    width: -webkit-fill-available;
+    padding: .375rem .75rem;
+    font-size: 15px;
+    color: #212529;
+    border: 1px solid #ced4da;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+.form .btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.form button {
+    width: 50%;
+    background-color: var(--primary-color-dark);
+    color: #fff;
+    border: none;
+    padding: 10px 10px;
+    margin: 10px 0px;
+    border-radius: 4px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+.form button:hover {
+    background-color: var(--primary-color-light);
+}
