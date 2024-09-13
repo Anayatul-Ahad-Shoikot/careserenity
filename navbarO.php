@@ -9,34 +9,34 @@ $current_url = getCurrentURLPath();
 
 $nav_options = [
     'home' => [
-        './O_home.php',
-        './O_create_blog.php',
-        './O_view_blog.php'
+        '/O_home.php',
+        '/O_create_blog.php',
+        '/O_view_blog.php'
     ],
     'organizations' => [
-        './O_organization.php',
-        './O_see_organization_orphanage.php',
-        './O_see_organization_profile.php',
-        './O_see_orphan_profile.php'
+        '/O_organization.php',
+        '/O_see_organization_orphanage.php',
+        '/O_see_organization_profile.php',
+        '/O_see_orphan_profile.php'
     ],
     'adoptions' => [
-        './O_adoption.php'
+        '/O_adoption.php'
     ],
     'seminars' => [
-        './O_seminar.php'
+        '/O_seminar.php'
     ],
     'joinus' => [
-        './O_joinus.php'
+        '/O_joinus.php'
     ],
     'aboutus' => [
-        './O_aboutus.php'
+        '/O_aboutus.php'
     ],
     'myprofile' => [
-        './O_profile.php',
-        './O_profile_edit.php',
-        './O_chat_list.php',
-        './O_orphan.php',
-        './O_orphan_profile.php'
+        '/O_profile.php',
+        '/O_profile_edit.php',
+        '/O_chat_list.php',
+        '/O_orphan.php',
+        '/O_orphan_profile.php'
     ]
 ];
 

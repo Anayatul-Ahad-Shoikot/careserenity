@@ -1,5 +1,5 @@
 <?php
-include("../../../BackEnd/db_con.php");
+include("./db_con.php");
 session_start();
 $acc_id = $_SESSION['acc_id'];
 $fetchUnreadNotificationsQuery = "SELECT COUNT(*) as unread_count FROM notifications WHERE is_read = 0 AND org_id = (SELECT org_id FROM org_list WHERE acc_id = $acc_id)";
@@ -20,22 +20,22 @@ if ($unreadNotificationsResult) {
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
   <link rel='stylesheet' href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css'>
-  <link rel="stylesheet" href="/FrontEnd/css/colors.css">
-  <link rel="stylesheet" href="/FrontEnd/css/create_blog.css">
-  <link rel="stylesheet" href="/FrontEnd/css/navbar.css">
-  <link rel="stylesheet" href="/FrontEnd/css/footer.css">
-  <link rel="stylesheet" href="/FrontEnd/css/notification.css">
-  <link rel="icon" href="/Icons&logos/LOGO.png" type="image/x-icon">
+  <link rel="stylesheet" href="./css/colors.css">
+  <link rel="stylesheet" href="./css/create_blog.css">
+  <link rel="stylesheet" href="./css/navbar.css">
+  <link rel="stylesheet" href="./css/footer.css">
+  <link rel="stylesheet" href="./css/notification.css">
+  <link rel="icon" href="./assets/LOGO.png" type="image/x-icon">
   <title>CareSenerity | Blog</title>
 </head>
 
 <body>
 
-  <?php include "../../components/navbarO.php" ?>
+  <?php include "./navbarO.php" ?>
 
   <div class="container">
     <h1>Create a Blog Post</h1>
-    <form action="../../../BackEnd/blog_upload_BE.php" method="POST" enctype="multipart/form-data">
+    <form action="./blog_upload_BE.php" method="POST" enctype="multipart/form-data">
       <input type="text" name="post_title" placeholder="Title" required>
       <textarea name="post_content" required placeholder="Type your thoughts here ..."></textarea>
       <div class="xxx">
@@ -55,13 +55,13 @@ if ($unreadNotificationsResult) {
     </form>
   </div>
 
-  <?php include "../../components/footer.php" ?>
+  <?php include "./footer.php" ?>
 
   <button id="scrollTopBtn" title="Go to top"><i class='bx bx-chevrons-up bx-burst' ></i></button>
 
-  <script src="/FrontEnd/js/scrollupBTN.js"></script>
-  <script src="/FrontEnd/js/feedback.js"></script>
-  <script src="/FrontEnd/js/notification_color.js"></script>
+  <script src="./js/scrollupBTN.js"></script>
+  <script src="./js/feedback.js"></script>
+  <script src="./js/notification_color.js"></script>
 </body>
 
 </html>

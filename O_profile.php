@@ -1,7 +1,7 @@
 <?php
-    include("../../../BackEnd/organization_profile_fetch_BE.php");
-    include('../../../BackEnd/adoption_request_fetch_BE.php');
-    include('../../../BackEnd/donation_request_fetch_BE.php');
+    include("./O_profile_fetch_BE.php");
+    include('./adoption_request_fetch_BE.php');
+    include('./donation_request_fetch_BE.php');
     $acc_id = $_SESSION['acc_id'];
     $fetchUnreadNotificationsQuery = "SELECT COUNT(*) as unread_count FROM notifications WHERE is_read = 0 AND org_id = (SELECT org_id FROM org_list WHERE acc_id = $acc_id)";
     $unreadNotificationsResult = mysqli_query($con, $fetchUnreadNotificationsQuery);
@@ -21,19 +21,19 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
     <link rel='stylesheet' href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css'>
-    <link rel="stylesheet" href="/FrontEnd/css/colors.css">
-    <link rel="stylesheet" href="/FrontEnd/css/navbar.css">
-    <link rel="stylesheet" href="/FrontEnd/css/profile.css">
-    <link rel="stylesheet" href="/FrontEnd/css/footer.css">
-    <link rel="stylesheet" href="/FrontEnd/css/notification.css">
-    <link rel="stylesheet" href="/FrontEnd/css/feedback.css">
-    <link rel="icon" href="/Icons&logos/LOGO.png" type="image/x-icon">
+    <link rel="stylesheet" href="./css/colors.css">
+    <link rel="stylesheet" href="./css/navbar.css">
+    <link rel="stylesheet" href="./css/profile.css">
+    <link rel="stylesheet" href="./css/footer.css">
+    <link rel="stylesheet" href="./css/notification.css">
+    <link rel="stylesheet" href="./css/feedback.css">
+    <link rel="icon" href="./assets/LOGO.png" type="image/x-icon">
     <title>CareSenerity | Profile </title>
 </head>
 
 <body>
 
-    <?php include "../../components/navbarO.php" ?>
+    <?php include "./navbarO.php" ?>
 
     <div class="feedback">
         <?php
@@ -56,7 +56,7 @@
 
         <div class="accounnt-information-container">
             <div class="account-picture">
-                <img src="../../../UserImage/accountPic/<?php echo $org_logo ?>" alt="profile" width="250px" height="250px">
+                <img src="./assets/<?php echo $org_logo ?>" alt="profile" width="250px" height="250px">
             </div>
             <div class="account-data">
                     <h1><?php echo $org_name ?></h1>
@@ -74,10 +74,10 @@
 
 
         <div class="options">
-            <a href="chat.php" id="button-30">Chats</a>
-            <a href="orphan.php" id="button-30">Orphanage</a>
-            <a href="volunteer.php" id="button-30">Volunteers</a>
-            <a href="profile_edit.php" id="button-30">Profile Info</a>
+            <a href="#" id="button-30">Chats</a>
+            <a href="#" id="button-30">Orphanage</a>
+            <a href="#" id="button-30">Volunteers</a>
+            <a href="./O_profile_edit.php" id="button-30">Profile Info</a>
         </div>
 
 
@@ -204,11 +204,11 @@
 
     </div>
 
-    <?php include "../../components/footer.php" ?>
+    <?php include "./footer.php" ?>
 
     <button id="scrollTopBtn" title="Go to top"><i class='bx bx-chevrons-up bx-burst' ></i></button>
 
-    <script>
+    <!-- <script>
         document.addEventListener("DOMContentLoaded", function() {
             // Initially hide the chatbox
             const chatbox = document.querySelector(".chatbox");
@@ -252,10 +252,10 @@
             // Call the function to add listeners to inbox list items
             addClickListenersToInboxList();
         });
-    </script>
-    <script src="/FrontEnd/js/scrollupBTN.js"></script>
-    <script src="/FrontEnd/js/notification_color.js"></script>
-    <script src="/FrontEnd/js/feedback.js"></script>
+    </script> -->
+    <script src="./js/scrollupBTN.js"></script>
+    <script src="./js/notification_color.js"></script>
+    <script src="./js/feedback.js"></script>
 </body>
 
 </html>

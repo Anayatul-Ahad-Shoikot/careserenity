@@ -1,5 +1,6 @@
 <?php
 include("./db_con.php");
+include("./index_BE.php");
 session_start();
 $acc_id = $_SESSION['acc_id'];
 $fetchUnreadNotificationsQuery = "SELECT COUNT(*) as unread_count FROM notifications WHERE is_read = 0 AND user_id = (SELECT user_id FROM user_list WHERE acc_id = $acc_id)";
@@ -64,7 +65,7 @@ if ($unreadNotificationsResult) {
                 <div class="icon"><i class="fas fa-arrow-right"></i></div>
                 <div class="tex">
                     <p id="text">There are over</p>
-                    <h3 id="count">123</h3>
+                    <h3 id="count"><?php echo $total_orphans ?></h3>
                     <p id="text">orphans to help</p>
                 </div>
             </div>
@@ -72,7 +73,7 @@ if ($unreadNotificationsResult) {
                 <div class="icon"><i class="fas fa-arrow-right"></i></div>
                 <div class="tex">
                     <p id="text">We have total</p>
-                    <h3 id="count">999</h3>
+                    <h3 id="count"><?php echo $total_organizations ?></h3>
                     <p id="text">organizations</p>
                 </div>
             </div>
@@ -88,7 +89,7 @@ if ($unreadNotificationsResult) {
                 <div class="icon"><i class="fas fa-arrow-right"></i></div>
                 <div class="tex">
                     <p id="text">We serverd over</p>
-                    <h3 id="count">4934 $</h3>
+                    <h3 id="count"><?php echo $total_donation_Serverd ?></h3>
                     <p id="text">BDT as Donation</p>
                 </div>
             </div>
@@ -114,8 +115,6 @@ if ($unreadNotificationsResult) {
     <button id="scrollTopBtn" title="Go to top"><i class='bx bx-chevrons-up bx-burst' ></i></button>
 
     <script src="./js/scrollupBTN.js"></script>
-    <script src="./js/notification_hovertime.js"></script>
-    <script src="./js/notification_popup.js"></script>
     <script src="./js/notification_color.js"></script>
     <script src="./js/feedback.js"></script>
 

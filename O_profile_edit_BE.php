@@ -3,8 +3,8 @@ include('db_con.php');
 session_start();
 
 if (!isset($_SESSION['acc_id']) && !isset($_SESSION['role'])) {
-    $_SESSION["negative"] = "Warning. You have to login first";
-    header("Location: /FrontEnd/loggedOut/login.php");
+    $_SESSION["negative"] = "Warning. You haven't login";
+    header("Location: ./login.php");
     exit();
 } else {
     if (isset($_POST['update'])) {
@@ -82,17 +82,17 @@ if (!isset($_SESSION['acc_id']) && !isset($_SESSION['role'])) {
             $org_name = $row['org_name'];
             $org_name = preg_replace("/[^a-zA-Z0-9]/", "", $org_name);
             $file_extension = pathinfo($image_name, PATHINFO_EXTENSION);
-            $new_image_name = $org_name . "_" . uniqid() . "." . $file_extension;
-            $image_path = "../UserImage/accountPic/" . $new_image_name;
+            $new_image_name = $org_name . "_" . substr(md5(uniqid()), 0, 5) . "." . $file_extension;
+            $image_path = "./assets/" . $new_image_name;
             move_uploaded_file($image_tmp_name, $image_path);
             $SQL = "UPDATE org_list SET org_logo = '$new_image_name' WHERE org_id = $org_id LIMIT 1";
             mysqli_query($con, $SQL);
         }
         $_SESSION['positive'] = "Profile Updated successfully";
-        header("Location: /FrontEnd/loggedIn/organizationpage/profile.php");
+        header("Location: ./O_profile.php");
     } else {
         $_SESSION['negative'] = "Profile update failed";
-        header("Location: /FrontEnd/loggedIn/organizationpage/profile.php");
+        header("Location: ./O_profile.php");
     }
 }
 mysqli_close($con);

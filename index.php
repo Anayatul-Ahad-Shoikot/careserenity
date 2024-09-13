@@ -116,197 +116,164 @@ include './blog_fetch_BE.php';
 
     <div class="donations" id="donations">
         <div class="section-title">
-            <p id="highlight">Recent raised funds</p>
+            <p id="highlight">Recently raised funds</p>
         </div>
         <div class="cards-container">
             <div class="card">
                 <div class="card-img">
-                    <img src="./assets/c1.jpg" alt="">
-                    <div class="amount">
-                        <span class="raised">
-                            Raised : $764
-                        </span>
-                        <span class="target">
-                            Goal : $1500
-                        </span>
-                        <button class="btn">Donate</button>
-                    </div>
+                    <img src="./assets/bg_1.jpeg" alt="">
+                </div>
+                <div class="amount">
+                    <b>Goal:</b>&nbsp;<p>$350</p> / <p>$15000</p>
                 </div>
                 <div class="card-details">
                     <h4>CONNECTING THE PEOPLE</h4>
                     <p>he point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters</p>
                 </div>
+                <button class="btn">Donate</button>
             </div>
-
             <div class="card">
                 <div class="card-img">
-                    <img src="./assets/c1.jpg" alt="">
-                    <div class="amount">
-                        <span class="raised">
-                            RAISED: $980
-                        </span>
-                        <span class="target">
-                            TARGET: $150000
-                        </span>
-                        <button class="btn">Donate</button>
-                    </div>
+                    <img src="./assets/bg_2.jpg" alt="">
                 </div>
-                <div class="card-details">
-                    <h4>Flood fund</h4>
-                    <p>due to recent foold we need funs for poor people. they are striving.</p>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-img">
-                    <img src="./assets/c1.jpg" alt="">
-                    <div class="amount">
-                        <span class="raised">
-                            RAISED: $764
-                        </span>
-                        <span class="target">
-                            TARGET: $1500
-                        </span>
-                        <button class="btn">Donate</button>
-                    </div>
+                <div class="amount">
+                    <b>Goal:</b>&nbsp;<p>$7600</p> / <p>$50000</p>
                 </div>
                 <div class="card-details">
                     <h4>CONNECTING THE PEOPLE</h4>
-                    <p>he point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.</p>
+                    <p>he point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters</p>
                 </div>
+                <button class="btn">Donate</button>
             </div>
-
             <div class="card">
                 <div class="card-img">
-                    <img src="./assets/c1.jpg" alt="">
-                    <div class="amount">
-                        <span class="raised">
-                            RAISED: $764
-                        </span>
-                        <span class="target">
-                            TARGET: $1500
-                        </span>
-                        <button class="btn">Donate</button>
-                    </div>
+                    <img src="./assets/bg_1.jpeg" alt="">
+                </div>
+                <div class="amount">
+                    <b>Goal:</b>&nbsp;<p>$350</p> / <p>$15000</p>
                 </div>
                 <div class="card-details">
                     <h4>CONNECTING THE PEOPLE</h4>
-                    <p>he point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.</p>
+                    <p>he point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters</p>
                 </div>
+                <button class="btn">Donate</button>
             </div>
-
             <div class="card">
                 <div class="card-img">
-                    <img src="./assets/c1.jpg" alt="">
-                    <div class="amount">
-                        <span class="raised">
-                            RAISED: $764
-                        </span>
-                        <span class="target">
-                            TARGET: $1500
-                        </span>
-                        <button class="btn">Donate</button>
-                    </div>
+                    <img src="./assets/bg_2.jpg" alt="">
+                </div>
+                <div class="amount">
+                    <b>Goal:</b>&nbsp;<p>$7600</p> / <p>$50000</p>
                 </div>
                 <div class="card-details">
                     <h4>CONNECTING THE PEOPLE</h4>
-                    <p>he point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.</p>
+                    <p>he point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters</p>
                 </div>
+                <button class="btn">Donate</button>
             </div>
-
             <div class="card">
                 <div class="card-img">
-                    <img src="./assets/c1.jpg" alt="">
-                    <div class="amount">
-                        <span class="raised">
-                            RAISED: $764
-                        </span>
-                        <span class="target">
-                            TARGET: $1500
-                        </span>
-                        <button class="btn">Donate</button>
-                    </div>
+                    <img src="./assets/bg_1.jpeg" alt="">
+                </div>
+                <div class="amount">
+                    <b>Goal:</b>&nbsp;<p>$350</p> / <p>$15000</p>
                 </div>
                 <div class="card-details">
                     <h4>CONNECTING THE PEOPLE</h4>
-                    <p>he point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.</p>
+                    <p>he point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters</p>
                 </div>
+                <button class="btn">Donate</button>
             </div>
-
             <div class="card">
                 <div class="card-img">
-                    <img src="./assets/c1.jpg" alt="">
-                    <div class="amount">
-                        <span class="raised">
-                            RAISED: $764
-                        </span>
-                        <span class="target">
-                            TARGET: $1500
-                        </span>
-                        <button class="btn">Donate</button>
-                    </div>
+                    <img src="./assets/bg_2.jpg" alt="">
+                </div>
+                <div class="amount">
+                    <b>Goal:</b>&nbsp;<p>$7600</p> / <p>$50000</p>
                 </div>
                 <div class="card-details">
                     <h4>CONNECTING THE PEOPLE</h4>
-                    <p>he point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.</p>
+                    <p>he point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters</p>
                 </div>
+                <button class="btn">Donate</button>
             </div>
-
             <div class="card">
                 <div class="card-img">
-                    <img src="./assets/c1.jpg" alt="">
-                    <div class="amount">
-                        <span class="raised">
-                            RAISED: $764
-                        </span>
-                        <span class="target">
-                            TARGET: $1500
-                        </span>
-                        <button class="btn">Donate</button>
-                    </div>
+                    <img src="./assets/bg_1.jpeg" alt="">
+                </div>
+                <div class="amount">
+                    <b>Goal:</b>&nbsp;<p>$350</p> / <p>$15000</p>
                 </div>
                 <div class="card-details">
                     <h4>CONNECTING THE PEOPLE</h4>
-                    <p>he point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.</p>
+                    <p>he point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters</p>
                 </div>
+                <button class="btn">Donate</button>
             </div>
-
             <div class="card">
                 <div class="card-img">
-                    <img src="./assets/c1.jpg" alt="">
-                    <div class="amount">
-                        <span class="raised">
-                            RAISED: $764
-                        </span>
-                        <span class="target">
-                            TARGET: $1500
-                        </span>
-                        <button class="btn">Donate</button>
-                    </div>
+                    <img src="./assets/bg_2.jpg" alt="">
+                </div>
+                <div class="amount">
+                    <b>Goal:</b>&nbsp;<p>$7600</p> / <p>$50000</p>
                 </div>
                 <div class="card-details">
                     <h4>CONNECTING THE PEOPLE</h4>
-                    <p>he point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.</p>
+                    <p>he point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters</p>
                 </div>
+                <button class="btn">Donate</button>
             </div>
-
             <div class="card">
                 <div class="card-img">
-                    <img src="./assets/c1.jpg" alt="">
-                    <div class="amount">
-                        <span class="raised">
-                            RAISED: $764
-                        </span>
-                        <span class="target">
-                            TARGET: $1500
-                        </span>
-                        <button class="btn">Donate</button>
-                    </div>
+                    <img src="./assets/bg_1.jpeg" alt="">
+                </div>
+                <div class="amount">
+                    <b>Goal:</b>&nbsp;<p>$350</p> / <p>$15000</p>
                 </div>
                 <div class="card-details">
                     <h4>CONNECTING THE PEOPLE</h4>
-                    <p>he point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.</p>
+                    <p>he point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters</p>
                 </div>
+                <button class="btn">Donate</button>
+            </div>
+            <div class="card">
+                <div class="card-img">
+                    <img src="./assets/bg_2.jpg" alt="">
+                </div>
+                <div class="amount">
+                    <b>Goal:</b>&nbsp;<p>$7600</p> / <p>$50000</p>
+                </div>
+                <div class="card-details">
+                    <h4>CONNECTING THE PEOPLE</h4>
+                    <p>he point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters</p>
+                </div>
+                <button class="btn">Donate</button>
+            </div>
+            <div class="card">
+                <div class="card-img">
+                    <img src="./assets/bg_1.jpeg" alt="">
+                </div>
+                <div class="amount">
+                    <b>Goal:</b>&nbsp;<p>$350</p> / <p>$15000</p>
+                </div>
+                <div class="card-details">
+                    <h4>CONNECTING THE PEOPLE</h4>
+                    <p>he point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters</p>
+                </div>
+                <button class="btn">Donate</button>
+            </div>
+            <div class="card">
+                <div class="card-img">
+                    <img src="./assets/bg_2.jpg" alt="">
+                </div>
+                <div class="amount">
+                    <b>Goal:</b>&nbsp;<p>$7600</p> / <p>$50000</p>
+                </div>
+                <div class="card-details">
+                    <h4>CONNECTING THE PEOPLE</h4>
+                    <p>he point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters</p>
+                </div>
+                <button class="btn">Donate</button>
             </div>
         </div>
     </div>

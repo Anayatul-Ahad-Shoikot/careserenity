@@ -4,8 +4,8 @@ include('db_con.php');
 session_start();
 
 if (!isset($_SESSION['acc_id']) && !isset($_SESSION['role'])) {
-    $_SESSION["negative"] = "Warning. You have to login first";
-    header("Location: /FrontEnd/loggedOut/login.php");
+    $_SESSION["negative"] = "Warning. You haven't login";
+    header("Location: ./login.php");
     exit();
 } else {
     $acc_id = $_SESSION['acc_id'];

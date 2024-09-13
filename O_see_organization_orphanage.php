@@ -1,6 +1,6 @@
 <?php
-include("../../../BackEnd/db_con.php");
-include('../../../BackEnd/see_organization_profile_BE.php');
+include("./db_con.php");
+include('./see_organization_profile_BE.php');
 session_start();
 $acc_id = $_SESSION['acc_id'];
 $fetchUnreadNotificationsQuery = "SELECT COUNT(*) as unread_count FROM notifications WHERE is_read = 0 AND org_id = (SELECT org_id FROM org_list WHERE acc_id = $acc_id)";
@@ -21,19 +21,19 @@ if ($unreadNotificationsResult) {
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
     <link rel='stylesheet' href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css'>
-    <link rel="stylesheet" href="/FrontEnd/css/colors.css">
-    <link rel="stylesheet" href="/FrontEnd/css/orphan.css">
-    <link rel="stylesheet" href="/FrontEnd/css/navbar.css">
-    <link rel="stylesheet" href="/FrontEnd/css/footer.css">
-    <link rel="stylesheet" href="/FrontEnd/css/notification.css">
-    <link rel="stylesheet" href="/FrontEnd/css/feedback.css">
-    <link rel="icon" href="/Icons&logos/LOGO.png" type="image/x-icon">
+    <link rel="stylesheet" href="./css/colors.css">
+    <link rel="stylesheet" href="./css/orphan.css">
+    <link rel="stylesheet" href="./css/navbar.css">
+    <link rel="stylesheet" href="./css/footer.css">
+    <link rel="stylesheet" href="./css/notification.css">
+    <link rel="stylesheet" href="./css/feedback.css">
+    <link rel="icon" href="./assets/LOGO.png" type="image/x-icon">
     <title>CareSenerity | Orphanage</title>
 </head>
 
 <body>
 
-    <?php include "../../components/navbarO.php" ?>
+    <?php include "./navbarO.php" ?>
 
     <div class="feedback">
         <?php
@@ -56,7 +56,7 @@ if ($unreadNotificationsResult) {
         
         <div class="accounnt-information-container">
             <div class="account-picture">
-                <img src="../../../UserImage/accountPic/<?php echo $org_logo ?>" alt="profile" width="250px" height="250px">
+                <img src="./assets/<?php echo $org_logo ?>" alt="profile" width="250px" height="250px">
             </div>
             <div class="account-data">
                     <h1><?php echo $org_name ?></h1>
@@ -73,7 +73,7 @@ if ($unreadNotificationsResult) {
         </div>
 
         <div class="options">
-            <a href="see_organization_profile.php?org_id=<?php echo $org_id ?>" class="btn">back</a>
+            <a href="./see_organization_profile.php?org_id=<?php echo $org_id ?>" class="btn">back</a>
             <a href="#" class="btn">Inbox</a>
             <form action="#" method="GET">
                 <input type="text" name="query" placeholder="Search Child...">
@@ -87,18 +87,18 @@ if ($unreadNotificationsResult) {
                     if(isset($_GET['query'])){
                         include('/xampp/htdocs/DBMS_Project_Organized_One/Root/Orphanage/USER-PERSPECTIVE/UP_SEARCH_ORPHAN_BE.php');
                     } else {
-                        include ('../../../BackEnd/see_organization_orphanage_BE.php');
+                        include ('./see_organization_orphanage_BE.php');
                     }
                 ?>
             </div>
         </div>
 
-    <?php include "../../components/footer.php" ?>
+    <?php include "./footer.php" ?>
 
-    <button id="scrollTopBtn" title="Go to top">↑</button>
+    <button id="scrollTopBtn" title="Go to top"><i class='bx bx-chevrons-up bx-burst' ></i></button>
 
-    <script src="/FrontEnd/js/scrollupBTN.js"></script>
-    <script src="/FrontEnd/js/notification_color.js"></script>
-    <script src="/FrontEnd/js/feedback.js"></script>
+    <script src="./js/scrollupBTN.js"></script>
+    <script src="./js/notification_color.js"></script>
+    <script src="./js/feedback.js"></script>
 </body>
 </html>

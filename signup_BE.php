@@ -13,8 +13,6 @@ if (isset($_POST['signup_btn'])) {
     $answer = $_POST['answer'];
     $date = date("Y-m-d");
 
-    echo $date, " ";
-
     $Name_Check_Query = "SELECT acc_name FROM accounts WHERE acc_name = '$acc_name' LIMIT 1";
     $Name_Check_Query_Result = mysqli_query($con, $Name_Check_Query);
 
@@ -55,7 +53,7 @@ if (isset($_POST['signup_btn'])) {
             exit(0);
         }
     } else {
-        $SignUp_Query_2 = "INSERT INTO org_list (acc_id, org_name, org_description, established, org_vision, org_location, org_log, org_reviews) VALUES ('$acc_id', 'Set Your Organization name', 'N/A', '00-00-0000', 'N/A', 'Bangladesh','user.png', '0.0')";
+        $SignUp_Query_2 = "INSERT INTO org_list (acc_id, org_name, org_description, established, org_vision, org_location, org_logo, org_reviews) VALUES ('$acc_id', 'Set Your Organization name', 'N/A', '00-00-0000', 'N/A', 'Bangladesh','user.png', '0.0')";
         if (mysqli_query($con, $SignUp_Query_2)) {
             $_SESSION['positive'] = "SignUp Successfull! Login to continue.";
             header("Location: ./login.php");

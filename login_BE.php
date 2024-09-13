@@ -20,17 +20,14 @@ if (isset($_POST['login_btn'])) {
                 case 'admin':
                     header("Location: #");
                     exit(0);
-                    break;
                 case 'org':
                     $_SESSION['positive'] = "Welcome back, $acc_name ";
-                    header("Location: ./O_home");
+                    header("Location: ./O_home.php");
                     exit(0);
-                    break;
                 case 'user':
                     $_SESSION['positive'] = "Welcome back, $acc_name !";
                     header("Location: ./U_home.php");
                     exit(0);
-                    break;
             }
         } else {
             $_SESSION['negative'] = "Warning: Invalid password";

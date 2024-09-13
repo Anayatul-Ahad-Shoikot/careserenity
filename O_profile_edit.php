@@ -1,5 +1,5 @@
 <?php
-include("../../../BackEnd/organization_profile_fetch_BE.php");
+include("./O_profile_fetch_BE.php");
 $acc_id = $_SESSION['acc_id'];
 $fetchUnreadNotificationsQuery = "SELECT COUNT(*) as unread_count FROM notifications WHERE is_read = 0 AND org_id = (SELECT org_id FROM org_list WHERE acc_id = $acc_id)";
 $unreadNotificationsResult = mysqli_query($con, $fetchUnreadNotificationsQuery);
@@ -19,19 +19,19 @@ if ($unreadNotificationsResult) {
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
     <link rel='stylesheet' href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css'>
-    <link rel="stylesheet" href="/FrontEnd/css/colors.css">
-    <link rel="stylesheet" href="/FrontEnd/css/navbar.css">
-    <link rel="stylesheet" href="/FrontEnd/css/profile_edit.css">
-    <link rel="stylesheet" href="/FrontEnd/css/footer.css">
-    <link rel="stylesheet" href="/FrontEnd/css/notification.css">
-    <link rel="stylesheet" href="/FrontEnd/css/feedback.css">
-    <link rel="icon" href="/Icons&logos/LOGO.png" type="image/x-icon">
+    <link rel="stylesheet" href="./css/colors.css">
+    <link rel="stylesheet" href="./css/navbar.css">
+    <link rel="stylesheet" href="./css/profile_edit.css">
+    <link rel="stylesheet" href="./css/footer.css">
+    <link rel="stylesheet" href="./css/notification.css">
+    <link rel="stylesheet" href="./css/feedback.css">
+    <link rel="icon" href="./assets/LOGO.png" type="image/x-icon">
     <title>CareSenerity | Profile </title>
 </head>
 
 <body>
 
-    <?php include "../../components/navbarO.php" ?>
+    <?php include "./navbarO.php" ?>
 
     <div class="feedback">
         <?php
@@ -53,7 +53,7 @@ if ($unreadNotificationsResult) {
 
     <div class="container">
         <h2>Profile Information</h2>
-        <form action="../../../BackEnd/Organization_profile_edit_BE.php" method="post" enctype="multipart/form-data">
+        <form action="./O_profile_edit_BE.php" method="post" enctype="multipart/form-data">
             <div class="form_row">
                 <label>Organization's Name :</label>
                 <input type="text" name="org_name" placeholder="<?php echo $org_name ?>">
@@ -96,13 +96,13 @@ if ($unreadNotificationsResult) {
         </form>
     </div>
 
-    <?php include "../../components/footer.php" ?>
+    <?php include "./footer.php" ?>
 
     <button id="scrollTopBtn" title="Go to top"><i class='bx bx-chevrons-up bx-burst' ></i></button>
 
-    <script src="/FrontEnd/js/scrollupBTN.js"></script>
-    <script src="/FrontEnd/js/notification_color.js"></script>
-    <script src="/FrontEnd/js/feedback.js"></script>
+    <script src="./js/scrollupBTN.js"></script>
+    <script src="./js/notification_color.js"></script>
+    <script src="./js/feedback.js"></script>
 </body>
 
 </html>

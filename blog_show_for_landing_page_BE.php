@@ -20,7 +20,7 @@ if (mysqli_num_rows($result) > 0) {
         echo '</div>';
     }
 } else {
-    echo 'No blog posts found.';
+    echo '<P id="nothing_found">No blog posts found.</p>';
 }
 
 mysqli_close($con);
