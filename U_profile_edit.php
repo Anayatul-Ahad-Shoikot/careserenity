@@ -53,7 +53,7 @@ if ($unreadNotificationsResult) {
 
     <div class="container">
         <h2>Edit Profile</h2>
-        <form action="./user_profile_edit_BE.php" method="post" enctype="multipart/form-data">
+        <form action="./U_profile_edit_BE.php" method="post" enctype="multipart/form-data">
             <div class="form_row">
                 <label>Full Name :</label>
                 <input type="text" name="user_name" placeholder="<?php echo $user_name ?>" >

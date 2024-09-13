@@ -9,3 +9,15 @@ document.querySelectorAll('.main-nav a').forEach(anchor => {
         });
     });
 });
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    const currentPath = window.location.pathname;
+    const navLinks = document.querySelectorAll('.main-nav a');
+    navLinks.forEach(link => {
+        const linkPath = link.getAttribute('href');
+        if (currentPath.includes(linkPath)) {
+            link.classList.add('active');
+        }
+    });
+});
