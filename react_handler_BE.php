@@ -23,22 +23,20 @@ if (isset($_POST['like']) && isset($_POST['post_id'])) {
             exit(0);
         }
     } 
+   else {
+        $add = "INSERT INTO like_handle (post_id, viewer_acc_id) VALUES ($post_id, $viewer_acc_id)";
+        mysqli_query($con, $add);
+        $increaseLike = "UPDATE blog_likes SET likes = (likes + 1) WHERE post_id = $post_id";
+        mysqli_query($con, $increaseLike);
+        if ($_SESSION['role'] == 'user') {
+            header("Location: ./U_view_blog.php?post_id=$post_id");
+            exit(0);
+        } else {
+            header("Location: ./O_view_blog.php?post_id=$post_id");
+            exit(0);
+        }
+    }
+} else {
+    echo 'Invalid request.';
 }
-    
-//    else {
-//         $add = "INSERT INTO like_handle (post_id, viewer_acc_id) VALUES ($post_id, $viewer_acc_id)";
-//         mysqli_query($con, $add);
-//         $increaseLike = "UPDATE blog_likes SET likes = (likes + 1) WHERE post_id = $post_id";
-//         mysqli_query($con, $increaseLike);
-//         if ($_SESSION['role'] == 'user') {
-//             header("Location: ./U_view_blog.php?post_id=$post_id");
-//             exit(0);
-//         } else {
-//             header("Location: ./O_view_blog.php?post_id=$post_id");
-//             exit(0);
-//         }
-//     }
-// } else {
-//     echo 'Invalid request.';
-// }
-// mysqli_close($con);
+mysqli_close($con);

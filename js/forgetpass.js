@@ -4,7 +4,7 @@ $(document).ready(function() {
         var name = $('#acc_name').val();
         $.ajax({
             type: 'POST',
-            url: '/BackEnd/forgetpass_BE.php',
+            url: './forgetpass_BE.php',
             data: { action: 'check_account', acc_email: email, acc_name: name },
             success: function(response) {
                 if (response.includes('Account found')) {
@@ -22,7 +22,7 @@ $(document).ready(function() {
         var answer = $('#security_answer').val();
         $.ajax({
             type: 'POST',
-            url: '/BackEnd/forgetpass_BE.php',
+            url: './forgetpass_BE.php',
             data: { action: 'check_answer', acc_email: email, security_question: question, security_answer: answer },
             success: function(response) {
                 if (response.includes('Answer correct')) {
