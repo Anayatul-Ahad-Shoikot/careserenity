@@ -9,32 +9,32 @@ $current_url = getCurrentURLPath();
 
 $nav_options = [
     'home' => [
-        '/U_home.php',
-        '/U_create_blog.php',
-        '/U_view_blog.php'
+        './U_home.php',
+        './U_create_blog.php',
+        './U_view_blog.php'
     ],
     'organizations' => [
-        '/U_organization.php',
-        '/U_see_organization_orphanage.php',
-        '/U_see_organization_profile.php',
-        '/U_see_orphan_profile.php'
+        './U_organization.php',
+        './U_see_organization_orphanage.php',
+        './U_see_organization_profile.php',
+        './U_see_orphan_profile.php'
     ],
     'adoptions' => [
-        '/U_adoption.php'
+        './U_adoption.php'
     ],
     'seminars' => [
-        '/U_seminar.php'
+        './U_seminar.php'
     ],
     'joinus' => [
-        '/U_joinus.php'
+        './U_joinus.php'
     ],
     'aboutus' => [
-        '/U_aboutus.php'
+        './U_aboutus.php'
     ],
     'myprofile' => [
-        '/U_profile.php',
-        '/U_profile_edit.php',
-        '/U_chat_list.php'
+        './U_profile.php',
+        './U_profile_edit.php',
+        './U_chat_list.php'
     ]
 ];
 
