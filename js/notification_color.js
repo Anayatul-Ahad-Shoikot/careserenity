@@ -20,6 +20,6 @@ function markAsRead(notificationId, element) {
             location.reload();
         }
     };
-    xhr.open("GET", "/BackEnd/notification_update_BE.php?id=" + notificationId, true);
+    xhr.open("GET", "./notification_update_BE.php?id=" + notificationId, true);
     xhr.send();
 }
