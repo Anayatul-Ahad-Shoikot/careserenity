@@ -1,5 +1,5 @@
 <?php
-    include('db_con.php');
+    include('./db_con.php');
 
     $acc_id = $_SESSION['acc_id'];
     $query1 = "SELECT org_id FROM org_list WHERE acc_id = $acc_id";
@@ -12,13 +12,13 @@
     if (mysqli_num_rows($result2) > 0) {
         while ($row2 = mysqli_fetch_assoc($result2)) {
             echo '<div class="card">';
-            echo '<div class="pb"  style="background-image: url(\'/UserImage/childpic/' . $row2['orphan_image'] . '\');"></div>';
+            echo '<div class="pb"  style="background-image: url(\'./assets/' . $row2['orphan_image'] . '\');"></div>';
             echo '<div class="info">';
             echo '<h1>' . $row2['first_name'] . '</h1>';
             echo '</div>';
             echo '<div class="buttons">';
-            echo '<a href="/BackEnd/orphan_remove_organization_BE.php?orphan_id=' . $row2['orphan_id'] . '" id="button-30">Remove</a>';
-            echo '<a href="/FrontEnd/loggedIn/organizationpage/orphan_profile.php?orphan_id=' . $row2['orphan_id'] . '" id="button-30"> View </a>';
+            echo '<a href="./orphan_remove_organization_BE.php?orphan_id=' . $row2['orphan_id'] . '" id="button-30">Remove</a>';
+            echo '<a href="./orphan_profile.php?orphan_id=' . $row2['orphan_id'] . '" id="button-30"> View </a>';
             echo '</div>';
             echo '</div>';
         }

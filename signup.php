@@ -26,7 +26,6 @@
     <div class="login-container">
         <form action="./signup_BE.php" method="POST">
             <h1>SignUp</h1>
-            <input type="text" name="acc_name" required placeholder="Account Name">
             <input type="text" name="acc_email" required placeholder="Account Email">
             <input type="password" name="acc_pass" required placeholder="Account Password">
             <input type="password" name="confirm_pass" required placeholder="Confirm password">

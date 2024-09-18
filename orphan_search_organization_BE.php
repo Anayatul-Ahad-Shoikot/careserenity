@@ -1,5 +1,5 @@
 <?php
-include('db_con.php');
+include('./db_con.php');
 
 if (isset($_GET['query'])) {
     session_start();
@@ -34,6 +34,6 @@ if (isset($_GET['query'])) {
     $_SESSION['negative'] = "Invalid request!";
 }
 
-header("Location: /FrontEnd/loggedIn/organizationpage/orphan.php");
+header("Location: ./O_orphan.php");
 exit();
 ?>

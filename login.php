@@ -34,7 +34,7 @@
     <div class="login-container">
         <form action="./login_BE.php" method="POST">
             <h1>LogIn</h1>
-            <input type="text" name="acc_name" placeholder="Account Name" required>
+            <input type="email" name="acc_email" placeholder="Email" required>
             <input type="password" name="acc_pass" placeholder="Password" required>
             <button type="submit" name="login_btn" id="button-30">LogIn</button>
         </form>

@@ -1,6 +1,6 @@
 <?php
-    include("../../../BackEnd/organization_profile_fetch_BE.php");
-    include("../../../BackEnd/orphan_profile_fetch_BE.php");
+    include("./organization_profile_fetch_BE.php");
+    include("./orphan_profile_fetch_BE.php");
     $acc_id = $_SESSION['acc_id'];
     $fetchUnreadNotificationsQuery = "SELECT COUNT(*) as unread_count FROM notifications WHERE is_read = 0 AND org_id = (SELECT org_id FROM org_list WHERE acc_id = $acc_id)";
     $unreadNotificationsResult = mysqli_query($con, $fetchUnreadNotificationsQuery);
@@ -20,19 +20,19 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
     <link rel='stylesheet' href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css'>
-    <link rel="stylesheet" href="/FrontEnd/css/colors.css">
-    <link rel="stylesheet" href="/FrontEnd/css/navbar.css">
-    <link rel="stylesheet" href="/FrontEnd/css/orphan_profile.css">
-    <link rel="stylesheet" href="/FrontEnd/css/footer.css">
-    <link rel="stylesheet" href="/FrontEnd/css/notification.css">
-    <link rel="stylesheet" href="/FrontEnd/css/feedback.css">
-    <link rel="icon" href="/Icons&logos/LOGO.png" type="image/x-icon">
+    <link rel="stylesheet" href="./css/colors.css">
+    <link rel="stylesheet" href="./css/navbar.css">
+    <link rel="stylesheet" href="./css/orphan_profile.css">
+    <link rel="stylesheet" href="./css/footer.css">
+    <link rel="stylesheet" href="./css/notification.css">
+    <link rel="stylesheet" href="./css/feedback.css">
+    <link rel="icon" href="./assets/LOGO.png" type="image/x-icon">
     <title>CareSenerity | Profile </title>
 </head>
 
 <body>
 
-    <?php include "../../components/navbarO.php" ?>
+    <?php include "./navbarO.php" ?>
 
     <div class="feedback">
         <?php
@@ -54,7 +54,7 @@
     <div class="container">
         <div class="accounnt-information-container">
             <div class="account-picture">
-                <img src="../../../UserImage/childpic/<?php echo $orphan_image ?>" alt="profile">
+                <img src="./assets/<?php echo $orphan_image ?>" alt="profile">
             </div>
             <div class="account-data">
                 <h1><?php echo $first_name ?></h1>
@@ -72,7 +72,7 @@
         </div>
 
         <div class="options">
-            <a href="see_organization_orphanage.php?org_id=<?php echo $org_id ?>" class="btn">back</a>
+            <a href="./see_organization_orphanage.php?org_id=<?php echo $org_id ?>" class="btn">back</a>
         </div>
 
 
@@ -193,13 +193,13 @@
 
     </div>
 
-    <?php include "../../components/footer.php" ?>
+    <?php include "./footer.php" ?>
 
-    <button id="scrollTopBtn" title="Go to top">↑</button>
+    <button id="scrollTopBtn" title="Go to top"><i class='bx bx-chevrons-up bx-burst' ></button>
 
-    <script src="/FrontEnd/js/scrollupBTN.js"></script>
-    <script src="/FrontEnd/js/notification_color.js"></script>
-    <script src="/FrontEnd/js/feedback.js"></script>
+    <script src="./js/scrollupBTN.js"></script>
+    <script src="./js/notification_color.js"></script>
+    <script src="./js/feedback.js"></script>
 
 </body>
 

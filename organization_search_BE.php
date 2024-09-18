@@ -1,5 +1,5 @@
 <?php
-    include('db_con.php');
+    include('./db_con.php');
 
     if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['query'])) {
         $role = $_SESSION['role'];
@@ -12,7 +12,7 @@
                     echo '<div class="org-card">';
                     echo '<div class="x">';
 
-                        echo '<div class="org_img"><img src="/UserImage/accountPic/' . $row['org_logo'] . '" alt=""></div>';
+                        echo '<div class="org_img"><img src="./assets/' . $row['org_logo'] . '" alt=""></div>';
                         
                         echo '<div class="org_info">';
                             echo '<h1 class="org_title">' . $row['org_name'] . '</h1>';
@@ -24,25 +24,25 @@
 
                     echo '<div class="action_button">';
                         if ($role == 'org') {
-                            echo '<a href="/FrontEnd/loggedIn/organizationpage/see_organization_profile.php?org_id=' . $row['org_id'] . '"> Visit </a>';
-                            echo '<a href="/Root/D & A/Donations/U_DONATION_DASH.php?org_id=' . $row['org_id'] . '"> Donate </a>';
+                            echo '<a href="./O_see_organization_profile.php?org_id=' . $row['org_id'] . '"> Visit </a>';
+                            echo '<a href="./O_donation.php?org_id=' . $row['org_id'] . '"> Donate </a>';
                         } else if ($role == 'admin') {
-                            echo '<a href="/Root/Org_Page/O_VIEW_ORG.php?org_id=' . $row['org_id'] . '"> Visit </a>';
+                            echo '<a href="#/O_VIEW_ORG.php?org_id=' . $row['org_id'] . '"> Visit </a>';
                         } else {
-                            echo '<a href="/FrontEnd/loggedIn/userpage/see_organization_profile.php?org_id=' . $row['org_id'] . '" id="button-30"> Visit </a>';
+                            echo '<a href="./U_see_organization_profile.php?org_id=' . $row['org_id'] . '" id="button-30"> Visit </a>';
                             echo '<a href="/Root/D & A/Donations/U_DONATION_DASH.php?org_id=' . $row['org_id'] . '" id="button-30"> Donate </a>';
                         }
                     echo '</div>';
                 echo '</div>';
                 }
             } else {
-                echo '<p>No organizations found.</p>';
+                echo '<<p id="notFound">Searched Organization not found.</p>';
             }
         } else {
-            echo '<p>Please provide what you want to search.</p>';
+            echo '<p id="notFound">There is no empty Organization</p>';
         }
     } else {
-        header("Location: /Root/Org_Page/O_ORG.php");
+        header("Location: ./O_organization.php");
         exit();
     }
     mysqli_close($con);

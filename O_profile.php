@@ -77,6 +77,7 @@
             <a href="#" id="button-30">Chats</a>
             <a href="#" id="button-30">Orphanage</a>
             <a href="#" id="button-30">Volunteers</a>
+            <a href="#" id="button-30">Seminars</a>
             <a href="./O_profile_edit.php" id="button-30">Profile Info</a>
         </div>
 
@@ -123,9 +124,7 @@
                 </div>
                 <div class="inbox-list">
                     <p>Previous chats</p>
-                    <?php
-                        include '../../../BackEnd/chat_previous_list_BE.php';
-                    ?>
+                    
                 </div>
             </div>
 

@@ -1,5 +1,5 @@
 <?php
-include "../../../BackEnd/db_con.php";
+include "./db_con.php";
 
 $data = json_decode(file_get_contents("php://input"), true);
 $out_id = $data['out_id'];

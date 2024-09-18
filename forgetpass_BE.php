@@ -50,7 +50,6 @@
                     header("Location: ./login.php");
                     exit(0);
                 }
-                $update_stmt->close();
             } else {
                 echo "Passwords do not match.";
             }

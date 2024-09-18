@@ -1,6 +1,6 @@
 <?php
 
-    include('db_con.php');
+    include('./db_con.php');
     session_start();
 
     $acc_id = $_SESSION['acc_id'];
@@ -11,9 +11,7 @@
     $org_id = $row1['org_id'];
 
     if(isset($_SESSION['acc_id']) && $_SESSION['role'] == "org") {
-        
         if (isset($_POST['Register'])) {
-            
             $guardian_name = $_POST['guardian_name'];
             $guardian_contact = $_POST['guardian_contact'];
             $guardian_location = $_POST['guardian_location'];
@@ -44,7 +42,7 @@
             $orphan_name = preg_replace("/[^a-zA-Z0-9]/", "", $last_name);
             $file_extension = pathinfo($image_name, PATHINFO_EXTENSION);
             $new_image_name = $orphan_name . "_" . uniqid() . "." . $file_extension;
-            $image_path = "../UserImage/childpic/" . $new_image_name;
+            $image_path = "./assets/" . $new_image_name;
             move_uploaded_file($image_tmp_name, $image_path);
 
             $query = "INSERT INTO orphan_list (org_id, guardian_id, first_name, last_name, age, gender, religion, date_of_birth, since, family_status, physical_condition, education_level, medical_history, hobby, favorite_food, favorite_game, skills, dreams, problems, other_comments, orphan_image) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
@@ -55,22 +53,22 @@
                 mysqli_stmt_bind_param($stmt, "iississssssssssssssss", $org_id ,$guardian_id, $first_name, $last_name, $age, $gender, $religion, $date_of_birth, $time, $family_status, $physical_condition, $education_level, $medical_history, $hobby, $favorite_food, $favorite_game, $skills, $dreams, $problems, $other_comments, $new_image_name);
                 if (mysqli_stmt_execute($stmt)) {
                     $_SESSION['positive'] = "Orphan has been registered";
-                    header("Location: /FrontEnd/loggedIn/organizationpage/orphan.php");
+                    header("Location: ./O_orphan.php");
                     exit(0);
                 } else {
                     $_SESSION['negative'] = "Orphan registration failed";
-                    header("Location: /FrontEnd/loggedIn/organizationpage/orphan.php");
+                    header("Location: ./O_orphan.php");
                 }
                 mysqli_stmt_close($stmt);
             } else {
                 $_SESSION['negative'] = "Orphan registration failed";
-                header("Location: /FrontEnd/loggedIn/organizationpage/orphan.php");
+                header("Location: ./O_orphan.php");
             }
             mysqli_close($con);
         }
     }   else {
         $_SESSION['negative'] = "please login first";
-        header("Location: /FrontEnd/loggedOut/login.php");
+        header("Location: ./login.php");
         exit(0);
     }
 ?>

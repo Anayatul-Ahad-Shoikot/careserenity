@@ -1,6 +1,6 @@
 <?php
 
-    include_once "db_con.php";
+    include_once "./db_con.php";
     session_start();
     $searchTerm = mysqli_real_escape_string($con, $_POST['searchTerm']);
     $acc_id = $_SESSION['acc_id'];
@@ -18,7 +18,7 @@
             while($row2 = mysqli_fetch_assoc($query2)){
                 $output .= '<a href="#" data-out_id="'. $outgoing_id .'" data-in_id="' . $row2['org_id'] . '">
                                 <div class="content">
-                                    <img src="/UserImage/accountPic/'. $row2['org_logo'] .'" alt="">
+                                    <img src="./assets/'. $row2['org_logo'] .'" alt="">
                                     <div class="details">
                                         <span>'. $row2['org_name'] .'</span>
                                     </div>

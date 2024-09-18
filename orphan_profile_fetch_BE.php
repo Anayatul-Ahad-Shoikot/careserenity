@@ -1,6 +1,6 @@
 <?php
 
-include('db_con.php');
+include('./db_con.php');
 
 if (isset($_GET['orphan_id'])) {
     $orphan_id = mysqli_real_escape_string($con, $_GET['orphan_id']);

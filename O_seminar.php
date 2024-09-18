@@ -1,14 +1,14 @@
 <?php
-include("./db_con.php");
-session_start();
-$acc_id = $_SESSION['acc_id'];
-$fetchUnreadNotificationsQuery = "SELECT COUNT(*) as unread_count FROM notifications WHERE is_read = 0 AND org_id = (SELECT org_id FROM org_list WHERE acc_id = $acc_id)";
-$unreadNotificationsResult = mysqli_query($con, $fetchUnreadNotificationsQuery);
-$unreadCount = 0;
-if ($unreadNotificationsResult) {
-    $unreadRow = mysqli_fetch_assoc($unreadNotificationsResult);
-    $unreadCount = $unreadRow['unread_count'];
-}
+    include("./db_con.php");
+    session_start();
+    $acc_id = $_SESSION['acc_id'];
+    $fetchUnreadNotificationsQuery = "SELECT COUNT(*) as unread_count FROM notifications WHERE is_read = 0 AND org_id = (SELECT org_id FROM org_list WHERE acc_id = $acc_id)";
+    $unreadNotificationsResult = mysqli_query($con, $fetchUnreadNotificationsQuery);
+    $unreadCount = 0;
+    if ($unreadNotificationsResult) {
+        $unreadRow = mysqli_fetch_assoc($unreadNotificationsResult);
+        $unreadCount = $unreadRow['unread_count'];
+    }
 ?>
 
 <!DOCTYPE html>
@@ -32,13 +32,7 @@ if ($unreadNotificationsResult) {
 <body>
 
     <?php include("./navbarO.php") ?>
-
-    <!-- Main body -->
-
-    <!-- seminar btn -->
     <button id="createSeminar" onclick="toggleSeminarForm()">Create Seminar</button>
-
-    <!-- seminar form -->
     <div id="seminarForm" style="display: none;">
         <form action="" method="POST" enctype="multipart/form-data">
             <label for="title">Seminar Title:</label>
@@ -74,7 +68,6 @@ if ($unreadNotificationsResult) {
         </form>
     </div>
 
-    <!-- seminar tile section -->
     <div id="allSeminars">
         <h2>All Seminars</h2>
 
@@ -102,7 +95,6 @@ if ($unreadNotificationsResult) {
         ?>
     </div>
 
-    <!-- created seminar section -->
     <div id="ownSeminar">
         <h2>Your Created Seminars</h2>
 
@@ -115,8 +107,6 @@ if ($unreadNotificationsResult) {
 
         ?>
     </div>
-
-    <!-- Main body end -->
 
     <?php include "./footer.php" ?>
 

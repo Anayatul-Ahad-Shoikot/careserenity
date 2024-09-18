@@ -1,7 +1,7 @@
 <?php
 include('./db_con.php');
 
-$query = "SELECT w.post_id, w.acc_id, w.post_title, w.post_content, w.post_image, w.published, x.likes, y.acc_name
+$query = "SELECT w.post_id, w.acc_id, w.post_title, w.post_content, w.post_image, w.published, x.likes
     FROM blog_post AS w 
     LEFT JOIN blog_likes AS x ON x.post_id = w.post_id
     LEFT JOIN accounts AS y ON y.acc_id = w.acc_id";
@@ -33,7 +33,7 @@ if (mysqli_num_rows($result) > 0) {
         echo '</div>';
     }
 } else {
-    echo 'No blog posts found.';
+    echo '<p id="notFound">No blogs found.</p>';
 }
 
 mysqli_close($con);

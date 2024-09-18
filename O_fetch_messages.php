@@ -1,5 +1,5 @@
 <?php
-include("../../../BackEnd/db_con.php");
+include("./db_con.php");
 session_start();
 $acc_id = $_SESSION['acc_id'];
 $chat_with = isset($_POST['chat_with']) ? $_POST['chat_with'] : '';

@@ -1,5 +1,5 @@
 <?php
-    include('db_con.php');
+    include('./db_con.php');
     session_start();
     if (isset($_POST['update'])) {
 
@@ -177,19 +177,17 @@
             $orphan_name = preg_replace("/[^a-zA-Z0-9]/", "", $orphan_name);
             $file_extension = pathinfo($image_name, PATHINFO_EXTENSION);
             $new_image_name = $orphan_name . "_" . uniqid() . "." . $file_extension;
-            $image_path = "../UserImage/childpic/" . $new_image_name;
+            $image_path = "./assets/" . $new_image_name;
             move_uploaded_file($image_tmp_name, $image_path);
             $SQL="UPDATE orphan_list SET orphan_image = '$new_image_name' WHERE orphan_id = $orphan_id LIMIT 1";
             mysqli_query($con, $SQL);
         }
         $_SESSION['positive'] = "Orphan profile updated successfully.";
-        header("Location: /FrontEnd/loggedIn/organizationpage/orphan_profile.php?orphan_id=$orphan_id");
+        header("Location: ./orphan_profile.php?orphan_id=$orphan_id");
         } 
-        
-        
         else {
             $_SESSION['negative'] = "Failed to update orphan profile.";
-            header("Location: /FrontEnd/loggedIn/organizationpage/orphan_profile.php?orphan_id=$orphan_id");
+            header("Location: ./orphan_profile.php?orphan_id=$orphan_id");
         }
     mysqli_close($con);
 ?>

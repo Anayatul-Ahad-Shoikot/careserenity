@@ -3,10 +3,10 @@ include('./db_con.php');
 session_start();
 
 if (isset($_POST['login_btn'])) {
-    $acc_name = $_POST['acc_name'];
+    $acc_email = $_POST['acc_email'];
     $entered_acc_pass = $_POST['acc_pass'];
 
-    $Name_Check_Query = "SELECT * FROM accounts WHERE acc_name = '$acc_name'";
+    $Name_Check_Query = "SELECT * FROM accounts WHERE acc_email = '$acc_email'";
     $Name_Check_Query_Result = mysqli_query($con, $Name_Check_Query);
 
     if (mysqli_num_rows($Name_Check_Query_Result) == 1) {

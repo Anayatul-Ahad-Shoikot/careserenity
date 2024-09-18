@@ -72,9 +72,9 @@ if ($unreadNotificationsResult) {
         </div>
 
         <div class="options">
-            <a href="organization.php" id="button-30">back</a>
+            <a href="./O_organization.php" id="button-30">back</a>
             <a href="chat.php?out_id=<?php echo $org_id ?>&in_id=<?php echo $org_id ?>" id="button-30">Inbox</a>
-            <a href="see_organization_orphanage.php?org_id=<?php echo $org_id ?>" id="button-30" >Orphanage</a>
+            <a href="./see_organization_orphanage.php?org_id=<?php echo $org_id ?>" id="button-30" >Orphanage</a>
         </div>
 
         <div class="short-report">
