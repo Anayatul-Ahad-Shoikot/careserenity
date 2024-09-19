@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Aug 30, 2024 at 05:29 PM
--- Server version: 10.4.32-MariaDB
--- PHP Version: 8.2.12
+-- Host: localhost:3306
+-- Generation Time: Sep 19, 2024 at 11:44 AM
+-- Server version: 8.0.30
+-- PHP Version: 8.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -28,14 +28,14 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `accounts` (
-  `acc_id` int(11) NOT NULL,
-  `acc_name` varchar(30) NOT NULL,
-  `acc_pass` varchar(255) NOT NULL,
-  `acc_email` varchar(30) NOT NULL,
-  `role` varchar(10) NOT NULL,
+  `acc_id` int NOT NULL,
+  `acc_name` varchar(30) COLLATE utf8mb4_general_ci NOT NULL,
+  `acc_pass` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `acc_email` varchar(30) COLLATE utf8mb4_general_ci NOT NULL,
+  `role` varchar(10) COLLATE utf8mb4_general_ci NOT NULL,
   `acc_join_date` date NOT NULL,
-  `question` varchar(120) DEFAULT NULL,
-  `answer` varchar(50) DEFAULT NULL
+  `question` varchar(120) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `answer` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -69,12 +69,12 @@ INSERT INTO `accounts` (`acc_id`, `acc_name`, `acc_pass`, `acc_email`, `role`, `
 --
 
 CREATE TABLE `admin_list` (
-  `admin_id` int(11) NOT NULL,
-  `acc_id` int(11) NOT NULL,
-  `admin_name` varchar(30) DEFAULT NULL,
-  `admin_contact` varchar(30) DEFAULT NULL,
-  `admin_priyority` int(11) DEFAULT NULL,
-  `admin_image` varchar(255) DEFAULT NULL
+  `admin_id` int NOT NULL,
+  `acc_id` int NOT NULL,
+  `admin_name` varchar(30) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `admin_contact` varchar(30) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `admin_priyority` int DEFAULT NULL,
+  `admin_image` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -87,38 +87,13 @@ INSERT INTO `admin_list` (`admin_id`, `acc_id`, `admin_name`, `admin_contact`, `
 -- --------------------------------------------------------
 
 --
--- Table structure for table `adoptions`
---
-
-CREATE TABLE `adoptions` (
-  `adoption_id` int(11) NOT NULL,
-  `orphan_id` int(11) NOT NULL,
-  `acc_id` int(11) NOT NULL,
-  `request_date` date DEFAULT current_timestamp(),
-  `status` varchar(15) DEFAULT 'pending',
-  `issued_date` date DEFAULT NULL,
-  `email` varchar(50) DEFAULT NULL,
-  `phone` varchar(11) DEFAULT NULL,
-  `occupation` varchar(30) DEFAULT NULL,
-  `income` float DEFAULT NULL,
-  `maritalStatus` varchar(30) DEFAULT NULL,
-  `reason` varchar(100) DEFAULT NULL,
-  `children` int(5) DEFAULT NULL,
-  `livingEnvironment` varchar(100) DEFAULT NULL,
-  `expectations` varchar(100) DEFAULT NULL,
-  `additionalInfo` varchar(100) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `blog_comment`
 --
 
 CREATE TABLE `blog_comment` (
-  `post_id` int(11) NOT NULL,
-  `viewer_acc_name` varchar(30) NOT NULL,
-  `comment` varchar(100) NOT NULL,
+  `post_id` int NOT NULL,
+  `viewer_acc_name` varchar(30) COLLATE utf8mb4_general_ci NOT NULL,
+  `comment` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
   `comment_date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -138,8 +113,8 @@ INSERT INTO `blog_comment` (`post_id`, `viewer_acc_name`, `comment`, `comment_da
 --
 
 CREATE TABLE `blog_likes` (
-  `post_id` int(11) NOT NULL,
-  `likes` int(11) DEFAULT 0
+  `post_id` int NOT NULL,
+  `likes` int DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -158,13 +133,13 @@ INSERT INTO `blog_likes` (`post_id`, `likes`) VALUES
 --
 
 CREATE TABLE `blog_post` (
-  `post_id` int(11) NOT NULL,
-  `acc_id` int(11) NOT NULL,
-  `post_title` varchar(30) DEFAULT NULL,
-  `post_content` text NOT NULL,
-  `post_category` enum('child','old') NOT NULL,
-  `post_image` varchar(255) DEFAULT NULL,
-  `published` varchar(255) NOT NULL
+  `post_id` int NOT NULL,
+  `acc_id` int NOT NULL,
+  `post_title` varchar(30) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `post_content` text COLLATE utf8mb4_general_ci NOT NULL,
+  `post_category` enum('child','old') COLLATE utf8mb4_general_ci NOT NULL,
+  `post_image` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `published` varchar(255) COLLATE utf8mb4_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -183,12 +158,12 @@ INSERT INTO `blog_post` (`post_id`, `acc_id`, `post_title`, `post_content`, `pos
 --
 
 CREATE TABLE `chats` (
-  `chat_id` int(5) NOT NULL,
-  `outgoing_msg_id` varchar(8) NOT NULL,
-  `incoming_msg_id` varchar(8) NOT NULL,
-  `msg` text DEFAULT NULL,
-  `timestamp` timestamp NOT NULL DEFAULT current_timestamp(),
-  `is_read` tinyint(4) NOT NULL DEFAULT 0
+  `chat_id` int NOT NULL,
+  `outgoing_msg_id` varchar(8) COLLATE utf8mb4_general_ci NOT NULL,
+  `incoming_msg_id` varchar(8) COLLATE utf8mb4_general_ci NOT NULL,
+  `msg` text COLLATE utf8mb4_general_ci,
+  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `is_read` tinyint NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -208,14 +183,14 @@ INSERT INTO `chats` (`chat_id`, `outgoing_msg_id`, `incoming_msg_id`, `msg`, `ti
 --
 
 CREATE TABLE `contact_message` (
-  `msg_id` int(5) NOT NULL,
-  `sender_name` varchar(255) NOT NULL,
-  `sender_email` varchar(255) NOT NULL,
-  `sender_contact` varchar(11) NOT NULL,
-  `sender_id` int(5) NOT NULL,
-  `msg_content` varchar(255) NOT NULL,
-  `sending_time` timestamp NOT NULL DEFAULT current_timestamp(),
-  `is_registerd` int(11) NOT NULL
+  `msg_id` int NOT NULL,
+  `sender_name` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `sender_email` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `sender_contact` varchar(11) COLLATE utf8mb4_general_ci NOT NULL,
+  `sender_id` int NOT NULL,
+  `msg_content` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `sending_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `is_registerd` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -233,22 +208,22 @@ INSERT INTO `contact_message` (`msg_id`, `sender_name`, `sender_email`, `sender_
 --
 
 CREATE TABLE `donations` (
-  `donation_id` int(11) NOT NULL,
-  `donor_id` int(11) NOT NULL,
-  `receiver_id` int(11) NOT NULL,
-  `receiver_orphan_id` int(11) DEFAULT NULL,
+  `donation_id` int NOT NULL,
+  `donor_id` int NOT NULL,
+  `receiver_id` int NOT NULL,
+  `receiver_orphan_id` int DEFAULT NULL,
   `receiver_type` varchar(20) NOT NULL,
   `payment_method` varchar(50) NOT NULL,
   `donor_email` varchar(100) NOT NULL,
   `card_no` varchar(20) DEFAULT NULL,
   `card_cvc` varchar(10) DEFAULT NULL,
   `card_exp_month` varchar(12) DEFAULT NULL,
-  `card_exp_year` year(4) DEFAULT NULL,
+  `card_exp_year` year DEFAULT NULL,
   `bkash_no` varchar(15) DEFAULT NULL,
   `Bkash_trans` varchar(20) DEFAULT NULL,
   `amount` float NOT NULL,
-  `receiving_date` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+  `receiving_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `donations`
@@ -269,7 +244,7 @@ INSERT INTO `donations` (`donation_id`, `donor_id`, `receiver_id`, `receiver_orp
 --
 
 CREATE TABLE `donations_orphan` (
-  `orphan_id` int(11) NOT NULL,
+  `orphan_id` int NOT NULL,
   `total_amount` decimal(10,2) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -280,11 +255,11 @@ CREATE TABLE `donations_orphan` (
 --
 
 CREATE TABLE `gallery` (
-  `img_id` int(11) NOT NULL,
-  `uploader_id` int(11) NOT NULL,
-  `img_title` varchar(100) NOT NULL,
-  `img_path` varchar(255) NOT NULL,
-  `img_reacts` int(5) NOT NULL DEFAULT 0
+  `img_id` int NOT NULL,
+  `uploader_id` int NOT NULL,
+  `img_title` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
+  `img_path` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `img_reacts` int NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -301,8 +276,8 @@ INSERT INTO `gallery` (`img_id`, `uploader_id`, `img_title`, `img_path`, `img_re
 --
 
 CREATE TABLE `like_handle` (
-  `post_id` int(11) NOT NULL,
-  `viewer_acc_id` int(11) NOT NULL
+  `post_id` int NOT NULL,
+  `viewer_acc_id` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -322,10 +297,10 @@ INSERT INTO `like_handle` (`post_id`, `viewer_acc_id`) VALUES
 --
 
 CREATE TABLE `local_orphan_guardian` (
-  `guardian_id` int(11) NOT NULL,
-  `guardian_name` varchar(30) DEFAULT NULL,
-  `guardian_contact` varchar(30) DEFAULT NULL,
-  `guardian_location` varchar(30) DEFAULT NULL
+  `guardian_id` int NOT NULL,
+  `guardian_name` varchar(30) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `guardian_contact` varchar(30) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `guardian_location` varchar(30) COLLATE utf8mb4_general_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -385,14 +360,14 @@ INSERT INTO `local_orphan_guardian` (`guardian_id`, `guardian_name`, `guardian_c
 --
 
 CREATE TABLE `notifications` (
-  `notification_id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `org_id` int(11) DEFAULT NULL,
-  `orphan_id` int(11) DEFAULT NULL,
-  `is_read` tinyint(1) NOT NULL DEFAULT 0,
-  `content` varchar(100) NOT NULL,
-  `amount` varchar(255) DEFAULT NULL,
-  `date` timestamp NOT NULL DEFAULT current_timestamp()
+  `notification_id` int NOT NULL,
+  `user_id` int NOT NULL,
+  `org_id` int DEFAULT NULL,
+  `orphan_id` int DEFAULT NULL,
+  `is_read` tinyint(1) NOT NULL DEFAULT '0',
+  `content` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
+  `amount` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -411,88 +386,80 @@ INSERT INTO `notifications` (`notification_id`, `user_id`, `org_id`, `orphan_id`
 -- --------------------------------------------------------
 
 --
--- Table structure for table `org_list`
+-- Table structure for table `other_orgs`
 --
 
-CREATE TABLE `org_list` (
-  `org_id` int(11) NOT NULL,
-  `org_name` varchar(30) DEFAULT 'Set organization name',
-  `acc_id` int(11) NOT NULL,
-  `org_description` text DEFAULT 'N / A',
-  `org_email` varchar(30) DEFAULT 'N / A',
-  `org_phone` varchar(20) DEFAULT '+880',
-  `org_website` varchar(30) DEFAULT 'N / A',
-  `org_logo` varchar(255) DEFAULT 'org.png',
-  `established` date DEFAULT NULL,
-  `org_location` varchar(30) DEFAULT 'N / A',
-  `org_vision` varchar(30) DEFAULT 'N / A',
-  `org_reviews` decimal(2,2) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `org_list`
---
-
-INSERT INTO `org_list` (`org_id`, `org_name`, `acc_id`, `org_description`, `org_email`, `org_phone`, `org_website`, `org_logo`, `established`, `org_location`, `org_vision`, `org_reviews`) VALUES
-(8000, 'Shetus best charity', 1000, 'Care, care and care. nothing else is found here', 'ela@g.com', '0324325436', 'LittleSproutsFoundation.org', 'LittleSproutsFoundation_656c039da12d5.jpg', '2023-10-26', 'Madani avenew, Notun bazar, Dh', 'To save childer life .', NULL),
-(8001, 'Safe Haven Orphanage', 1002, 'Care, care and care. nothing else is found here', 'info@safehaven.org', '+880112233445', 'SafeHavenOrphanage.com', 'SafeHavenOrphanage_656ccaf3a3e45.jpg', '2023-12-09', 'Khulna', 'To save childer life', NULL),
-(8002, 'ShomajSeba', 1003, 'Shomaj Seba is committed to improving the lives of orphaned children and elderly people in rural areas. They provide essential support and services to both segments of society.', 'shomajseba@example.com', '+8801812345679', 'www.shomajseba.org', 'ShomajSeba_65703538d3cc7.jpg', '1991-11-12', 'Rajshahi', 'Creating a better future for o', NULL),
-(8003, 'DhakaFoundation', 1004, 'Care, care and care. nothing else is found here', 'dhakafoundation@example.com', '+8801712345678', 'www.dhakafoundation.org', 'DhakaFoundation_657034a53c5c9.png', '2000-02-12', 'Dhaka', 'Empower every orphan and elder', NULL),
-(8004, 'RuralEmpower', 1005, 'Rural Empowerment Society works tirelessly to support orphaned children and the elderly in rural communities. They aim to create a loving and caring environment for both groups.', 'rural_empower@example.com', '+8801912345680', 'www.ruralempower.org', 'RuralEmpower_6570355e2b267.jpg', '2007-05-19', 'Dhaka', 'Empowering orphans and the eld', NULL),
-(8005, 'GrameenHelp', 1006, 'Grameen Help is dedicated to providing assistance and care to orphaned children and elderly individuals in impoverished areas. They aim to uplift both segments of society through various support programs.', 'grameenhelp@example.com', '+8802012345681', 'www.grameenhelp.org', 'GrameenHelp_6570357b96922.jpeg', '2000-09-20', 'Chittagong', 'Uplifting lives: Orphans and e', NULL),
-(8006, 'ShishuKalyan', 1007, 'Shishu Kalyan focuses on the welfare of orphaned children, providing them with love, care, and educational support. They also extend their support to the elderly for a better quality of life.', 'shishukalyan@example.com', '+8802112345682', 'www.shishukalyan.org', 'ShishuKalyan_6570359c67f0e.jpg', '1999-01-01', 'Sylhet', 'Ensuring a bright future for o', NULL),
-(8007, 'ProjonmoSathi', 1008, 'Projonmo Sathi aims to support orphaned children and the elderly by providing education and essential services. They envision a society where both segments thrive and live happily.', 'projonmosathi@example.com', '+8802212345683', 'www.projonmosathi.org', 'ProjonmoSathi_657035c99790f.jpg', '2013-12-11', 'Khulna', 'Empowering orphans and elders ', NULL),
-(8008, 'JibonSonglap', 1009, 'Jibon Songlap works towards creating awareness and providing support for orphaned children and the elderly.', 'jibonsonglap@example.com', '+8802312345684', 'www.jibonsonglap.org', 'JibonSonglap_657035e5b0ad9.png', '2001-02-06', 'Barisal', 'Supporting mental well-being f', NULL),
-(8009, 'NariShakti', 1010, 'Nari Shakti focuses on empowering orphaned girls and elderly women, providing education and support for their well-being. They aim for a society where both segments are respected and empowered.', 'narishakti@example.com', '+8802412345685', 'www.narishakti.org', 'NariShakti_657035fd804c2.jpeg', '2013-12-07', 'Dhaka', 'Empowering orphaned girls and ', NULL),
-(8010, 'AgroVista', 1011, 'Agro Vista is committed to supporting orphaned children and the elderly by promoting sustainable farming and livelihoods. They envision a future where both segments thrive in harmony with nature.', 'agrovista@example.com', '+8802512345686', 'www.agrovista.org', 'AgroVista_6570362b6a4fa.jpeg', '2007-01-28', 'Mymensingh', 'Sustainable support for orphan', NULL);
+CREATE TABLE `other_orgs` (
+  `org_id` int NOT NULL,
+  `org_name` varchar(255) NOT NULL,
+  `org_description` text,
+  `org_contact` varchar(255) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `orphan_list`
+-- Table structure for table `participants`
 --
 
-CREATE TABLE `orphan_list` (
-  `orphan_id` int(11) NOT NULL,
-  `org_id` int(30) DEFAULT NULL,
-  `guardian_id` int(11) DEFAULT NULL,
-  `first_name` varchar(30) DEFAULT NULL,
-  `last_name` varchar(30) DEFAULT NULL,
-  `age` int(11) DEFAULT NULL,
-  `gender` varchar(10) DEFAULT 'N / A',
-  `religion` varchar(15) DEFAULT 'N / A',
-  `date_of_birth` date DEFAULT NULL,
-  `since` date DEFAULT NULL,
-  `family_status` varchar(30) DEFAULT 'N / A',
-  `physical_condition` varchar(30) DEFAULT 'N / A',
-  `education_level` varchar(30) DEFAULT 'N / A',
-  `medical_history` varchar(100) DEFAULT 'N / A',
-  `hobby` varchar(30) DEFAULT 'N / A',
-  `favorite_food` varchar(30) DEFAULT 'N / A',
-  `favorite_game` varchar(30) DEFAULT 'N / A',
-  `skills` text DEFAULT 'N / A',
-  `dreams` text DEFAULT 'N / A',
-  `problems` text DEFAULT 'N / A',
-  `other_comments` text DEFAULT 'N / A',
-  `orphan_image` varchar(255) DEFAULT 'default_image.png',
-  `adoption_status` enum('0','1') NOT NULL DEFAULT '0',
-  `removed_status` enum('0','1') NOT NULL DEFAULT '0'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+CREATE TABLE `participants` (
+  `participant_id` int NOT NULL,
+  `seminar_id` int NOT NULL,
+  `acc_id` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- --------------------------------------------------------
 
 --
--- Dumping data for table `orphan_list`
+-- Table structure for table `seminars`
 --
 
-INSERT INTO `orphan_list` (`orphan_id`, `org_id`, `guardian_id`, `first_name`, `last_name`, `age`, `gender`, `religion`, `date_of_birth`, `since`, `family_status`, `physical_condition`, `education_level`, `medical_history`, `hobby`, `favorite_food`, `favorite_game`, `skills`, `dreams`, `problems`, `other_comments`, `orphan_image`, `adoption_status`, `removed_status`) VALUES
-(52, 8002, 1, 'Abdur', 'Rahim', 10, 'male', 'muslim', '2023-12-09', '2023-12-04', 'past Away', 'good', 'primary_school', 'Allergy to Dust', 'playing marble', 'Ice Cream', 'Cricket', 'N/A', 'N/A', 'Laugh too much', 'All okay', '862-06540774en_Masterfile.jpg', '0', '0'),
-(53, 8001, 2, 'Anayatul', 'Shoikot', 12, 'male', 'hindu', '2023-12-22', '2023-12-04', 'past Away', 'deaf', 'junior_high_school', 'None', 'Gamming', 'Ice Cream', 'Badminton', 'xyz', 'A good House Wife ', 'overthinking ', 'All okay', 'Shoikot_656d88af00193.jpeg', '0', '1'),
-(54, 8001, 3, 'Shorifa', 'Rani', 2, 'male', 'buddha', '2023-12-11', '2023-12-04', 'unknow', 'blind', 'elementary', 'None', 'Gamming', 'Ice Cream', 'Badminton', 'xyz', 'A good House Wife ', 'overthinking ', 'All okay', 'Rani_656d88d7267b4.jpeg', '0', '1'),
-(55, 8001, 38, 'Zahid', 'Rahman', 10, 'male', 'muslim', '2023-12-03', '2023-12-06', 'abondoned', 'good', 'primary_school', '', '', '', '', '', '', '', '', 'img_2505.jpg', '0', '0'),
-(56, 8001, 40, 'Maisha Maliha ', 'Neha', 23, 'female', 'muslim', '2023-11-28', '2023-12-15', 'other', 'good', 'secondary_school', 'Major Accident occures at the age of 19', 'Baking', 'Cake', 'Badmintion ', 'Making Cake', 'To be a good beker', 'N/A', 'N/A', 'Neha_657c3f9496606.jpg', '0', '0'),
-(57, 8001, 41, 'Nihan', 'Ashraf', 9, 'male', 'hindu', '2023-11-28', '2023-12-15', 'past Away', 'blind', 'primary_school', 'None', 'Gamming', 'Fast Food', 'Cricket', 'Singing Skills', 'Full Stack Developer', 'overthinking ', 'Loves exploring new things', 'Ashraf_657c4040389a2.jpg', '0', '0'),
-(58, 8001, 42, 'Anayatul', 'Shoikot', 1, '', '', '0000-00-00', '2023-12-16', '', '', '', '', '', '', '', '', '', '', '', 'Shoikot_657e0198c0cfb.jpeg', '0', '0'),
-(59, 8001, 43, 'xyz', 'abc', 12, 'female', 'other', '2023-12-16', '2023-12-16', 'past Away', 'autistic', 'senior_high_school', 'n', 'n', 'n', 'n', 'n', 'n', 'n', 'n', 'girl-dos-300x300.jpg', '0', '0'),
-(60, 8001, 44, '', '', 0, NULL, NULL, '0000-00-00', '2024-07-30', NULL, NULL, NULL, '', '', '', '', '', '', '', '', '_66a876a14d257.', '0', '1');
+CREATE TABLE `seminars` (
+  `seminar_id` int NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `banner` varchar(255) DEFAULT NULL,
+  `description` text NOT NULL,
+  `date` date NOT NULL,
+  `subject` varchar(255) NOT NULL,
+  `guest` varchar(255) DEFAULT NULL,
+  `type` enum('online','offline') NOT NULL,
+  `location` varchar(255) DEFAULT NULL,
+  `org_id` int NOT NULL,
+  `visibility` tinyint(1) DEFAULT '1',
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `seminar_participants`
+--
+
+CREATE TABLE `seminar_participants` (
+  `participant_id` int NOT NULL,
+  `seminar_id` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Triggers `seminar_participants`
+--
+DELIMITER $$
+CREATE TRIGGER `validate_participant_role` BEFORE INSERT ON `seminar_participants` FOR EACH ROW BEGIN
+    DECLARE role_type ENUM('organization', 'participant');
+
+    -- Get the role of the participant
+    SELECT role INTO role_type
+    FROM accounts
+    WHERE acc_id = NEW.participant_id;
+
+    -- Check if the role is 'participant'
+    IF role_type != 'participant' THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Only participants can join seminars.';
+    END IF;
+END
+$$
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -501,18 +468,18 @@ INSERT INTO `orphan_list` (`orphan_id`, `org_id`, `guardian_id`, `first_name`, `
 --
 
 CREATE TABLE `user_list` (
-  `user_id` int(11) NOT NULL,
-  `user_name` varchar(30) DEFAULT 'Set your name first',
-  `acc_id` int(11) NOT NULL,
+  `user_id` int NOT NULL,
+  `user_name` varchar(30) COLLATE utf8mb4_general_ci DEFAULT 'Set your name first',
+  `acc_id` int NOT NULL,
   `user_birth` date DEFAULT NULL,
-  `user_contact` varchar(30) DEFAULT '+880',
-  `user_gender` enum('Male','Female','Other') DEFAULT NULL,
-  `user_NID` varchar(30) DEFAULT 'N / A',
-  `user_address` varchar(30) DEFAULT 'N / A',
-  `user_website` varchar(30) DEFAULT 'N / A',
-  `user_job` varchar(30) DEFAULT 'N / A',
-  `user_location` varchar(30) DEFAULT 'Bangladesh',
-  `user_image` varchar(255) DEFAULT 'user.png'
+  `user_contact` varchar(30) COLLATE utf8mb4_general_ci DEFAULT '+880',
+  `user_gender` enum('Male','Female','Other') COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `user_NID` varchar(30) COLLATE utf8mb4_general_ci DEFAULT 'N / A',
+  `user_address` varchar(30) COLLATE utf8mb4_general_ci DEFAULT 'N / A',
+  `user_website` varchar(30) COLLATE utf8mb4_general_ci DEFAULT 'N / A',
+  `user_job` varchar(30) COLLATE utf8mb4_general_ci DEFAULT 'N / A',
+  `user_location` varchar(30) COLLATE utf8mb4_general_ci DEFAULT 'Bangladesh',
+  `user_image` varchar(255) COLLATE utf8mb4_general_ci DEFAULT 'user.png'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -542,14 +509,6 @@ ALTER TABLE `accounts`
 --
 ALTER TABLE `admin_list`
   ADD PRIMARY KEY (`admin_id`),
-  ADD KEY `acc_id` (`acc_id`);
-
---
--- Indexes for table `adoptions`
---
-ALTER TABLE `adoptions`
-  ADD PRIMARY KEY (`adoption_id`),
-  ADD KEY `orphan_id` (`orphan_id`),
   ADD KEY `acc_id` (`acc_id`);
 
 --
@@ -610,209 +569,71 @@ ALTER TABLE `like_handle`
   ADD KEY `post_id` (`post_id`);
 
 --
--- Indexes for table `local_orphan_guardian`
+-- Indexes for table `other_orgs`
 --
-ALTER TABLE `local_orphan_guardian`
-  ADD PRIMARY KEY (`guardian_id`);
+ALTER TABLE `other_orgs`
+  ADD PRIMARY KEY (`org_id`);
 
 --
--- Indexes for table `notifications`
+-- Indexes for table `participants`
 --
-ALTER TABLE `notifications`
-  ADD PRIMARY KEY (`notification_id`),
-  ADD KEY `org_id` (`org_id`),
-  ADD KEY `user_id` (`user_id`),
-  ADD KEY `orphan_id` (`orphan_id`);
-
---
--- Indexes for table `org_list`
---
-ALTER TABLE `org_list`
-  ADD PRIMARY KEY (`org_id`),
+ALTER TABLE `participants`
+  ADD PRIMARY KEY (`participant_id`),
+  ADD KEY `seminar_id` (`seminar_id`),
   ADD KEY `acc_id` (`acc_id`);
 
 --
--- Indexes for table `orphan_list`
+-- Indexes for table `seminars`
 --
-ALTER TABLE `orphan_list`
-  ADD PRIMARY KEY (`orphan_id`),
-  ADD KEY `org_id` (`org_id`),
-  ADD KEY `guardian_id` (`guardian_id`);
+ALTER TABLE `seminars`
+  ADD PRIMARY KEY (`seminar_id`);
 
 --
--- Indexes for table `user_list`
+-- Indexes for table `seminar_participants`
 --
-ALTER TABLE `user_list`
-  ADD PRIMARY KEY (`user_id`),
-  ADD KEY `acc_id` (`acc_id`);
+ALTER TABLE `seminar_participants`
+  ADD PRIMARY KEY (`participant_id`,`seminar_id`),
+  ADD KEY `seminar_id` (`seminar_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT for table `accounts`
+-- AUTO_INCREMENT for table `other_orgs`
 --
-ALTER TABLE `accounts`
-  MODIFY `acc_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1032;
+ALTER TABLE `other_orgs`
+  MODIFY `org_id` int NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `admin_list`
+-- AUTO_INCREMENT for table `participants`
 --
-ALTER TABLE `admin_list`
-  MODIFY `admin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+ALTER TABLE `participants`
+  MODIFY `participant_id` int NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `adoptions`
+-- AUTO_INCREMENT for table `seminars`
 --
-ALTER TABLE `adoptions`
-  MODIFY `adoption_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
-
---
--- AUTO_INCREMENT for table `blog_post`
---
-ALTER TABLE `blog_post`
-  MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
-
---
--- AUTO_INCREMENT for table `chats`
---
-ALTER TABLE `chats`
-  MODIFY `chat_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
-
---
--- AUTO_INCREMENT for table `contact_message`
---
-ALTER TABLE `contact_message`
-  MODIFY `msg_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT for table `donations`
---
-ALTER TABLE `donations`
-  MODIFY `donation_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
-
---
--- AUTO_INCREMENT for table `gallery`
---
-ALTER TABLE `gallery`
-  MODIFY `img_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
-
---
--- AUTO_INCREMENT for table `local_orphan_guardian`
---
-ALTER TABLE `local_orphan_guardian`
-  MODIFY `guardian_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
-
---
--- AUTO_INCREMENT for table `notifications`
---
-ALTER TABLE `notifications`
-  MODIFY `notification_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
-
---
--- AUTO_INCREMENT for table `org_list`
---
-ALTER TABLE `org_list`
-  MODIFY `org_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8011;
-
---
--- AUTO_INCREMENT for table `orphan_list`
---
-ALTER TABLE `orphan_list`
-  MODIFY `orphan_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
-
---
--- AUTO_INCREMENT for table `user_list`
---
-ALTER TABLE `user_list`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5006;
+ALTER TABLE `seminars`
+  MODIFY `seminar_id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints for dumped tables
 --
 
 --
--- Constraints for table `admin_list`
+-- Constraints for table `participants`
 --
-ALTER TABLE `admin_list`
-  ADD CONSTRAINT `admin_list_ibfk_1` FOREIGN KEY (`acc_id`) REFERENCES `accounts` (`acc_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `participants`
+  ADD CONSTRAINT `participants_ibfk_1` FOREIGN KEY (`seminar_id`) REFERENCES `seminars` (`seminar_id`),
+  ADD CONSTRAINT `participants_ibfk_2` FOREIGN KEY (`acc_id`) REFERENCES `accounts` (`acc_id`);
 
 --
--- Constraints for table `adoptions`
+-- Constraints for table `seminar_participants`
 --
-ALTER TABLE `adoptions`
-  ADD CONSTRAINT `adoptions_ibfk_2` FOREIGN KEY (`orphan_id`) REFERENCES `orphan_list` (`orphan_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `adoptions_ibfk_3` FOREIGN KEY (`acc_id`) REFERENCES `user_list` (`acc_id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `blog_comment`
---
-ALTER TABLE `blog_comment`
-  ADD CONSTRAINT `blog_comment_ibfk_1` FOREIGN KEY (`post_id`) REFERENCES `blog_post` (`post_id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `blog_likes`
---
-ALTER TABLE `blog_likes`
-  ADD CONSTRAINT `blog_likes_ibfk_1` FOREIGN KEY (`post_id`) REFERENCES `blog_post` (`post_id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `blog_post`
---
-ALTER TABLE `blog_post`
-  ADD CONSTRAINT `blog_post_ibfk_1` FOREIGN KEY (`acc_id`) REFERENCES `accounts` (`acc_id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `donations`
---
-ALTER TABLE `donations`
-  ADD CONSTRAINT `donations_ibfk_1` FOREIGN KEY (`donor_id`) REFERENCES `user_list` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `donations_orphan`
---
-ALTER TABLE `donations_orphan`
-  ADD CONSTRAINT `donations_orphan_ibfk_1` FOREIGN KEY (`orphan_id`) REFERENCES `orphan_list` (`orphan_id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `gallery`
---
-ALTER TABLE `gallery`
-  ADD CONSTRAINT `gallery_ibfk_1` FOREIGN KEY (`uploader_id`) REFERENCES `accounts` (`acc_id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `like_handle`
---
-ALTER TABLE `like_handle`
-  ADD CONSTRAINT `like_handle_ibfk_1` FOREIGN KEY (`post_id`) REFERENCES `blog_post` (`post_id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `notifications`
---
-ALTER TABLE `notifications`
-  ADD CONSTRAINT `notifications_ibfk_2` FOREIGN KEY (`org_id`) REFERENCES `org_list` (`org_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `notifications_ibfk_4` FOREIGN KEY (`user_id`) REFERENCES `user_list` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `notifications_ibfk_5` FOREIGN KEY (`orphan_id`) REFERENCES `orphan_list` (`orphan_id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `org_list`
---
-ALTER TABLE `org_list`
-  ADD CONSTRAINT `org_list_ibfk_1` FOREIGN KEY (`acc_id`) REFERENCES `accounts` (`acc_id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `orphan_list`
---
-ALTER TABLE `orphan_list`
-  ADD CONSTRAINT `orphan_list_ibfk_1` FOREIGN KEY (`org_id`) REFERENCES `org_list` (`org_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `orphan_list_ibfk_2` FOREIGN KEY (`guardian_id`) REFERENCES `local_orphan_guardian` (`guardian_id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `user_list`
---
-ALTER TABLE `user_list`
-  ADD CONSTRAINT `user_list_ibfk_1` FOREIGN KEY (`acc_id`) REFERENCES `accounts` (`acc_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `seminar_participants`
+  ADD CONSTRAINT `seminar_participants_ibfk_1` FOREIGN KEY (`participant_id`) REFERENCES `accounts` (`acc_id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `seminar_participants_ibfk_2` FOREIGN KEY (`seminar_id`) REFERENCES `seminars` (`seminar_id`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

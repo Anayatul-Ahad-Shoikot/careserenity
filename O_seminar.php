@@ -1,14 +1,14 @@
 <?php
-include("./db_con.php");
-session_start();
-$acc_id = $_SESSION['acc_id'];
-$fetchUnreadNotificationsQuery = "SELECT COUNT(*) as unread_count FROM notifications WHERE is_read = 0 AND org_id = (SELECT org_id FROM org_list WHERE acc_id = $acc_id)";
-$unreadNotificationsResult = mysqli_query($con, $fetchUnreadNotificationsQuery);
-$unreadCount = 0;
-if ($unreadNotificationsResult) {
-    $unreadRow = mysqli_fetch_assoc($unreadNotificationsResult);
-    $unreadCount = $unreadRow['unread_count'];
-}
+    include("./db_con.php");
+    session_start();
+    $acc_id = $_SESSION['acc_id'];
+    $fetchUnreadNotificationsQuery = "SELECT COUNT(*) as unread_count FROM notifications WHERE is_read = 0 AND org_id = (SELECT org_id FROM org_list WHERE acc_id = $acc_id)";
+    $unreadNotificationsResult = mysqli_query($con, $fetchUnreadNotificationsQuery);
+    $unreadCount = 0;
+    if ($unreadNotificationsResult) {
+        $unreadRow = mysqli_fetch_assoc($unreadNotificationsResult);
+        $unreadCount = $unreadRow['unread_count'];
+    }
 ?>
 
 <!DOCTYPE html>
@@ -26,6 +26,7 @@ if ($unreadNotificationsResult) {
     <link rel="stylesheet" href="./css/footer.css">
     <link rel="stylesheet" href="./css/notification.css">
     <link rel="stylesheet" href="./css/feedback.css">
+    <link rel="stylesheet" href="./css/seminar.css">
     <link rel="icon" href="./assets/LOGO.png" type="image/x-icon">
     <title>CareSenerity | Seminars</title>
 </head>
@@ -112,7 +113,27 @@ if ($unreadNotificationsResult) {
                                 LEFT JOIN participants ON seminars.seminar_id = participants.seminar_id
                                 WHERE org_id = (SELECT org_id FROM org_list WHERE acc_id = $acc_id)
                                 GROUP BY seminars.seminar_id";
+            
+            $result = mysqli_query($con, $ownSeminarQuery);
 
+            if(mysqli_num_rows($result) > 0){
+                while($row = mysqli_fetch_assoc($result)){
+                    echo "<div class='seminarCard'>";
+                    echo "<h3>".htmlspecialchars($row['title'])."</h3>";
+                    echo "<img src='".htmlspecialchars($row['banner'])."'alt='Seminar Banner'>";
+                    echo "<p>".htmlspecialchars($row['description'])."</p>";
+                    echo "<p>Date: ".htmlspecialchars($row['date'])."</p>";
+                    echo "<p>Participants: ".htmlspecialchars($row['participants_count'])."</p>";
+                    echo "<button onnclick='editSeminar(".$row['seminar_id'].")'>Edit</button>";
+                    echo "<button onclick='removeSeminar(" . $row['seminar_id'] . ")'>Remove</button>";
+                    echo "<button onclick='toggleSeminarVisibility(" . $row['seminar_id'] . ")'>Hide/Show</button>";
+                    echo "<button onclick='postponeSeminar(" . $row['seminar_id'] . ")'>Postpone</button>";
+                    echo "</div>";
+                }
+            }
+            else{
+                echo "<p>You have not created any seminars yet.</p>";
+            }
         ?>
     </div>
 
@@ -141,6 +162,26 @@ if ($unreadNotificationsResult) {
             else{
                 locationField.style.display = "none";
             }
+        }
+    </script>
+
+    <script>
+        function editSeminar(seminarId){
+            window.location.href = `edit_seminar.php?id=${seminarId}`;
+        }
+
+        function removeSeminar(seminarId){
+            if(confirm("Are you sure you want to remove this seminar?")){
+                window.location.href = `remove_seminar.php?id=${seminarId}`;
+            }
+        }
+
+        function toggleSeminarVisibilty(seminarId){
+            window.location.href = `toggle_seminar_visibilty.php?id=${seminarId}`;
+        }
+
+        function postponeSeminar(seminarId){
+            window.location.href = `postpone_seminar.php?id=${seminarId}`;
         }
     </script>
 
