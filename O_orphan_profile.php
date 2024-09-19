@@ -1,5 +1,5 @@
 <?php
-    include("./organization_profile_fetch_BE.php");
+    include("./O_profile_fetch_BE.php");
     include("./orphan_profile_fetch_BE.php");
     $acc_id = $_SESSION['acc_id'];
     $fetchUnreadNotificationsQuery = "SELECT COUNT(*) as unread_count FROM notifications WHERE is_read = 0 AND org_id = (SELECT org_id FROM org_list WHERE acc_id = $acc_id)";

@@ -183,11 +183,11 @@
             mysqli_query($con, $SQL);
         }
         $_SESSION['positive'] = "Orphan profile updated successfully.";
-        header("Location: ./orphan_profile.php?orphan_id=$orphan_id");
+        header("Location: ./O_orphan_profile.php?orphan_id=$orphan_id");
         } 
         else {
             $_SESSION['negative'] = "Failed to update orphan profile.";
-            header("Location: ./orphan_profile.php?orphan_id=$orphan_id");
+            header("Location: ./O_orphan_profile.php?orphan_id=$orphan_id");
         }
     mysqli_close($con);
 ?>

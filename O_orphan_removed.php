@@ -1,5 +1,5 @@
 <?php
-    include("./organization_profile_fetch_BE.php");
+    include("./O_profile_fetch_BE.php");
     $acc_id = $_SESSION['acc_id'];
     $fetchUnreadNotificationsQuery = "SELECT COUNT(*) as unread_count FROM notifications WHERE is_read = 0 AND org_id = (SELECT org_id FROM org_list WHERE acc_id = ?)";
     $stmt = $con->prepare($fetchUnreadNotificationsQuery);
@@ -71,7 +71,7 @@
         </div>
         
         <div class="options">
-            <a href="orphan.php" id="button-30">back</a>
+            <a href="./O_orphan.php" id="button-30">back</a>
             <form action="./orphan_search_organization_BE.php" method="GET">
                 <input type="text" name="query" placeholder="Search Child...">
                 <button type="submit"><i class='bx bx-search bx-rotate-90' ></i></button>
@@ -91,8 +91,8 @@
                         echo '<h1>' . $row2['first_name'] . '</h1>';
                         echo '</div>';
                         echo '<div class="buttons">';
-                        echo '<a href="#?orphan_id=' . $row2['orphan_id'] . '" id="button-30"> Restore </a>';
-                        echo '<a href="./orphan_profile.php?orphan_id=' . $row2['orphan_id'] . '" id="button-30"> View </a>';
+                        echo '<a href="./orphane_restore_organization_BE.php?orphan_id=' . $row2['orphan_id'] . '" id="button-30"> Restore </a>';
+                        echo '<a href="./O_orphan_profile.php?orphan_id=' . $row2['orphan_id'] . '" id="button-30"> View </a>';
                         echo '</div>';
                         echo '</div>';
                     }

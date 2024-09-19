@@ -30,7 +30,12 @@ if (isset($_GET['orphan_id'])) {
         $problems = $row['problems'];
         $other_comments = $row['other_comments'];
         $orphan_image = $row['orphan_image'];
-        $adoption_status = $row['adoption_status'];
+        if($row['adoption_status'] == 0){
+            $adoption_status = 'Available';
+        } else {
+            $adoption_status = 'Adopted';
+        }
+        
 
         $query2 = "SELECT org_name, org_location, org_phone FROM org_list WHERE org_id = $org_id";
         $result2 = mysqli_query($con, $query2);

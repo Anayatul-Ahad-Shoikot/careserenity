@@ -37,6 +37,8 @@
             $problems = $_POST['problems'];
             $time = date("Y-m-d");
             $other_comments = $_POST['other_comments'];
+            $adoption_status = 0;
+            $removed_status = 0;
             $image_name = $_FILES["image"]["name"];
             $image_tmp_name = $_FILES["image"]["tmp_name"];
             $orphan_name = preg_replace("/[^a-zA-Z0-9]/", "", $last_name);
@@ -45,12 +47,12 @@
             $image_path = "./assets/" . $new_image_name;
             move_uploaded_file($image_tmp_name, $image_path);
 
-            $query = "INSERT INTO orphan_list (org_id, guardian_id, first_name, last_name, age, gender, religion, date_of_birth, since, family_status, physical_condition, education_level, medical_history, hobby, favorite_food, favorite_game, skills, dreams, problems, other_comments, orphan_image) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            $query = "INSERT INTO orphan_list (org_id, guardian_id, first_name, last_name, age, gender, religion, date_of_birth, since, family_status, physical_condition, education_level, medical_history, hobby, favorite_food, favorite_game, skills, dreams, problems, other_comments, orphan_image, adoption_status, removed_status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
             $stmt = mysqli_prepare($con, $query);
 
             if ($stmt) {
-                mysqli_stmt_bind_param($stmt, "iississssssssssssssss", $org_id ,$guardian_id, $first_name, $last_name, $age, $gender, $religion, $date_of_birth, $time, $family_status, $physical_condition, $education_level, $medical_history, $hobby, $favorite_food, $favorite_game, $skills, $dreams, $problems, $other_comments, $new_image_name);
+                mysqli_stmt_bind_param($stmt, "iississssssssssssssssii", $org_id ,$guardian_id, $first_name, $last_name, $age, $gender, $religion, $date_of_birth, $time, $family_status, $physical_condition, $education_level, $medical_history, $hobby, $favorite_food, $favorite_game, $skills, $dreams, $problems, $other_comments, $new_image_name, $adoption_status, $removed_status);
                 if (mysqli_stmt_execute($stmt)) {
                     $_SESSION['positive'] = "Orphan has been registered";
                     header("Location: ./O_orphan.php");

@@ -1,5 +1,5 @@
 <?php
-    include("./organization_profile_fetch_BE.php");
+    include("./O_profile_fetch_BE.php");
     include("./orphan_profile_fetch_BE.php");
     $acc_id = $_SESSION['acc_id'];
     $fetchUnreadNotificationsQuery = "SELECT COUNT(*) as unread_count FROM notifications WHERE is_read = 0 AND user_id = (SELECT user_id FROM user_list WHERE acc_id = $acc_id)";
@@ -185,8 +185,7 @@
                 <input type="hidden" name="orphan_id" value="<?php echo $row['orphan_id'] ?>">
                 <input type="hidden" name="guardian_id" value="<?php echo $row['guardian_id'] ?>">
                 <div class="btn">
-                    <!-- <button type="submit" name="update">Update</button> -->
-                    need to add buttons for adopt request
+                    <button type="submit" name="submit-btn" id="button-30">Adopt</button>
                 </div>
             </form>
         </div>

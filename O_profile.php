@@ -75,9 +75,9 @@
 
         <div class="options">
             <a href="#" id="button-30">Chats</a>
-            <a href="#" id="button-30">Orphanage</a>
+            <a href="./O_orphan.php" id="button-30">Orphanage</a>
             <a href="#" id="button-30">Volunteers</a>
-            <a href="#" id="button-30">Seminars</a>
+            <a href="./O_seminar.php" id="button-30">Seminars</a>
             <a href="./O_profile_edit.php" id="button-30">Profile Info</a>
         </div>
 
@@ -146,28 +146,28 @@
                             
                             foreach ($namesArray as $names) {
                                 echo '<tr>
-                                                <td>
-                                                    <a href="see_user_profile.php?user_id=' . $names['user_id'] . '">' . $names['user_name'] . '</a>
-                                                </td>
-                                                <td>
-                                                    <a href="orphan_profile.php?orphan_id=' . $names['orphan_id'] . '">' . $names['first_name'] . '</a>
-                                                </td>
-                                                <td>
-                                                    <div class="dropdown">
-                                                        <button onclick="toggleDropdown(this)" class="dropbtn">Actions</button>
-                                                        <div id="myDropdown" class="dropdown-content">
-                                                            <a href="adoption_request_details.php?adoption_id=' . $names['adoption_id'] . '&user_name=' . $names['user_name'] . '&first_name=' . $names['first_name'] . '">View</a>
-                                                            <a href="/Root/D & A/Org_donation_adoption/ACCEPT_ADOPTION_REQUEST_BE.php?adoption_id=' . $names['adoption_id'] . '&user_id=' . $names['user_id'] . '&orphan_id=' . $names['orphan_id'] . '">Accept</a>
-                                                            <a href="reject?adoption_id="' . $names['adoption_id'] . '">Reject</a>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <p class="' . ($names['status'] === 'done' ? 'done-status' : 'pending-status') . '">
-                                                        ' . $names['status'] . '
-                                                    </p>
-                                                </td>
-                                            </tr>';
+                                    <td>
+                                        <a href="./O_see_user_profile.php?user_id=' . $names['user_id'] . '">' . $names['user_name'] . '</a>
+                                    </td>
+                                    <td>
+                                        <a href="./O_orphan_profile.php?orphan_id=' . $names['orphan_id'] . '">' . $names['first_name'] . '</a>
+                                    </td>
+                                    <td>
+                                        <div class="dropdown">
+                                            <button onclick="toggleDropdown(this)" class="dropbtn">Actions</button>
+                                            <div id="myDropdown" class="dropdown-content">
+                                                <a href="adoption_request_details.php?adoption_id=' . $names['adoption_id'] . '&user_name=' . $names['user_name'] . '&first_name=' . $names['first_name'] . '">View</a>
+                                                <a href="/Root/D&A/Org_donation_adoption/ACCEPT_ADOPTION_REQUEST_BE.php?adoption_id=' . $names['adoption_id'] . '&user_id=' . $names['user_id'] . '&orphan_id=' . $names['orphan_id'] . '">Accept</a>
+                                                <a href="reject?adoption_id="' . $names['adoption_id'] . '">Reject</a>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <p class="' . ($names['status'] === 'done' ? 'done-status' : 'pending-status') . '">
+                                            ' . $names['status'] . '
+                                        </p>
+                                    </td>
+                                </tr>';
                             }
                             ?>
                         </tbody>
@@ -196,7 +196,7 @@
         </div>
         <div class="chatbox hide">
 
-</div>
+        </div>
     </div>
 
     <div class="chatbox hide">

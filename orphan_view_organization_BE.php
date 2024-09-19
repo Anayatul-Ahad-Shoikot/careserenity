@@ -18,7 +18,7 @@
             echo '</div>';
             echo '<div class="buttons">';
             echo '<a href="./orphan_remove_organization_BE.php?orphan_id=' . $row2['orphan_id'] . '" id="button-30">Remove</a>';
-            echo '<a href="./orphan_profile.php?orphan_id=' . $row2['orphan_id'] . '" id="button-30"> View </a>';
+            echo '<a href="./O_orphan_profile.php?orphan_id=' . $row2['orphan_id'] . '" id="button-30"> View </a>';
             echo '</div>';
             echo '</div>';
         }

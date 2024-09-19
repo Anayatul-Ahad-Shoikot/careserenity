@@ -21,11 +21,11 @@ if (isset($_POST['login_btn'])) {
                     header("Location: #");
                     exit(0);
                 case 'org':
-                    $_SESSION['positive'] = "Welcome back, $acc_name ";
+                    $_SESSION['positive'] = "Welcome back, $acc_email ";
                     header("Location: ./O_home.php");
                     exit(0);
                 case 'user':
-                    $_SESSION['positive'] = "Welcome back, $acc_name !";
+                    $_SESSION['positive'] = "Welcome back, $acc_email !";
                     header("Location: ./U_home.php");
                     exit(0);
             }

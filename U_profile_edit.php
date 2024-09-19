@@ -50,6 +50,10 @@ if ($unreadNotificationsResult) {
         ?>
     </div>
 
+    <div class="options">
+        <a href="./U_profile.php" id="button-30">back</a>
+    </div>
+
 
     <div class="container">
         <h2>Edit Profile</h2>
