@@ -148,14 +148,14 @@
     <script src="./js/feedback.js"></script>
 
     <script>
-        function toogleSeminarForm() {
+        function toggleSeminarForm() {
             var form = document.getElementById("seminarForm");
             form.style.display = form.style.display == "none" ? "block" : "none";
         }
 
         function toggleLocationField() {
             var type = document.getElementById("type").value;
-            var locationField = document.getElementById("locatonField");
+            var locationField = document.getElementById("locationField");
             if(type == "offline"){
                 locationField.style.display = "block";
             }
