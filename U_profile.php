@@ -25,6 +25,7 @@ if ($unreadNotificationsResult) {
     <link rel="stylesheet" href="./css/footer.css">
     <link rel="stylesheet" href="./css/notification.css">
     <link rel="stylesheet" href="./css/feedback.css">
+    <link rel="stylesheet" href="./css/cards.css">
     <link rel="icon" href="./assets/LOGO.png" type="image/x-icon">
     <title>CareSenerity | Profile </title>
 </head>
@@ -75,7 +76,34 @@ if ($unreadNotificationsResult) {
         </div>
 
         <div class="short-report">
-            <h1>Need idea what to put here</h1>
+            <div class="adoptions">
+                <div class="ag-format-container">
+                    <div class="ag-courses_box">
+                    <div class="ag-courses_item">
+                        <a href="#" class="ag-courses-item_link">
+                        <div class="ag-courses-item_bg"></div>
+                        <div class="ag-courses-item_title">
+                            Interior Design
+                        </div>
+                        <div class="ag-courses-item_date-box">
+                            Start:
+                            <span class="ag-courses-item_date">
+                            31.10.2022
+                            </span>
+                        </div>
+                        </a>
+                    </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="seminars">
+                <h1>seminers</h1>
+            </div>
+
+            <div class="donations">
+                <h1>donations</h1>
+            </div>
         </div>
     </div>
 
