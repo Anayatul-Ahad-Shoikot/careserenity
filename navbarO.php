@@ -108,17 +108,10 @@ $active_option = getActiveOption($current_url, $nav_options);
                                 $donorquery = "SELECT user_name FROM user_list WHERE user_id = {$notification['user_id']}";
                                 $donorqueryresult = mysqli_query($con, $donorquery);
                                 $row = mysqli_fetch_assoc($donorqueryresult);
-                                if ($notification['content'] == "donation"){
-                                    $content = "Received <b>{$notification['amount']}</b> TK from <b>{$row['user_name']}</b>.";
-                                } elseif ($notification['content'] == "adoption"){
-                                    $content = "<b>{$row['user_name']}</b> requested for adoption.";
-                                } else {
-                                    $content = "<b>{$row['user_name']}</b> wants to join as volunteer.";
-                                }
                                 $class = ($notification['is_read'] == 0) ? ' unseen" style="background: rgb(255, 182, 193, .5);' : '';
                                 echo '<div class="notifi-item' . $class . '" onclick="markAsRead(' . $notification['notification_id'] . ', this)">';
                                     echo '<div class="text">';
-                                    echo '<h4>' . $content . '</h4>';
+                                    echo '<h4>' . $notification['content'] . '</h4>';
                                     echo '<p>' . $notification['date'] . '</p>';
                                     echo '</div>';
                                 echo '</div>';

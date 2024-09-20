@@ -3,8 +3,8 @@ include('./db_con.php');
 session_start();
 
 $adoption_id = $_GET['adoption_id'];
-$user_name = $_GET['user_name'];
-$first_name = $_GET['first_name'];
+$user_id = $_GET['user_id'];
+$orphan_id = $_GET['orphan_id'];
 
 $query1 = "SELECT * FROM adoptions WHERE adoption_id = $adoption_id";
 $result1 = mysqli_query($con, $query1);
@@ -24,12 +24,14 @@ if (mysqli_num_rows($result1) == 1) {
     $additionalInfo = $row1['additionalInfo'];
 }
 
-$query2 = "SELECT user_image FROM user_list WHERE user_name = '$user_name'";
+$query2 = "SELECT user_name FROM user_list WHERE user_id = $user_id";
 $result2 = mysqli_query($con, $query2);
 $row2 = mysqli_fetch_assoc($result2);
-$aplicant_image = $row2['user_image'];
+$user_name = $row2['user_name'];
 
-$query3 = "SELECT orphan_image FROM orphan_list WHERE first_name = '$first_name'";
+$query3 = "SELECT first_name, last_name FROM orphan_list WHERE orphan_id = $orphan_id";
 $result3 = mysqli_query($con, $query3);
 $row3 = mysqli_fetch_assoc($result3);
-$orphan_image = $row3['orphan_image'];
+$first_name = $row3['first_name'];
+$last_name = $row3['last_name'];
+

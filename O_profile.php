@@ -154,16 +154,11 @@
                                     </td>
                                     <td>
                                         <div class="dropdown">
-                                            <button onclick="toggleDropdown(this)" class="dropbtn">Actions</button>
-                                            <div id="myDropdown" class="dropdown-content">
-                                                <a href="adoption_request_details.php?adoption_id=' . $names['adoption_id'] . '&user_name=' . $names['user_name'] . '&first_name=' . $names['first_name'] . '">View</a>
-                                                <a href="/Root/D&A/Org_donation_adoption/ACCEPT_ADOPTION_REQUEST_BE.php?adoption_id=' . $names['adoption_id'] . '&user_id=' . $names['user_id'] . '&orphan_id=' . $names['orphan_id'] . '">Accept</a>
-                                                <a href="reject?adoption_id="' . $names['adoption_id'] . '">Reject</a>
-                                            </div>
+                                            <a href="./O_adoption_request_details.php?adoption_id=' . $names['adoption_id'] . '&user_id=' . $names['user_id'] . '&orphan_id=' . $names['orphan_id'] . '">View</a>
                                         </div>
                                     </td>
                                     <td>
-                                        <p class="' . ($names['status'] === 'done' ? 'done-status' : 'pending-status') . '">
+                                        <p class="' . ($names['status'] == 'Approved' ? 'done-status' : 'pending-status') . '">
                                             ' . $names['status'] . '
                                         </p>
                                     </td>
@@ -207,51 +202,6 @@
 
     <button id="scrollTopBtn" title="Go to top"><i class='bx bx-chevrons-up bx-burst' ></i></button>
 
-    <!-- <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            // Initially hide the chatbox
-            const chatbox = document.querySelector(".chatbox");
-            const chatboxHeaderImg = document.getElementById("chatbox-header-img");
-            const chatboxHeaderName = document.getElementById("chatbox-header-name");
-
-            // Function to add click listeners to the inbox list items
-            function addClickListenersToInboxList() {
-                const links = document.querySelectorAll(".inbox-list a");
-                links.forEach(link => {
-                    link.addEventListener("click", function(event) {
-                        event.preventDefault(); // Prevent the default link behavior
-                        // Show the chatbox when a link is clicked
-                        chatbox.classList.remove("hide");
-
-                        // Fetch and update chatbox header
-                        const outId = this.dataset.out_id;
-                        const inId = this.dataset.in_id;
-                        fetchChatboxHeaderData(outId, inId);
-                    });
-                });
-            }
-
-            // Function to fetch chatbox header data
-            function fetchChatboxHeaderData(outId, inId) {
-                fetch('fetch_chat_list.php', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({ out_id: outId, in_id: inId })
-                })
-                .then(response => response.json())
-                .then(data => {
-                    chatboxHeaderImg.src = data.image;
-                    chatboxHeaderName.textContent = data.name;
-                })
-                .catch(error => console.error('Error fetching chatbox header data:', error));
-            }
-
-            // Call the function to add listeners to inbox list items
-            addClickListenersToInboxList();
-        });
-    </script> -->
     <script src="./js/scrollupBTN.js"></script>
     <script src="./js/notification_color.js"></script>
     <script src="./js/feedback.js"></script>

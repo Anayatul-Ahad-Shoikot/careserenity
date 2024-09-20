@@ -32,7 +32,7 @@ form .form_row{
     display: flex;
 }
 .form_row label {
-    width: 30%;
+    width: 50%;
     font-size: 14px;
 }
 .form_row input , select{
@@ -68,4 +68,17 @@ form .form_row{
 }
 button:hover {
     background-color: var(--primary-color-light);
+}
+
+.buttons {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 3rem;
+    gap: 20px;
+}
+
+.buttons a {
+    width: 300px !important;
 }
