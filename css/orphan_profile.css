@@ -165,19 +165,8 @@
     align-items: center;
     justify-content: center;
 }
-.form button {
-    width: 50%;
-    background-color: var(--primary-color-dark);
-    color: #fff;
-    border: none;
-    padding: 10px 10px;
-    margin: 10px 0px;
-    border-radius: 4px;
-    font-size: 1.2rem;
-    font-weight: 700;
-    cursor: pointer;
-    margin-bottom: 10px;
-}
-.form button:hover {
-    background-color: var(--primary-color-light);
+
+
+.btn a , .btn button{
+    width: 50% !important;
 }

@@ -36,18 +36,18 @@
 
     <div class="feedback">
         <?php
-            if (isset($_SESSION['positive'])) {
-                echo '<div class="positive">
+        if (isset($_SESSION['positive'])) {
+            echo '<div class="positive">
                             <h5>' . $_SESSION['positive'] . '</h5>
                         </div>';
-                unset($_SESSION['positive']);
-            }
-            if (isset($_SESSION['negative'])) {
-                echo '<div class="negative">
+            unset($_SESSION['positive']);
+        }
+        if (isset($_SESSION['negative'])) {
+            echo '<div class="negative">
                             <h5>' . $_SESSION['negative'] . '</h5>
                         </div>';
-                unset($_SESSION['negative']);
-            }
+            unset($_SESSION['negative']);
+        }
         ?>
     </div>
 
@@ -75,126 +75,195 @@
             <a href="./U_see_organization_orphanage.php?org_id=<?php echo $org_id ?>" id="button-30">back</a>
         </div>
 
-
         <div class="form">
-            <h2>Profile Information</h2>
-            <form>
+                <h2>Profile Information</h2>
+                <form>
+                    <div class="form_row">
+                        <label>Full Name:</label>
+                        <input type="text" name="first_name" placeholder="<?php echo $first_name ?>" disabled>
+                    </div>
+                    <div class="form_row">
+                        <label>Age:</label>
+                        <input type="number" name="age" placeholder="<?php echo $age ?>" disabled>
+                    </div>
+                    <div class="form_row">
+                        <label>Gender :</label>
+                        <select name="gender" disabled>
+                            <option value=""><?php echo $gender ?></option>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form_row">
+                        <label>Religion :</label>
+                        <select name="religion" disabled>
+                            <option value=''><?php echo $religion ?></option>
+                            <option value="muslim">Muslim</option>
+                            <option value="hindu">Hindu</option>
+                            <option value="cristian">Cristian</option>
+                            <option value="buddha">Buddha</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form_row">
+                        <label>Date of Birth :</label>
+                        <input type="text" name="date_of_birth" placeholder="<?php echo $date_of_birth ?>" disabled>
+                    </div>
+                    <div class="form_row">
+                        <label>Family Status :</label>
+                        <select name="family_status" disabled>
+                            <option value=''><?php echo $family_status ?></option>
+                            <option value="abondoned">Abondoned</option>
+                            <option value="past Away">Past Away</option>
+                            <option value="unknow">Unknow</option>
+                            <option value="lost">Lost</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form_row">
+                        <label>Physical Condition :</label>
+                        <select name="physical_condition" disabled>
+                            <option value=''><?php echo $physical_condition ?></option>
+                            <option value="good">Good</option>
+                            <option value="blind">Blind</option>
+                            <option value="deaf">Deaf</option>
+                            <option value="disabled">Disabled</option>
+                            <option value="autistic">Autistic</option>
+                            <option value="mad">Mad</option>
+                        </select>
+                    </div>
+                    <div class="form_row">
+                        <label>Education level:</label>
+                        <select name="education_level" disabled>
+                            <option value=''><?php echo $education_level ?></option>
+                            <option value="kindergarten">Kindergarten</option>
+                            <option value="elementary">Elementary</option>
+                            <option value="primary_school">Primary School</option>
+                            <option value="junior_high_school">Junior High School</option>
+                            <option value="senior_high_school">Senior High School</option>
+                            <option value="secondary_school">secondary_school</option>
+                        </select>
+                    </div>
+                    <div class="form_row">
+                        <label>Medical History:</label>
+                        <input type="text" name="medical_history" placeholder="<?php echo $medical_history ?>" disabled>
+                    </div>
+                    <div class="form_row">
+                        <label>Hobby:</label>
+                        <input type="text" name="hobby" placeholder="<?php echo $hobby ?>" disabled>
+                    </div>
+                    <div class="form_row">
+                        <label>Favourite Food:</label>
+                        <input type="text" name="favorite_food" placeholder="<?php echo $favorite_food ?>" disabled>
+                    </div>
+                    <div class="form_row">
+                        <label>Favourite Games:</label>
+                        <input type="text" name="favorite_game" placeholder="<?php echo $favorite_game ?>" disabled>
+                    </div>
+                    <div class="form_row">
+                        <label>Skills:</label>
+                        <input type="text" name="skills" placeholder="<?php echo $skills ?>" disabled>
+                    </div>
+                    <div class="form_row">
+                        <label>Dreams:</label>
+                        <input type="text" name="dreams" placeholder="<?php echo $dreams ?>" disabled>
+                    </div>
+                    <div class="form_row">
+                        <label>Problems:</label>
+                        <input type="text" name="problems" placeholder="<?php echo $problems ?>" disabled>
+                    </div>
+                    <div class="form_row">
+                        <label>Comments:</label>
+                        <input type="text" name="other_comments" placeholder="<?php echo $other_comments ?>" disabled>
+                    </div>
+                    <div class="form_row">
+                        <label>adoption_status :</label>
+                        <input type="text" name="adoption_status" placeholder="<?php echo $adoption_status ?>" disabled>
+                    </div>
+                    <div class="btn">
+                        <a href="./U_adoption_terms&conditions.php?orphan_id=<?php echo $row['orphan_id'] ?>" id="button-30">Adopt</a>
+                    </div>
+                </form>
+        </div>
+
+
+
+        <!-- <div class="form" id="aform">
+            <h2>Adoption Application Form</h2>
+            <form action="./U_SUBMIT_ADOPTION_BE.php" method="POST">
+
+                <input type="hidden" name="orphan_id" value="<?php echo $orphan_id ?>">
+                <input type="hidden" name="acc_id" value="<?php echo $acc_id ?>">
+                
                 <div class="form_row">
-                    <label>Full Name:</label>
-                    <input type="text" name="first_name" placeholder="<?php echo $first_name ?>" disabled>
+                    <label>Adopting :</label>
+                    <input type="text" placeholder="<?php echo $first_name, '  ' ,$last_name ?>" disabled>
+                </div>
+            
+                <div class="form_row">
+                    <label>From :</label>
+                    <input type="text" placeholder="<?php echo $org_name ?>" disabled>
                 </div>
                 <div class="form_row">
-                    <label>Age:</label>
-                    <input type="number" name="age" placeholder="<?php echo $age ?>" disabled>
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
                 </div>
                 <div class="form_row">
-                    <label>Gender :</label>
-                    <select name="gender" disabled>
-                        <option value=""><?php echo $gender ?></option>
-                        <option value="male">Male</option>
-                        <option value="female">Female</option>
-                        <option value="other">Other</option>
+                    <label for="phone">Phone Number:</label>
+                    <input type="text" id="phone" name="phone" required>
+                </div>
+                <div class="form_row">
+                    <label for="occupation">Occupation:</label>
+                    <input type="text" id="occupation" name="occupation" required>
+                </div>
+                <div class="form_row">
+                    <label for="income">Annual Income:</label>
+                    <input type="text" id="income" name="income" required>
+                </div>
+                <div class="form_row">
+                    <label for="maritalStatus">Marital Status:</label>
+                    <select id="maritalStatus" name="maritalStatus" required>
+                        <option value="">Select</option>
+                        <option value="single">Single</option>
+                        <option value="married">Married</option>
+                        <option value="divorced">Divorced</option>
+                        <option value="widowed">Widowed</option>
                     </select>
                 </div>
                 <div class="form_row">
-                    <label>Religion :</label>
-                    <select name="religion" disabled>
-                        <option value=''><?php echo $religion ?></option>
-                        <option value="muslim">Muslim</option>
-                        <option value="hindu">Hindu</option>
-                        <option value="cristian">Cristian</option>
-                        <option value="buddha">Buddha</option>
-                        <option value="other">Other</option>
-                    </select>
+                    <label for="reason">Reason for Adoption:</label>
+                    <input id="reason" name="reason" required></input>
                 </div>
                 <div class="form_row">
-                    <label>Date of Birth :</label>
-                    <input type="text" name="date_of_birth" placeholder="<?php echo $date_of_birth ?>" disabled>
+                    <label for="children">Current Children (if any):</label>
+                    <input type="text" id="children" name="children">
                 </div>
                 <div class="form_row">
-                    <label>Family Status :</label>
-                    <select name="family_status" disabled>
-                        <option value=''><?php echo $family_status ?></option>
-                        <option value="abondoned">Abondoned</option>
-                        <option value="past Away">Past Away</option>
-                        <option value="unknow">Unknow</option>
-                        <option value="lost">Lost</option>
-                        <option value="other">Other</option>
-                    </select>
+                    <label for="livingEnvironment">Description of Living Environment:</label>
+                    <input id="livingEnvironment" name="livingEnvironment" required></input>
                 </div>
                 <div class="form_row">
-                    <label>Physical Condition :</label>
-                    <select name="physical_condition" disabled>
-                        <option value=''><?php echo $physical_condition ?></option>
-                        <option value="good">Good</option>
-                        <option value="blind">Blind</option>
-                        <option value="deaf">Deaf</option>
-                        <option value="disabled">Disabled</option>
-                        <option value="autistic">Autistic</option>
-                        <option value="mad">Mad</option>
-                    </select>
+                    <label for="expectations">Expectations as Adoptive Parents:</label>
+                    <input id="expectations" name="expectations" required></input>
                 </div>
                 <div class="form_row">
-                    <label>Education level:</label>
-                    <select name="education_level" disabled>
-                        <option value=''><?php echo $education_level ?></option>
-                        <option value="kindergarten">Kindergarten</option>
-                        <option value="elementary">Elementary</option>
-                        <option value="primary_school">Primary School</option>
-                        <option value="junior_high_school">Junior High School</option>
-                        <option value="senior_high_school">Senior High School</option>
-                        <option value="secondary_school">secondary_school</option>
-                    </select>
+                    <label for="additionalInfo">Additional Information:</label>
+                    <input id="additionalInfo" name="additionalInfo"></input>
                 </div>
-                <div class="form_row">
-                    <label>Medical History:</label>
-                    <input type="text" name="medical_history" placeholder="<?php echo $medical_history ?>" disabled>
-                </div>
-                <div class="form_row">
-                    <label>Hobby:</label>
-                    <input type="text" name="hobby" placeholder="<?php echo $hobby ?>" disabled>
-                </div>
-                <div class="form_row">
-                    <label>Favourite Food:</label>
-                    <input type="text" name="favorite_food" placeholder="<?php echo $favorite_food ?>" disabled>
-                </div>
-                <div class="form_row">
-                    <label>Favourite Games:</label>
-                    <input type="text" name="favorite_game" placeholder="<?php echo $favorite_game ?>" disabled>
-                </div>
-                <div class="form_row">
-                    <label>Skills:</label>
-                    <input type="text" name="skills" placeholder="<?php echo $skills ?>" disabled>
-                </div>
-                <div class="form_row">
-                    <label>Dreams:</label>
-                    <input type="text" name="dreams" placeholder="<?php echo $dreams ?>" disabled>
-                </div>
-                <div class="form_row">
-                    <label>Problems:</label>
-                    <input type="text" name="problems" placeholder="<?php echo $problems ?>" disabled>
-                </div>
-                <div class="form_row">
-                    <label>Comments:</label>
-                    <input type="text" name="other_comments" placeholder="<?php echo $other_comments ?>" disabled>
-                </div>
-                <div class="form_row">
-                    <label>adoption_status :</label>
-                    <input type="text" name="adoption_status" placeholder="<?php echo $adoption_status ?>" disabled>
-                </div>
-                <input type="hidden" name="orphan_id" value="<?php echo $row['orphan_id'] ?>">
-                <input type="hidden" name="guardian_id" value="<?php echo $row['guardian_id'] ?>">
                 <div class="btn">
-                    <button type="submit" name="submit-btn" id="button-30">Adopt</button>
+                    <button type="submit" name="submit" id="button-30">Submit</button>
                 </div>
             </form>
-        </div>
+        </div> -->
+
 
     </div>
 
     <?php include "./footer.php" ?>
 
-    <button id="scrollTopBtn" title="Go to top"><i class='bx bx-chevrons-up bx-burst' ></i></button>
+    <button id="scrollTopBtn" title="Go to top"><i class='bx bx-chevrons-up bx-burst'></i></button>
+
 
     <script src="./js/scrollupBTN.js"></script>
     <script src="./js/notification_color.js"></script>
