@@ -31,11 +31,21 @@
     <body>
         <?php include("./navbarO.php") ?>
 
+        <div id="searchSeminars">
+            <form method="GET" action="seminars.php">
+                <input type="text" name="search" placeholder="Search seminars by title or description" value="<?php echo isset($_GET['search']) ? htmlspecialchars($_GET['search']) : ''; ?>">
+                <button type="submit">Search</button>
+            </form>
+        </div>
+
         <!-- main body -->
 
         <?php
-            $seminarQuery = "SELECT * FROM seminars WHERE org_id = (SELECT org_id FROM org_list WHERE acc_id = $acc_id)
-                            OR org_id IN (SELECT org_id FROM other_orgs)";
+            include("./db_con.php");
+            $seminarQuery = "SELECT * FROM seminars 
+            -- WHERE org_id = (SELECT org_id FROM org_list WHERE acc_id = $acc_id)
+            --                 OR org_id IN (SELECT org_id FROM other_orgs)
+            ";
             $result = mysqli_query($con, $seminarQuery);
         ?>
 
@@ -49,7 +59,7 @@
                         echo "<h3>" . htmlspecialchars($row['title']) . "</h3>";
                         echo "<img src='" . htmlspecialchars($row['banner']) . "' alt='Seminar Banner'>";
                         echo "<p>" . htmlspecialchars($row['description']) . "</p>";
-                        echo "<p>Date: " . htmlspecialchars($row['date']) . "</p>";
+                        echo "<p>Date: " . htmlspecialchars($row['seminar_date']) . "</p>";
                         echo "<p>Type: " . htmlspecialchars($row['type']) . "</p>";
 
                         // Register Button
@@ -66,15 +76,9 @@
             ?>
         </div>
 
-        <!-- Search Seminars -->
-        <div id="searchSeminars">
-            <form method="GET" action="seminars.php">
-                <input type="text" name="search" placeholder="Search seminars by title or description" value="<?php echo isset($_GET['search']) ? htmlspecialchars($_GET['search']) : ''; ?>">
-                <button type="submit">Search</button>
-            </form>
-        </div>
 
         <?php
+                    include("./db_con.php");
             if (isset($_GET['search'])) {
                 $searchTerm = mysqli_real_escape_string($con, $_GET['search']);
                 $seminarQuery = "SELECT * FROM seminars 
@@ -85,11 +89,12 @@
         ?>
 
         <?php
+            include("./db_con.php");
             // Fetch registered seminars for the user
-            $registeredSeminarsQuery = "SELECT seminars.*, participants.participant_id 
+            $registeredSeminarsQuery = "SELECT * 
                                         FROM seminars 
-                                        JOIN participants ON seminars.seminar_id = participants.seminar_id 
-                                        WHERE participants.user_id = $acc_id";
+                                        JOIN seminar_participants ON seminars.seminar_id = seminar_participants.seminar_id 
+                                        WHERE seminar_participants.participant_id = $acc_id";
             $registeredResult = mysqli_query($con, $registeredSeminarsQuery);
         ?>
 
@@ -103,7 +108,7 @@
                         echo "<h3>" . htmlspecialchars($row['title']) . "</h3>";
                         echo "<img src='" . htmlspecialchars($row['banner']) . "' alt='Seminar Banner'>";
                         echo "<p>" . htmlspecialchars($row['description']) . "</p>";
-                        echo "<p>Date: " . htmlspecialchars($row['date']) . "</p>";
+                        echo "<p>Date: " . htmlspecialchars($row['seminar_date']) . "</p>";
 
                         // Cancel Button
                         echo "<form method='POST' action='cancel_registration.php'>";
