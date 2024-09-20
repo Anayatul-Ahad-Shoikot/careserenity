@@ -70,11 +70,10 @@
 
     <div id="allSeminars">
         <h2>All Seminars</h2>
-
-        <?php 
-            $seminarQuery = "SELECT * FROM seminars WHERE org_id = 
-                            (SELECT org_id FROM org_list WHERE acc_id = $acc_id) OR 
-                            org_id IN (SELECT org_id FROM other_orgs)";
+        <?php
+        include("./db_con.php");
+            $seminarQuery = "SELECT * FROM seminars WHERE org_id != 
+                            (SELECT org_id FROM org_list WHERE acc_id = $acc_id)";
             $seminarResult = mysqli_query($con, $seminarQuery);
 
             while($row = mysqli_fetch_assoc($seminarResult)){
@@ -82,7 +81,7 @@
                         <h3>{$row['title']}</h3>
                         <img src='{$row['banner']}' alt='Seminar Banner'>
                         <p>{$row['description']}</p>
-                        <p>Date: {$row['date']}</p>
+                        <p>Date: {$row['seminar_date']}</p>
                         <p>Topic: {$row['row']}</p>
                         <p>Guest: {$row['guest']}</p>
                         <p>Type: {$row['type']}</p>";
@@ -99,9 +98,10 @@
         <h2>Your Created Seminars</h2>
 
         <?php
-            $ownSeminarQuery = "SELECT seminars.*, COUNT(participants.seminar_id) as participants_count 
+        include("./db_con.php");
+            $ownSeminarQuery = "SELECT seminars.*, COUNT(seminar_participants.seminar_id) as participants_count 
                                 FROM seminars 
-                                LEFT JOIN participants ON seminars.seminar_id = participants.seminar_id
+                                LEFT JOIN seminar_participants ON seminars.seminar_id = seminar_participants.seminar_id
                                 WHERE org_id = (SELECT org_id FROM org_list WHERE acc_id = $acc_id)
                                 GROUP BY seminars.seminar_id";
 

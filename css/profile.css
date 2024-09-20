@@ -543,7 +543,7 @@ button:hover {
 
 
 
-.container .short-report {
+.short-report {
     display: flex;
     flex-direction: column;
     justify-content: center;

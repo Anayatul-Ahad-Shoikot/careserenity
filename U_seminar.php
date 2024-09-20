@@ -21,7 +21,7 @@
     <link rel="stylesheet" href="./css/colors.css">
     <link rel="stylesheet" href="./css/navbar.css">
     <link rel="stylesheet" href="./css/index.css">
-    <link rel="stylesheet" href="./css/aboutus.css">
+    <link rel="stylesheet" href="./css/seminar.css">
     <link rel="stylesheet" href="./css/footer.css">
     <link rel="stylesheet" href="./css/notification.css">
     <link rel="stylesheet" href="./css/feedback.css">
@@ -32,7 +32,7 @@
         <?php include("./navbarO.php") ?>
 
         <div id="searchSeminars">
-            <form method="GET" action="seminars.php">
+            <form method="GET" action="">
                 <input type="text" name="search" placeholder="Search seminars by title or description" value="<?php echo isset($_GET['search']) ? htmlspecialchars($_GET['search']) : ''; ?>">
                 <button type="submit">Search</button>
             </form>

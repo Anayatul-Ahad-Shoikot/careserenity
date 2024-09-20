@@ -1,0 +1,199 @@
+/* user side */
+/* General Page Layout */
+#allSeminars, #registeredSeminars {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h2 {
+    text-align: center;
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* Search Section */
+#searchSeminars {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+#searchSeminars input[type="text"] {
+    padding: 10px;
+    width: 60%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+#searchSeminars button {
+    padding: 10px 20px;
+    margin-left: 10px;
+    border: none;
+    background-color: #28a745;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#searchSeminars button:hover {
+    background-color: #218838;
+}
+
+/* Seminar Card */
+.seminarCard {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s;
+}
+
+.seminarCard:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.seminarCard img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.seminarCard h3 {
+    color: #333;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.seminarCard p {
+    color: #555;
+    margin-bottom: 10px;
+}
+
+/* Register and Cancel Button */
+.seminarCard button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.seminarCard button:hover {
+    background-color: #0056b3;
+}
+
+/* Cancel Button */
+.seminarCard form button {
+    background-color: #dc3545;
+}
+
+.seminarCard form button:hover {
+    background-color: #c82333;
+}
+
+
+/* organization side */
+/* General Page Layout */
+#ownSeminar {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h2 {
+    text-align: center;
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* Seminar Card */
+.seminarCard {
+    background-color: #f4f4f4;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s;
+}
+
+.seminarCard:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.seminarCard img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.seminarCard h3 {
+    color: #333;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.seminarCard p {
+    color: #555;
+    margin-bottom: 10px;
+}
+
+/* Seminar Action Buttons */
+.seminarCard button {
+    padding: 8px 15px;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+/* Edit Button */
+.seminarCard button.edit-btn {
+    background-color: #28a745;
+}
+
+.seminarCard button.edit-btn:hover {
+    background-color: #218838;
+}
+
+/* Remove Button */
+.seminarCard button.remove-btn {
+    background-color: #dc3545;
+}
+
+.seminarCard button.remove-btn:hover {
+    background-color: #c82333;
+}
+
+/* Toggle Visibility Button */
+.seminarCard button.toggle-btn {
+    background-color: #ffc107;
+    color: black;
+}
+
+.seminarCard button.toggle-btn:hover {
+    background-color: #e0a800;
+}
+
+/* Postpone Button */
+.seminarCard button.postpone-btn {
+    background-color: #007bff;
+}
+
+.seminarCard button.postpone-btn:hover {
+    background-color: #0056b3;
+}
+
+/* common style for both page */
