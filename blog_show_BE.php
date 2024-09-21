@@ -1,10 +1,29 @@
 <?php
 include('./db_con.php');
 
-$query = "SELECT w.post_id, w.acc_id, w.post_title, w.post_content, w.post_image, w.published, x.likes
-    FROM blog_post AS w 
-    LEFT JOIN blog_likes AS x ON x.post_id = w.post_id
-    LEFT JOIN accounts AS y ON y.acc_id = w.acc_id";
+$query = "SELECT 
+                w.post_id, 
+                w.acc_id, 
+                w.post_title, 
+                w.post_content, 
+                w.post_image, 
+                w.published, 
+                x.likes,
+                CASE 
+                    WHEN y.role = 'org' THEN org.org_name
+                    WHEN y.role = 'user' THEN usr.user_name
+                    ELSE NULL
+                END AS acc_name
+            FROM 
+                blog_post AS w
+            LEFT JOIN 
+                blog_likes AS x ON x.post_id = w.post_id
+            LEFT JOIN 
+                accounts AS y ON y.acc_id = w.acc_id
+            LEFT JOIN 
+                org_list AS org ON y.acc_id = org.acc_id AND y.role = 'org'
+            LEFT JOIN 
+                user_list AS usr ON y.acc_id = usr.acc_id AND y.role = 'user'";
 
 $result = mysqli_query($con, $query);
 if (mysqli_num_rows($result) > 0) {

@@ -76,23 +76,118 @@ if ($unreadNotificationsResult) {
         </div>
 
         <div class="short-report">
-            <div class="adoptions">
-                <div class="ag-format-container">
-                    <div class="ag-courses_box">
+            <div class="ag-format-container">
+                <div class="ag-courses_box">
                     <div class="ag-courses_item">
                         <a href="#" class="ag-courses-item_link">
                         <div class="ag-courses-item_bg"></div>
                         <div class="ag-courses-item_title">
-                            Interior Design
+                            <h1>Anayatul Ahad</h1>
+                            <p>Little Sprituas Foundation</p>
                         </div>
+                        
                         <div class="ag-courses-item_date-box">
-                            Start:
+                            Status
                             <span class="ag-courses-item_date">
-                            31.10.2022
+                            Pending
                             </span>
                         </div>
                         </a>
                     </div>
+                    <div class="ag-courses_item">
+                        <a href="#" class="ag-courses-item_link">
+                        <div class="ag-courses-item_bg"></div>
+                        <div class="ag-courses-item_title">
+                            <h1>Anayatul Ahad</h1>
+                            <p>Little Sprituas Foundation</p>
+                        </div>
+                        
+                        <div class="ag-courses-item_date-box">
+                            Status
+                            <span class="ag-courses-item_date">
+                            Pending
+                            </span>
+                        </div>
+                        </a>
+                    </div>
+                    <div class="ag-courses_item">
+                        <a href="#" class="ag-courses-item_link">
+                        <div class="ag-courses-item_bg"></div>
+                        <div class="ag-courses-item_title">
+                            <h1>Anayatul Ahad</h1>
+                            <p>Little Sprituas Foundation</p>
+                        </div>
+                        
+                        <div class="ag-courses-item_date-box">
+                            Status
+                            <span class="ag-courses-item_date">
+                            Pending
+                            </span>
+                        </div>
+                        </a>
+                    </div>
+                    <div class="ag-courses_item">
+                        <a href="#" class="ag-courses-item_link">
+                        <div class="ag-courses-item_bg"></div>
+                        <div class="ag-courses-item_title">
+                            <h1>Anayatul Ahad</h1>
+                            <p>Little Sprituas Foundation</p>
+                        </div>
+                        
+                        <div class="ag-courses-item_date-box">
+                            Status
+                            <span class="ag-courses-item_date">
+                            Pending
+                            </span>
+                        </div>
+                        </a>
+                    </div>
+                    <div class="ag-courses_item">
+                        <a href="#" class="ag-courses-item_link">
+                        <div class="ag-courses-item_bg"></div>
+                        <div class="ag-courses-item_title">
+                            <h1>Anayatul Ahad</h1>
+                            <p>Little Sprituas Foundation</p>
+                        </div>
+                        
+                        <div class="ag-courses-item_date-box">
+                            Status
+                            <span class="ag-courses-item_date">
+                            Pending
+                            </span>
+                        </div>
+                        </a>
+                    </div>
+                    <div class="ag-courses_item">
+                        <a href="#" class="ag-courses-item_link">
+                        <div class="ag-courses-item_bg"></div>
+                        <div class="ag-courses-item_title">
+                            <h1>Anayatul Ahad</h1>
+                            <p>Little Sprituas Foundation</p>
+                        </div>
+                        
+                        <div class="ag-courses-item_date-box">
+                            <span class="ag-courses-item_date">
+                                Pending
+                            </span>
+                        </div>
+                        </a>
+                    </div>
+                    <div class="ag-courses_item">
+                        <a href="#" class="ag-courses-item_link">
+                        <div class="ag-courses-item_bg"></div>
+                        <div class="ag-courses-item_title">
+                            <h1>Anayatul Ahad</h1>
+                            <p>Little Sprituas Foundation</p>
+                        </div>
+                        
+                        <div class="ag-courses-item_date-box">
+                            Status
+                            <span class="ag-courses-item_date">
+                            Pending
+                            </span>
+                        </div>
+                        </a>
                     </div>
                 </div>
             </div>

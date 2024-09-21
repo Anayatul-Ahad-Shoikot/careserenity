@@ -11,7 +11,20 @@ if (isset($_GET['post_id'])) {
     if (mysqli_num_rows($result1) > 0) {
         $row = mysqli_fetch_assoc($result1);
         $author_acc_id = $row['acc_id'];
-        $query2 = "SELECT acc_name FROM accounts WHERE acc_id = $author_acc_id";
+        $query2 = "SELECT 
+                        CASE 
+                            WHEN a.role = 'org' THEN o.org_name
+                            WHEN a.role = 'user' THEN u.user_name
+                            ELSE NULL
+                        END AS acc_name
+                    FROM 
+                        accounts AS a
+                    LEFT JOIN 
+                        org_list AS o ON a.acc_id = o.acc_id AND a.role = 'org'
+                    LEFT JOIN 
+                        user_list AS u ON a.acc_id = u.acc_id AND a.role = 'user'
+                    WHERE 
+                        a.acc_id = $author_acc_id";
         $result2 = mysqli_query($con, $query2);
         $row2 = mysqli_fetch_assoc($result2);
         $acc_name = $row2['acc_name'];

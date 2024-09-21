@@ -122,7 +122,7 @@ if ($unreadNotificationsResult) {
 
             <div class="buttons">
                 <a href="./O_accept_adoption_request_BE.php?adoption_id=<?php echo $_GET['adoption_id'] ?>&user_id=<?php echo $_GET['user_id'] ?>&orphan_id=<?php echo $_GET['orphan_id']?>" id="button-30">Accept</a>
-                <a href="./U_adoption_form.php?adoption_id=<?php echo $_GET['adoption_id'] ?>&user_id=<?php echo $_GET['user_id'] ?>&orphan_id=<?php echo $_GET['orphan_id']?>" id="button-30">Reject</a>
+                <a href="./O_reject_adoption_request_BE.php?adoption_id=<?php echo $_GET['adoption_id'] ?>&user_id=<?php echo $_GET['user_id'] ?>&orphan_id=<?php echo $_GET['orphan_id']?>" id="button-30">Reject</a>
             </div>
         </form>
     </div>

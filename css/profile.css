@@ -541,9 +541,7 @@ button:hover {
     background-color: var(--primary-color-light);
 }
 
-
-
-.short-report {
+.container .short-report {
     display: flex;
     flex-direction: column;
     justify-content: center;

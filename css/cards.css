@@ -1,34 +1,31 @@
 .ag-format-container {
-    width: 1142px;
-    margin: 0 auto;
+    width: 100%;
+    overflow: hidden;
 }
 
 .ag-courses_box {
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
-    -webkit-box-align: start;
-    -ms-flex-align: start;
-    align-items: flex-start;
-    -ms-flex-wrap: wrap;
-    flex-wrap: wrap;
-    padding: 50px 0;
+    overflow-x: auto;
+    white-space: nowrap;
+}
+.ag-courses_box::-webkit-scrollbar{
+    display: none;
 }
 
 .ag-courses_item {
-    -ms-flex-preferred-size: calc(33.33333% - 30px);
-    flex-basis: calc(33.33333% - 30px);
-    margin: 0 15px 30px;
-    overflow: hidden;
-    border-radius: 28px;
+    flex: 0 0 auto;
+    margin-right: 15px;
+    min-width: 200px;
+    border: 1px solid lightgray;
 }
 
 .ag-courses-item_link {
     display: block;
-    padding: 30px 20px;
-    background-color: #121212;
+    padding: 15px 10px;
     overflow: hidden;
     position: relative;
+    border-radius: 5px;
+    text-decoration: none;
 }
 
 .ag-courses-item_link:hover,
@@ -44,14 +41,17 @@
 }
 
 .ag-courses-item_title {
-    min-height: 87px;
-    margin: 0 0 25px;
+    min-height: 30px;
     overflow: hidden;
-    font-weight: bold;
     font-size: 30px;
-    color: #FFF;
+    color: var(--text-color-dark);
     z-index: 2;
     position: relative;
+}
+
+.ag-courses-item_title h1 {
+    font-size: 17px;
+    color: var(--secondary-color-dark);
 }
 
 .ag-courses-item_date-box {
@@ -63,7 +63,7 @@
 
 .ag-courses-item_date {
     font-weight: bold;
-    color: #f9b234;
+    color: var(--secondary-color-light);
     -webkit-transition: color .5s ease;
     -o-transition: color .5s ease;
     transition: color .5s ease
@@ -72,7 +72,7 @@
 .ag-courses-item_bg {
     height: 128px;
     width: 128px;
-    background-color: #f9b234;
+    background-color: var(--secondary-color-light);
     z-index: 1;
     position: absolute;
     top: -75px;
@@ -83,26 +83,9 @@
     transition: all .5s ease;
 }
 
-.ag-courses_item:nth-child(2n) .ag-courses-item_bg {
-    background-color: #3ecd5e;
-}
-
-.ag-courses_item:nth-child(3n) .ag-courses-item_bg {
-    background-color: #e44002;
-}
-
-.ag-courses_item:nth-child(4n) .ag-courses-item_bg {
-    background-color: #952aff;
-}
-
-.ag-courses_item:nth-child(5n) .ag-courses-item_bg {
-    background-color: #cd3e94;
-}
-
-.ag-courses_item:nth-child(6n) .ag-courses-item_bg {
-    background-color: #4c49ea;
-}
-
+/* .ag-courses_item:nth-child(2n) .ag-courses-item_bg {
+    background-color: lightpink;
+} */
 
 
 @media only screen and (max-width: 979px) {

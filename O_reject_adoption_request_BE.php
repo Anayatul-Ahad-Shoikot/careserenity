@@ -13,7 +13,7 @@
         $firstName = $row1['first_name'];
         $lastName = $row1['last_name'];
     }
-    $query2 = "UPDATE adoptions AS ad SET ad.status = 1, ad.issued_date = '$current_date' WHERE ad.adoption_id = $adoption_id AND ad.status != 1";
+    $query2 = "UPDATE adoptions AS ad SET ad.status = 2, ad.issued_date = '$current_date' WHERE ad.adoption_id = $adoption_id AND ad.status != 2";
         if(mysqli_query($con, $query2)) {
             $sql = "SELECT o.org_id FROM accounts AS a LEFT JOIN org_list AS o ON a.acc_id = o.acc_id Where a.acc_id = $acc_id";
             $sql_result = mysqli_query($con, $sql);
@@ -21,21 +21,21 @@
                 $row = mysqli_fetch_array($sql_result);
                 $org_id = $row['org_id'];
             }
-            $content = "You approved $firstName $lastName for adoption.";
+            $content = "You rejected $firstName $lastName for adoption.";
             $queryNotifications = "INSERT INTO notifications (org_id, orphan_id, content) VALUES (?, ?, ?)";
             $stmtNotifications = mysqli_prepare($con, $queryNotifications);
             mysqli_stmt_bind_param($stmtNotifications, "iis",$org_id, $orphan_id, $content);
             mysqli_stmt_execute($stmtNotifications);
             mysqli_stmt_close($stmtNotifications);
 
-            $content = "Adoption request for $firstName $lastName has been approved!";
+            $content = "Adoption request for $firstName $lastName has been rejected!";
             $queryNotifications = "INSERT INTO notifications (user_id, orphan_id, content) VALUES (?, ?, ?)";
             $stmtNotifications = mysqli_prepare($con, $queryNotifications);
             mysqli_stmt_bind_param($stmtNotifications, "iis",$user_id, $orphan_id, $content);
             mysqli_stmt_execute($stmtNotifications);
             mysqli_stmt_close($stmtNotifications);
 
-            $_SESSION['positive'] = "Request approved";
+            $_SESSION['positive'] = "Request rejected.";
             header("Location: ./O_profile.php");
             } else {
                 $_SESSION['negative'] = "Error occured, query failed";

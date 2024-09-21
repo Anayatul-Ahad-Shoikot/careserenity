@@ -7,7 +7,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $role = $_SESSION['role'];
     $post_id = mysqli_real_escape_string($con, $_POST['post_id']);
     $comment_content = mysqli_real_escape_string($con, $_POST['comment']);
-    $sql = "SELECT acc_name FROM accounts WHERE acc_id = $acc_id";
+    $sql = "SELECT 
+                CASE 
+                    WHEN '$role' = 'org' THEN o.org_name
+                    WHEN '$role' = 'user' THEN u.user_name
+                    ELSE NULL
+                END AS acc_name
+            FROM 
+                accounts AS a
+            LEFT JOIN 
+                org_list AS o ON a.acc_id = o.acc_id AND '$role' = 'org'
+            LEFT JOIN 
+                user_list AS u ON a.acc_id = u.acc_id AND '$role' = 'user'
+            WHERE 
+                a.acc_id = $acc_id";
     $result = mysqli_query($con, $sql);
     $row = mysqli_fetch_array($result);
     $acc_name = $row['acc_name'];
