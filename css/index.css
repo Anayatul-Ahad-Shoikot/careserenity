@@ -188,7 +188,7 @@
 
 .donations .cards-container ,
 .blog .cards-container {
-    width: 1350px;
+    max-width: 1430px;
     display: flex;
     align-items: center;
     overflow: auto;
@@ -201,7 +201,6 @@
 
 .cards-container .card {
     width: 300px !important;
-    height: 360px;
     margin: 0px 5px;
     display: flex;
     flex-direction: column;
@@ -210,6 +209,7 @@
     border-radius: 8px;
     background-color: #ffffff;
     flex-shrink: 0;
+    box-shadow: 0px 0px 16px 3px rgb(0, 0, 0, 0.3);
 }
 
 .card .card-img {
@@ -249,6 +249,8 @@
     color: var(--text-color-lighter);
     margin: 10px 0px;
     font-size: 13px;
+    display: flex;
+    flex-direction: column;
 }
 
 .card .card-details h4 {
@@ -262,9 +264,14 @@
     font-family: var(--secondary-font);
     font-size: 25px;
     color: var(--primary-color-dark);
-    margin-bottom: 15px;
+    margin: 15px 10px;
 }
+.blog-details p{
+    margin: 0px 10px;
+}
+.blog-details a{
 
+}
 
 .card button {
     width: 60%;
@@ -282,7 +289,13 @@
 }
 
 .card .blog-details a{
-
+    text-decoration: none;
+    color: white;
+    background: black;
+    padding: 10px 15px;
+    border-radius: 10px;
+    text-align: center;
+    margin: 15px 15px 0px;
 }
 
 

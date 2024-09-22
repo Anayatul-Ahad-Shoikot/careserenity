@@ -88,7 +88,7 @@ if ($unreadNotificationsResult) {
                     if(isset($_GET['query'])){
                         include('./see_searched_organization_orphanage_BE.php');
                     } else {
-                        include ('./see_organization_orphanage_BE.php');
+                        include ('./U_see_organization_orphanage_BE.php');
                     }
                 ?>
             </div>

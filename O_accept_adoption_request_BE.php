@@ -21,6 +21,10 @@
                 $row = mysqli_fetch_array($sql_result);
                 $org_id = $row['org_id'];
             }
+            
+            $sql2 = "UPDATE orphan_list SET adoption_status = 1 WHERE orphan_id = $orphan_id";
+            mysqli_query($con, $sql2);
+
             $content = "You approved $firstName $lastName for adoption.";
             $queryNotifications = "INSERT INTO notifications (org_id, orphan_id, content) VALUES (?, ?, ?)";
             $stmtNotifications = mysqli_prepare($con, $queryNotifications);

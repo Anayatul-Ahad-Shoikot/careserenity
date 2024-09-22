@@ -1,5 +1,6 @@
 .ag-format-container {
-    width: 100%;
+    margin: 15px;
+    width: 1350px;
     overflow: hidden;
 }
 
@@ -32,6 +33,10 @@
 .ag-courses-item_link:hover .ag-courses-item_date {
     text-decoration: none;
     color: #FFF;
+}
+
+.ag-courses_item:hover {
+    border: 1px solid black;
 }
 
 .ag-courses-item_link:hover .ag-courses-item_bg {
@@ -72,7 +77,7 @@
 .ag-courses-item_bg {
     height: 128px;
     width: 128px;
-    background-color: var(--secondary-color-light);
+    background-color: rgb(168, 220, 241);
     z-index: 1;
     position: absolute;
     top: -75px;
@@ -82,11 +87,6 @@
     -o-transition: all .5s ease;
     transition: all .5s ease;
 }
-
-/* .ag-courses_item:nth-child(2n) .ag-courses-item_bg {
-    background-color: lightpink;
-} */
-
 
 @media only screen and (max-width: 979px) {
     .ag-courses_item {

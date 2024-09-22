@@ -277,6 +277,7 @@
     margin-top: 24px;
     width: 100%;
     color: var(--text-color-dark);
+    gap: 25px;
 }
 .adoption {
     border-radius: 20px;
@@ -542,6 +543,11 @@ button:hover {
 }
 
 .container .short-report {
+    justify-content: center;
+    gap: 30px;
+}
+
+.container .short-reports{
     display: flex;
     flex-direction: column;
     justify-content: center;
