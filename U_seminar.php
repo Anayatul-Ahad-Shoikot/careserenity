@@ -84,7 +84,8 @@
             }
         ?>
 
-        <?php
+        <!-- Display Registered Seminars -->
+         <?php
             // Fetch registered seminars for the user
             $registeredSeminarsQuery = "SELECT seminars.*, participants.participant_id 
                                         FROM seminars 
@@ -92,8 +93,6 @@
                                         WHERE participants.user_id = $acc_id";
             $registeredResult = mysqli_query($con, $registeredSeminarsQuery);
         ?>
-
-        <!-- Display Registered Seminars -->
         <div id="registeredSeminars">
             <h2>Registered Seminars</h2>
             <?php
@@ -103,7 +102,7 @@
                         echo "<h3>" . htmlspecialchars($row['title']) . "</h3>";
                         echo "<img src='" . htmlspecialchars($row['banner']) . "' alt='Seminar Banner'>";
                         echo "<p>" . htmlspecialchars($row['description']) . "</p>";
-                        echo "<p>Date: " . htmlspecialchars($row['date']) . "</p>";
+                        echo "<p>Date: " . htmlspecialchars($row['seminar_date']) . "</p>";
 
                         // Cancel Button
                         echo "<form method='POST' action='cancel_registration.php'>";
