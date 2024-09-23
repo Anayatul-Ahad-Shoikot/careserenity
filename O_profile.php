@@ -77,7 +77,6 @@
             <a href="#" id="button-30">Chats</a>
             <a href="./O_orphan.php" id="button-30">Orphanage</a>
             <a href="#" id="button-30">Volunteers</a>
-            <!-- <a href="" id="button-30">Seminars</a> -->
             <a href="./O_profile_edit.php" id="button-30">Profile Info</a>
         </div>
 
@@ -87,11 +86,11 @@
                 <a href="#"><i class='bx bxs-dollar-circle'></i></a>
                 <span>
                     <p>Donation Received</p>
-                    <h3>678</h3>
+                    <h3><?php echo $total_amount_received ?></h3>
                 </span>
             </li>
             <li>
-                <a href="#"><i class='bx bxs-face' ></i></i></a>
+                <a href="./O_adoption.php"><i class='bx bxs-face' ></i></i></a>
                 <span>
                     <p>Adoption Requests</p>
                     <h3><?php echo $total_adoptions ?></h3>
@@ -107,8 +106,8 @@
             <li>
                 <a href="#"><i class='bx bxs-report'></i></i></a>
                 <span>
-                    <p>Reports</p>
-                    <h3>4</h3>
+                    <p>Orphans</p>
+                    <h3><?php echo $total_adoptions ?></h3>
                 </span>
             </li>
         </div>
@@ -131,8 +130,8 @@
             <div class="adoption-donation">
 
                 <div class="adoption">
-                    <a href="./O_adoption.php">
-                        <h3 id="heading">Adoption Requests</h3>
+                    <a href="./O_adoption.php" style="text-decoration:none;">
+                        <h3 id="heading" style="border: 2px solid black; border-radius: 10px;">Adoption Requests</h3>
                     </a>
                     <table>
                         <thead>
@@ -181,7 +180,7 @@
                             if ($y['receiver_type'] === 'organization') {
                                 echo '<li class="completed"><p>Donation Received ' . $y['amount'] . 'TK from <a href="#?user_id=' . $y['user_id'] . '">' . $y['user_name'] . '</a></p></li>';
                             } elseif ($y['receiver_type'] === 'orphan') {
-                                echo '<li class="not-completed"><p>' . $y['first_name'] . ' ' . $y['last_name'] . ' received ' . $y['amount'] . 'TK from <a href="#?user_id=' . $y['user_id'] . '">' . $y['user_name'] . '</a></p></li>';
+                                echo '<li class="not-completed"><p>' . $y['first_name'] . ' ' . $y['last_name'] . ' received ' . $y['amount'] . 'TK from <a href="./O_see_user_profile.php?user_id=' . $y['user_id'] . '">' . $y['user_name'] . '</a></p></li>';
                             }
                         }
                         ?>

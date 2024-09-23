@@ -23,7 +23,7 @@ $query3 = "SELECT orl.first_name, orl.orphan_id, ul.user_name, ul.user_id ,ad.ad
                     FROM adoptions ad
                     JOIN orphan_list orl ON ad.orphan_id = orl.orphan_id
                     JOIN user_list ul ON ad.acc_id = ul.acc_id
-                    WHERE (orl.org_id = $org_id AND ad.status = 0)
+                    WHERE orl.org_id = $org_id
                     ORDER BY ad.request_date";
 $namesArray = [];
 $result3 = mysqli_query($con, $query3);

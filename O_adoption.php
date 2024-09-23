@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
     <link rel='stylesheet' href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css'>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="./css/colors.css">
     <link rel="stylesheet" href="./css/navbar.css">
     <link rel="stylesheet" href="./css/profile.css">
@@ -75,7 +76,14 @@
 
 
         <div class="options">
-            <a href="#" id="button-30">Chats</a>
+            <form action="#">
+                <div class="form-input">
+                    <input type="search" placeholder="search..." />
+                    <button class="search-btn">
+                        <i class="fas fa-search search-icon"></i>
+                    </button>
+                </div>
+            </form>
             <a href="./O_orphan.php" id="button-30">Orphanage</a>
             <a href="#" id="button-30">Volunteers</a>
             <a href="./O_profile_edit.php" id="button-30">Profile Info</a>
@@ -86,7 +94,6 @@
             <table>
                 <thead>
                     <tr>
-                        <th> Adoption Id </th>
                         <th> Adopted By </th>
                         <th> Email </th>
                         <th> Adopted To </th>
@@ -116,6 +123,49 @@
     <script src="./js/scrollupBTN.js"></script>
     <script src="./js/notification_color.js"></script>
     <script src="./js/feedback.js"></script>
+    <script>
+        const search = document.querySelector('.options .form-input input'),
+        table_rows = document.querySelectorAll('tbody tr'),
+        table_headings = document.querySelectorAll('thead th');
+
+        search.addEventListener('input', searchTable);
+        function searchTable() {
+            table_rows.forEach((row, i) => {
+                let table_data = row.textContent.toLowerCase(),
+                    search_data = search.value.toLowerCase();
+                row.classList.toggle('hide', table_data.indexOf(search_data) < 0);
+                row.style.setProperty('--delay', i / 25 + 's');
+            })
+            document.querySelectorAll('tbody tr:not(.hide)').forEach((visible_row, i) => {
+                visible_row.style.backgroundColor = (i % 2 == 0) ? 'transparent' : '#0000000b';
+            });
+        }
+
+        table_headings.forEach((head, i) => {
+            let sort_asc = true;
+            head.onclick = () => {
+                table_headings.forEach(head => head.classList.remove('active'));
+                head.classList.add('active');
+                document.querySelectorAll('td').forEach(td => td.classList.remove('active'));
+                table_rows.forEach(row => {
+                    row.querySelectorAll('td')[i].classList.add('active');
+                })
+                head.classList.toggle('asc', sort_asc);
+                sort_asc = head.classList.contains('asc') ? false : true;
+                sortTable(i, sort_asc);
+            }
+        })
+
+        function sortTable(column, sort_asc) {
+            const rowsToSort = [...table_rows].slice(1);
+            rowsToSort.sort((a, b) => {
+                let first_row = a.querySelectorAll('td')[column].textContent.toLowerCase(),
+                    second_row = b.querySelectorAll('td')[column].textContent.toLowerCase();
+                return sort_asc ? (first_row < second_row ? 1 : -1) : (first_row < second_row ? -1 : 1);
+            })
+            .map(sorted_row => document.querySelector('tbody').appendChild(sorted_row));
+        }
+    </script>
 </body>
 
 </html>

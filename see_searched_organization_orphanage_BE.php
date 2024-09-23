@@ -10,6 +10,7 @@
         $result = mysqli_query($con, $query);
         if (mysqli_num_rows($result) > 0) {
             while ($row = mysqli_fetch_assoc($result)) {
+                echo '<div class="plate">';
                 echo '<div class="card">';
                 echo '<div class="pb"  style="background-image: url(\'./assets/' . $row['orphan_image'] . '\');"></div>';
                 echo '<div class="info">';
@@ -25,12 +26,13 @@
                 }
                 echo '</div>';
                 echo '</div>';
+                echo '</div>';
             }
         } else {
-            echo "No orphan matched";
+            echo '<p id="notFound">Not found</p>';
         }
     } else {
-        echo "insert valid query";
+        echo '<p id="notFound">Insert valid query</p>';
     }
     mysqli_close($con);
 ?>

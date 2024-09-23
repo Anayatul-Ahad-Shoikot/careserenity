@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Sep 20, 2024 at 10:20 AM
+-- Generation Time: Sep 23, 2024 at 04:17 AM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -35,7 +35,7 @@ CREATE TABLE `accounts` (
   `acc_join_date` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
   `question` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `answer` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `accounts`
@@ -58,7 +58,7 @@ CREATE TABLE `admin_list` (
   `admin_contact` varchar(30) COLLATE utf8mb4_general_ci DEFAULT NULL,
   `admin_priyority` int DEFAULT NULL,
   `admin_image` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -71,7 +71,7 @@ CREATE TABLE `adoptions` (
   `orphan_id` int NOT NULL,
   `acc_id` int NOT NULL,
   `request_date` varchar(50) DEFAULT NULL,
-  `status` int DEFAULT NULL COMMENT '0 = pending, 1 = approved, 2 = rejected',
+  `status` int DEFAULT '0' COMMENT '0 = pending, 1 = approved, 2 = rejected',
   `issued_date` varchar(50) DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL,
   `phone` varchar(255) DEFAULT NULL,
@@ -82,15 +82,18 @@ CREATE TABLE `adoptions` (
   `children` int DEFAULT NULL,
   `livingEnvironment` varchar(255) DEFAULT NULL,
   `expectations` varchar(255) DEFAULT NULL,
-  `additionalInfo` varchar(255) DEFAULT NULL
-);
+  `additionalInfo` varchar(255) DEFAULT NULL,
+  `user_delete` int NOT NULL DEFAULT '0' COMMENT ' 1 = user delete',
+  `org_delete` int NOT NULL DEFAULT '0' COMMENT ' 1 = organization delete'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `adoptions`
 --
 
-INSERT INTO `adoptions` (`adoption_id`, `orphan_id`, `acc_id`, `request_date`, `status`, `issued_date`, `email`, `phone`, `occupation`, `income`, `maritalStatus`, `reason`, `children`, `livingEnvironment`, `expectations`, `additionalInfo`) VALUES
-(1, 2, 2, '20-09-24', NULL, NULL, 'ahad@gmail.com', '1234', 'sadaw', 2341, 'single', 'awew', 0, 'fh', 'fg', 'asd');
+INSERT INTO `adoptions` (`adoption_id`, `orphan_id`, `acc_id`, `request_date`, `status`, `issued_date`, `email`, `phone`, `occupation`, `income`, `maritalStatus`, `reason`, `children`, `livingEnvironment`, `expectations`, `additionalInfo`, `user_delete`, `org_delete`) VALUES
+(7, 2, 2, '22-09-24', 0, NULL, 'as@gmail.com', '01973360001', 'Software Eng.', 2134130, 'single', 'dbrdcd', 0, 'Good and healthy environment', 'I hope i will take care of my child as best i can.', 'none', 0, 0),
+(8, 1, 2, '22-09-24', 1, '22-09-24', 'awd@gmail.com', '01973360001', '123424', 1234210, 'divorced', '123', 123, '123', '123', '123', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -103,7 +106,15 @@ CREATE TABLE `blog_comment` (
   `viewer_acc_name` varchar(30) COLLATE utf8mb4_general_ci NOT NULL,
   `comment` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
   `comment_date` date NOT NULL
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `blog_comment`
+--
+
+INSERT INTO `blog_comment` (`post_id`, `viewer_acc_name`, `comment`, `comment_date`) VALUES
+(1, 'Little Spirituas Foundation', 'awd', '2024-09-21'),
+(1, 'Anayatul Ahad Shoikot', 'awdwffeafe', '2024-09-21');
 
 -- --------------------------------------------------------
 
@@ -114,7 +125,14 @@ CREATE TABLE `blog_comment` (
 CREATE TABLE `blog_likes` (
   `post_id` int NOT NULL,
   `likes` int DEFAULT '0'
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `blog_likes`
+--
+
+INSERT INTO `blog_likes` (`post_id`, `likes`) VALUES
+(1, 2);
 
 -- --------------------------------------------------------
 
@@ -130,7 +148,14 @@ CREATE TABLE `blog_post` (
   `post_category` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `post_image` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `published` varchar(255) COLLATE utf8mb4_general_ci NOT NULL
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `blog_post`
+--
+
+INSERT INTO `blog_post` (`post_id`, `acc_id`, `post_title`, `post_content`, `post_category`, `post_image`, `published`) VALUES
+(1, 1, 'Porshce, The best brand', 'Porshce 911 turbo_s is one of the best sport car made ever in world. I want to buy it in future.', 'adoption', 'PorshceThebestbrand_1cafe.jpg', '2024-09-21');
 
 -- --------------------------------------------------------
 
@@ -145,7 +170,7 @@ CREATE TABLE `chats` (
   `msg` text COLLATE utf8mb4_general_ci,
   `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `is_read` tinyint NOT NULL DEFAULT '0'
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -162,7 +187,7 @@ CREATE TABLE `contact_message` (
   `msg_content` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
   `sending_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `is_registerd` int NOT NULL
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -186,7 +211,7 @@ CREATE TABLE `donations` (
   `Bkash_trans` varchar(20) DEFAULT NULL,
   `amount` float NOT NULL,
   `receiving_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-);
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -197,7 +222,7 @@ CREATE TABLE `donations` (
 CREATE TABLE `donations_orphan` (
   `orphan_id` int NOT NULL,
   `total_amount` decimal(10,2) DEFAULT NULL
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -211,7 +236,7 @@ CREATE TABLE `gallery` (
   `img_title` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
   `img_path` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
   `img_reacts` int NOT NULL DEFAULT '0'
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -222,7 +247,15 @@ CREATE TABLE `gallery` (
 CREATE TABLE `like_handle` (
   `post_id` int NOT NULL,
   `viewer_acc_id` int NOT NULL
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `like_handle`
+--
+
+INSERT INTO `like_handle` (`post_id`, `viewer_acc_id`) VALUES
+(1, 1),
+(1, 2);
 
 -- --------------------------------------------------------
 
@@ -235,7 +268,7 @@ CREATE TABLE `local_orphan_guardian` (
   `guardian_name` varchar(30) COLLATE utf8mb4_general_ci DEFAULT NULL,
   `guardian_contact` varchar(30) COLLATE utf8mb4_general_ci DEFAULT NULL,
   `guardian_location` varchar(30) COLLATE utf8mb4_general_ci DEFAULT NULL
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `local_orphan_guardian`
@@ -253,21 +286,36 @@ INSERT INTO `local_orphan_guardian` (`guardian_id`, `guardian_name`, `guardian_c
 
 CREATE TABLE `notifications` (
   `notification_id` int NOT NULL,
-  `user_id` int NOT NULL,
-  `org_id` int DEFAULT NULL,
-  `orphan_id` int DEFAULT NULL,
+  `user_id` int NOT NULL DEFAULT '0',
+  `org_id` int DEFAULT '0',
+  `orphan_id` int DEFAULT '0',
   `is_read` tinyint(1) NOT NULL DEFAULT '0' COMMENT '0 = unseen, 1 = seen',
   `content` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
-  `amount` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `amount` float(5,2) DEFAULT '0.00',
   `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `notifications`
 --
 
 INSERT INTO `notifications` (`notification_id`, `user_id`, `org_id`, `orphan_id`, `is_read`, `content`, `amount`, `date`) VALUES
-(1, 1, 1, 2, 1, 'Adoption Request', NULL, '2024-09-20 06:05:14');
+(5, 1, 0, 2, 1, 'Adoption Request Sent for x y.', 0.00, '2024-09-21 03:55:43'),
+(6, 0, 1, 2, 1, 'Anayatul Ahad Shoikot Requested adoption for x y.', 0.00, '2024-09-21 03:55:43'),
+(7, 0, 1, 2, 1, 'You approved x y for adoption.', 0.00, '2024-09-21 03:56:40'),
+(8, 1, 0, 2, 1, 'Adoption request for x y has been approved!', 0.00, '2024-09-21 03:56:40'),
+(9, 0, 1, 2, 1, 'You rejected x y for adoption.', 0.00, '2024-09-21 04:00:55'),
+(10, 1, 0, 2, 1, 'Adoption request for x y has been rejected!', 0.00, '2024-09-21 04:00:55'),
+(11, 0, 1, 2, 1, 'You approved x y for adoption.', 0.00, '2024-09-21 04:01:08'),
+(12, 1, 0, 2, 1, 'Adoption request for x y has been approved!', 0.00, '2024-09-21 04:01:08'),
+(13, 0, 1, 2, 1, 'You rejected x y for adoption.', 0.00, '2024-09-21 05:49:29'),
+(14, 1, 0, 2, 1, 'Adoption request for x y has been rejected!', 0.00, '2024-09-21 05:49:29'),
+(15, 1, 0, 2, 1, 'Adoption Request Sent for x y.', 0.00, '2024-09-22 19:21:51'),
+(16, 0, 1, 2, 1, 'Anayatul Ahad Shoikot Requested adoption for x y.', 0.00, '2024-09-22 19:21:51'),
+(17, 1, 0, 1, 1, 'Adoption Request Sent for Maisha Maliha Neha.', 0.00, '2024-09-22 19:22:31'),
+(18, 0, 1, 1, 1, 'Anayatul Ahad Shoikot Requested adoption for Maisha Maliha Neha.', 0.00, '2024-09-22 19:22:31'),
+(19, 0, 1, 1, 1, 'You approved Maisha Maliha Neha for adoption.', 0.00, '2024-09-22 19:33:56'),
+(20, 1, 0, 1, 1, 'Adoption request for Maisha Maliha Neha has been approved!', 0.00, '2024-09-22 19:33:56');
 
 -- --------------------------------------------------------
 
@@ -288,7 +336,7 @@ CREATE TABLE `org_list` (
   `org_location` varchar(255) DEFAULT NULL,
   `org_vision` varchar(255) DEFAULT NULL,
   `org_reviews` decimal(2,2) DEFAULT NULL
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `org_list`
@@ -326,17 +374,56 @@ CREATE TABLE `orphan_list` (
   `problems` text,
   `other_comments` text,
   `orphan_image` varchar(255) DEFAULT NULL,
-  `adoption_status` int NOT NULL,
-  `removed_status` int NOT NULL
-);
+  `adoption_status` int NOT NULL DEFAULT '0' COMMENT '0 = unadopted, 1 = adopted',
+  `removed_status` int NOT NULL DEFAULT '0' COMMENT '1 = removed'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `orphan_list`
 --
 
 INSERT INTO `orphan_list` (`orphan_id`, `org_id`, `guardian_id`, `first_name`, `last_name`, `age`, `gender`, `religion`, `date_of_birth`, `since`, `family_status`, `physical_condition`, `education_level`, `medical_history`, `hobby`, `favorite_food`, `favorite_game`, `skills`, `dreams`, `problems`, `other_comments`, `orphan_image`, `adoption_status`, `removed_status`) VALUES
-(1, 1, 1, 'Maisha Maliha', 'Neha', 25, 'female', 'muslim', '2024-09-04', '2024-09-19', 'unknow', 'good', 'senior_high_school', 'none', 'footbal', 'Tea', 'Football', 'sing', 'footballer', 'none', 'none', 'Neha_66ebef6242bc5.jpg', 0, 0),
+(1, 1, 1, 'Maisha Maliha', 'Neha', 25, 'female', 'muslim', '2024-09-04', '2024-09-19', 'unknow', 'good', 'senior_high_school', 'none', 'footbal', 'Tea', 'Football', 'sing', 'footballer', 'none', 'none', 'Neha_66ebef6242bc5.jpg', 1, 0),
 (2, 1, 2, 'x', 'y', 9, 'male', 'buddha', '2024-09-02', '2024-09-19', 'abondoned', 'deaf', 'elementary', 'none', 'none', 'none', 'none', 'none', 'none', 'none', 'none', 'y_66ebf5db2b234.jpg', 0, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `seminars`
+--
+
+CREATE TABLE `seminars` (
+  `seminar_id` int NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `banner` varchar(255) DEFAULT NULL,
+  `description` text NOT NULL,
+  `seminar_date` date NOT NULL,
+  `subject` varchar(255) NOT NULL,
+  `guest` varchar(255) DEFAULT NULL,
+  `type` enum('online','offline') NOT NULL,
+  `location` varchar(255) DEFAULT NULL,
+  `org_id` int NOT NULL,
+  `visibility` tinyint(1) DEFAULT '0' COMMENT ' 0 = visible, 1 = invisible',
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `seminars`
+--
+
+INSERT INTO `seminars` (`seminar_id`, `title`, `banner`, `description`, `seminar_date`, `subject`, `guest`, `type`, `location`, `org_id`, `visibility`, `created_at`) VALUES
+(1, 'j', 'bg.jpg', 'k', '2024-09-12', 'j', 'k', 'offline', 'gduiegug', 1, 0, '2024-09-21 07:34:01');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `seminar_participants`
+--
+
+CREATE TABLE `seminar_participants` (
+  `seminar_id` int NOT NULL,
+  `participant_id` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
@@ -358,7 +445,7 @@ CREATE TABLE `user_list` (
   `user_location` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `user_image` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `child_adopted` int NOT NULL
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `user_list`
@@ -457,10 +544,7 @@ ALTER TABLE `local_orphan_guardian`
 -- Indexes for table `notifications`
 --
 ALTER TABLE `notifications`
-  ADD PRIMARY KEY (`notification_id`),
-  ADD KEY `org_id` (`org_id`),
-  ADD KEY `user_id` (`user_id`),
-  ADD KEY `orphan_id` (`orphan_id`);
+  ADD PRIMARY KEY (`notification_id`);
 
 --
 -- Indexes for table `org_list`
@@ -474,6 +558,20 @@ ALTER TABLE `org_list`
 --
 ALTER TABLE `orphan_list`
   ADD PRIMARY KEY (`orphan_id`);
+
+--
+-- Indexes for table `seminars`
+--
+ALTER TABLE `seminars`
+  ADD PRIMARY KEY (`seminar_id`),
+  ADD KEY `org_id` (`org_id`);
+
+--
+-- Indexes for table `seminar_participants`
+--
+ALTER TABLE `seminar_participants`
+  ADD KEY `participant_id` (`participant_id`),
+  ADD KEY `seminar_id` (`seminar_id`);
 
 --
 -- Indexes for table `user_list`
@@ -502,13 +600,13 @@ ALTER TABLE `admin_list`
 -- AUTO_INCREMENT for table `adoptions`
 --
 ALTER TABLE `adoptions`
-  MODIFY `adoption_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `adoption_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `blog_post`
 --
 ALTER TABLE `blog_post`
-  MODIFY `post_id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `post_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `donations`
@@ -526,7 +624,7 @@ ALTER TABLE `local_orphan_guardian`
 -- AUTO_INCREMENT for table `notifications`
 --
 ALTER TABLE `notifications`
-  MODIFY `notification_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `notification_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `org_list`
@@ -539,6 +637,12 @@ ALTER TABLE `org_list`
 --
 ALTER TABLE `orphan_list`
   MODIFY `orphan_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `seminars`
+--
+ALTER TABLE `seminars`
+  MODIFY `seminar_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `user_list`
@@ -564,18 +668,23 @@ ALTER TABLE `adoptions`
   ADD CONSTRAINT `adoptions_ibfk_2` FOREIGN KEY (`orphan_id`) REFERENCES `orphan_list` (`orphan_id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
 --
--- Constraints for table `notifications`
---
-ALTER TABLE `notifications`
-  ADD CONSTRAINT `notifications_ibfk_1` FOREIGN KEY (`org_id`) REFERENCES `org_list` (`org_id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
-  ADD CONSTRAINT `notifications_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `user_list` (`user_id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
-  ADD CONSTRAINT `notifications_ibfk_3` FOREIGN KEY (`orphan_id`) REFERENCES `orphan_list` (`orphan_id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
-
---
 -- Constraints for table `org_list`
 --
 ALTER TABLE `org_list`
   ADD CONSTRAINT `org_list_ibfk_1` FOREIGN KEY (`acc_id`) REFERENCES `accounts` (`acc_id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+--
+-- Constraints for table `seminars`
+--
+ALTER TABLE `seminars`
+  ADD CONSTRAINT `seminars_ibfk_1` FOREIGN KEY (`org_id`) REFERENCES `org_list` (`org_id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+--
+-- Constraints for table `seminar_participants`
+--
+ALTER TABLE `seminar_participants`
+  ADD CONSTRAINT `seminar_participants_ibfk_1` FOREIGN KEY (`participant_id`) REFERENCES `user_list` (`user_id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  ADD CONSTRAINT `seminar_participants_ibfk_2` FOREIGN KEY (`seminar_id`) REFERENCES `seminars` (`seminar_id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
 --
 -- Constraints for table `user_list`

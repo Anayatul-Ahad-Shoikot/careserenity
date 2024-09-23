@@ -82,17 +82,14 @@ if ($unreadNotificationsResult) {
             </form>
         </div>
 
-
-            <div class="plate">
-                <?php
-                    if(isset($_GET['query'])){
-                        include('./see_searched_organization_orphanage_BE.php');
-                    } else {
-                        include ('./U_see_organization_orphanage_BE.php');
-                    }
-                ?>
-            </div>
-        </div>
+        <?php
+            if(isset($_GET['query'])){
+                include('./see_searched_organization_orphanage_BE.php');
+            } else {
+                include ('./U_see_organization_orphanage_BE.php');
+            }
+        ?>
+    </div>
 
     <?php include "./footer.php" ?>
 

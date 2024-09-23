@@ -58,7 +58,7 @@
             </div>
             <div class="account-data">
                 <h1><?php echo $first_name ?></h1>
-                <p>Belong to : <?php echo $org_name ?></p>
+                <p>Belongs to : <a href="./U_see_organization_profile.php?org_id=<?php echo $org_id ?>"><?php echo $org_name ?></a></p>
                 <p>Location : <?php echo $org_location ?></p>
                 <p>Email : <?php echo $acc_email ?></p>
                 <p>Contact : <?php echo $org_phone ?></p>
@@ -186,78 +186,6 @@
                     </div>
                 </form>
         </div>
-
-
-
-        <!-- <div class="form" id="aform">
-            <h2>Adoption Application Form</h2>
-            <form action="./U_SUBMIT_ADOPTION_BE.php" method="POST">
-
-                <input type="hidden" name="orphan_id" value="<?php echo $orphan_id ?>">
-                <input type="hidden" name="acc_id" value="<?php echo $acc_id ?>">
-                
-                <div class="form_row">
-                    <label>Adopting :</label>
-                    <input type="text" placeholder="<?php echo $first_name, '  ' ,$last_name ?>" disabled>
-                </div>
-            
-                <div class="form_row">
-                    <label>From :</label>
-                    <input type="text" placeholder="<?php echo $org_name ?>" disabled>
-                </div>
-                <div class="form_row">
-                    <label for="email">Email:</label>
-                    <input type="email" id="email" name="email" required>
-                </div>
-                <div class="form_row">
-                    <label for="phone">Phone Number:</label>
-                    <input type="text" id="phone" name="phone" required>
-                </div>
-                <div class="form_row">
-                    <label for="occupation">Occupation:</label>
-                    <input type="text" id="occupation" name="occupation" required>
-                </div>
-                <div class="form_row">
-                    <label for="income">Annual Income:</label>
-                    <input type="text" id="income" name="income" required>
-                </div>
-                <div class="form_row">
-                    <label for="maritalStatus">Marital Status:</label>
-                    <select id="maritalStatus" name="maritalStatus" required>
-                        <option value="">Select</option>
-                        <option value="single">Single</option>
-                        <option value="married">Married</option>
-                        <option value="divorced">Divorced</option>
-                        <option value="widowed">Widowed</option>
-                    </select>
-                </div>
-                <div class="form_row">
-                    <label for="reason">Reason for Adoption:</label>
-                    <input id="reason" name="reason" required></input>
-                </div>
-                <div class="form_row">
-                    <label for="children">Current Children (if any):</label>
-                    <input type="text" id="children" name="children">
-                </div>
-                <div class="form_row">
-                    <label for="livingEnvironment">Description of Living Environment:</label>
-                    <input id="livingEnvironment" name="livingEnvironment" required></input>
-                </div>
-                <div class="form_row">
-                    <label for="expectations">Expectations as Adoptive Parents:</label>
-                    <input id="expectations" name="expectations" required></input>
-                </div>
-                <div class="form_row">
-                    <label for="additionalInfo">Additional Information:</label>
-                    <input id="additionalInfo" name="additionalInfo"></input>
-                </div>
-                <div class="btn">
-                    <button type="submit" name="submit" id="button-30">Submit</button>
-                </div>
-            </form>
-        </div> -->
-
-
     </div>
 
     <?php include "./footer.php" ?>

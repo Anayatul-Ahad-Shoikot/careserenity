@@ -78,13 +78,13 @@
             </form>
         </div>
 
-        <div class="plate">
             <?php
                 include('./db_con.php');
                 $query2 = "SELECT orphan_id, first_name, orphan_image, adoption_status FROM orphan_list WHERE org_id = $org_id AND removed_status = '1'";
                 $result2 = mysqli_query($con, $query2);
                 if (mysqli_num_rows($result2) > 0) {
                     while ($row2 = mysqli_fetch_assoc($result2)) {
+                        echo '<div class="plate">';
                         echo '<div class="card">';
                         echo '<div class="pb"  style="background-image: url(\'./assets/' . $row2['orphan_image'] . '\');"></div>';
                         echo '<div class="info">';
@@ -95,9 +95,10 @@
                         echo '<a href="./O_orphan_profile.php?orphan_id=' . $row2['orphan_id'] . '" id="button-30"> View </a>';
                         echo '</div>';
                         echo '</div>';
+                        echo '</div>';
                     }
                 } else {
-                    echo 'No orphan found to show.';
+                    echo '<p id="notFound">No orphan to show.</p>';
                 }
             ?>
         </div>

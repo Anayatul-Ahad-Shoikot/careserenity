@@ -29,7 +29,7 @@
     <title>CareSenerity | Seminars</title>
     </head>
     <body>
-        <?php include("./navbarO.php") ?>
+        <?php include("./navbarU.php") ?>
 
         <div id="searchSeminars">
             <form method="GET" action="">

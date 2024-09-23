@@ -1,8 +1,4 @@
 .table__body {
-    /* max-height: calc(89% - 1.6rem); */
-    /* background-color: #fffb; */
-    /* border-radius: .6rem; */
-    /* overflow: auto; */
     margin: .8rem auto;
     width: 100%;
     height: 88%;
@@ -10,23 +6,9 @@
     
 }
 
-
 .table__body::-webkit-scrollbar{
-    /* width: 0.5rem;
-    height: 0.5rem; */
     display: none;
 }
-/* 
-.table__body::-webkit-scrollbar-thumb{
-    border-radius: .5rem;
-    background-color: #0004;
-    visibility: hidden;
-}
-
-.table__body:hover::-webkit-scrollbar-thumb{ 
-    visibility: visible;
-} */
-
 
 table {
     width: 100%;
@@ -51,7 +33,6 @@ td img {
 }
 
 table, th, td {
-    /* border-collapse: collapse; */
     padding: 6px;
     text-align: center;
 }
@@ -124,33 +105,16 @@ tbody td button:hover {
     background-color: transparent;
 }
 
-/* #first_row .wrapper{
-    width: 370px;
-    margin: 85px auto 0; 
-} */
 #first_row .wrapper .select-btn, li{
     display: flex;
     align-items: center;
     cursor: pointer;
 }
 #first_row .wrapper .select-btn{
-    /* height: 65px;
-    padding: 0 20px;
-    font-size: 22px;
-    background: #fff;
-    border-radius: 7px;
-    justify-content: space-between;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1); */
-    /* height: 65px; */
     padding: 0 11px;
-    /* font-size: 22px; */
-    /* background: #fff; */
-    /* border-radius: 7px; */
     justify-content: space-between;
-    /* box-shadow: 0 10px 25px rgba(0,0,0,0.1);*/
 }
 #first_row .wrapper .select-btn i{
-    /* font-size: 31px; */
     transition: transform 0.3s linear;
 }
 #first_row .wrapper.active .select-btn i{
@@ -173,13 +137,6 @@ tbody td button:hover {
     position: relative;
 }
 #first_row .wrapper .search i{
-    /* top: 50%;
-    left: 15px;
-    color: #999;
-    font-size: 20px;
-    pointer-events: none;
-    transform: translateY(-50%);
-    position: absolute; */
     top: 50%;
     left: 5px;
     color: #999;
@@ -189,20 +146,10 @@ tbody td button:hover {
     position: absolute;
 }
 #first_row .wrapper .search input{
-    /* height: 50px;
-    width: 100%;
-    outline: none;
-    font-size: 17px;
-    border-radius: 5px;
-    padding: 0 20px 0 43px;
-    border: 1px solid #B3B3B3; */
-    /* height: 50px; */
     width: 100%;
     height: 24px;
     outline: none;
-    /* font-size: 17px; */
     border-radius: 5px;
-    /* padding: 0 20px 0 43px; */
     border: 1px solid #B3B3B3;
 }
 #first_row .wrapper .search input:focus{
@@ -213,11 +160,6 @@ tbody td button:hover {
     color: #bfbfbf;
 }
 #first_row .wrapper .content .options{
-    /* margin-top: 10px;
-    max-height: 250px;
-    overflow-y: auto;
-    padding-right: 7px; */
-    /* margin-top: 9px; */
     max-height: 80px;
     overflow-y: auto;
     padding-left: 9px;
@@ -236,11 +178,6 @@ tbody td button:hover {
 #first_row .wrapper .options::-webkit-scrollbar-thumb:hover{
     background: #b3b3b3;
 }
-/* #first_row .wrapper .options li{
-    height: 50px;
-    padding: 0 13px;
-    font-size: 21px;
-} */
 #first_row .wrapper .options li:hover, li.selected{
     border-radius: 5px;
     background: #f2f2f2;
@@ -253,8 +190,6 @@ tbody tr {
 }
 
 tbody tr.hide {
-    /* opacity: 0;
-    transform: translateX(100%); */
     display: none;
 }
 
@@ -294,7 +229,6 @@ tbody .modal {
     z-index: 1;
 }
 
-/* Style for the overlay background */
 tbody .overlay {
     display: none;
     position: fixed;
@@ -306,7 +240,6 @@ tbody .overlay {
     z-index: 1;
 }
 
-/* Style for the buttons in the modal */
 tbody .modal .modal-buttons {
     margin-top: 10px;
     text-align: center;
@@ -348,4 +281,8 @@ tbody .modal .modal-buttons {
 .status.shipped {
     background-color: #6fcaea;
     font-size: smaller;
+}
+
+tr a {
+    text-decoration: none;
 }

@@ -21,10 +21,11 @@
 
 .ag-courses_item {
     flex: 0 0 auto;
-    margin: 0px 15px;
+    margin: 10px 15px;
     min-width: 200px;
     border: 1px solid rgb(232, 226, 226);
     border-radius: 8px;
+    box-shadow: 0px 0px 20px 1px rgb(0, 0, 0, 0.3);
 }
 
 .ag-courses-item_link {

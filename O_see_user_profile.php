@@ -1,13 +1,13 @@
 <?php
-include("./see_user_profile_BE.php");
-$acc_id = $_SESSION['acc_id'];
-$fetchUnreadNotificationsQuery = "SELECT COUNT(*) as unread_count FROM notifications WHERE is_read = 0 AND org_id = (SELECT org_id FROM org_list WHERE acc_id = $acc_id)";
-$unreadNotificationsResult = mysqli_query($con, $fetchUnreadNotificationsQuery);
-$unreadCount = 0;
-if ($unreadNotificationsResult) {
-    $unreadRow = mysqli_fetch_assoc($unreadNotificationsResult);
-    $unreadCount = $unreadRow['unread_count'];
-}
+    include("./see_user_profile_BE.php");
+    $acc_id = $_SESSION['acc_id'];
+    $fetchUnreadNotificationsQuery = "SELECT COUNT(*) as unread_count FROM notifications WHERE is_read = 0 AND org_id = (SELECT org_id FROM org_list WHERE acc_id = $acc_id)";
+    $unreadNotificationsResult = mysqli_query($con, $fetchUnreadNotificationsQuery);
+    $unreadCount = 0;
+    if ($unreadNotificationsResult) {
+        $unreadRow = mysqli_fetch_assoc($unreadNotificationsResult);
+        $unreadCount = $unreadRow['unread_count'];
+    }
 ?>
 
 <!DOCTYPE html>
@@ -51,68 +51,58 @@ if ($unreadNotificationsResult) {
     </div>
 
     <div class="container">
-        <div class="left_portion">
-            <div class="userDetails1">
-                <div>
-                    <img src="./assets/<?php echo $user_image ?>">
-                </div>
-                <div class="userDetails">
-                    <div class="userName">
-                        <h1><?php echo $user_name ?></h1>
-                    </div>
-                    <div class="map">
-                        <i class="ri-map-pin-fill ri"></i>
-                        <p><?php echo $user_address, ", ", $user_location ?></p>
-                    </div>
-                </div>
+        <div class="accounnt-information-container">
+            <div class="account-picture">
+                <img src="./assets/<?php echo $user_image ?>" alt="profile">
             </div>
-            <div class="work">
-                <div class="tabs">
-                    <i class='bx bxs-briefcase'></i>
-                    <p>Occupation</p>
-                </div>
-                <div class="primary">
-                    <h1><?php echo $user_job ?></h1>
-                </div>
+            <div class="account-data">
+                <h1><?php echo $user_name ?></h1>
+                <p>Location : <?php echo $user_address, ", ", $user_location ?></p>
+                <p>Email : <?php echo $acc_email ?></p>
+                <p>Contact : <?php echo $user_contact ?></p>
+            </div>
+            <div class="biography">
+                <h1>Occupation</h1>
+                <p><?php echo $user_job ?></p></p>
             </div>
         </div>
 
-        <div class="right_portion">
-            <div class="plate">
-                <h1 class="heading">Basic Informations </h1>
-                <div class="info_box">
-                    <div class="top">
-                        <div class="cel">
-                            <label>Full Name :</label>
-                            <input placeholder="<?php echo $user_name ?>" disabled>
-                        </div>
-                        <div class="cel">
-                            <label>Gender :</label>
-                            <input placeholder="<?php echo $user_gender ?>" disabled>
-                        </div>
-                        <div class="cel">
-                            <label>Date of Birth :</label>
-                            <input placeholder="<?php echo $user_birth ?>" disabled>
-                        </div>
-                        <div class="cel">
-                            <label>NID Number :</label>
-                            <input placeholder="<?php echo $user_NID ?>" disabled>
-                        </div>
-                        <div class="cel">
-                            <label>Since :</label>
-                            <input placeholder="<?php echo $acc_join_date ?>" disabled>
-                        </div>
-                        <div class="cel">
-                            <label>Contact Number :</label>
-                            <input placeholder="<?php echo $user_contact ?>" disabled>
-                        </div>
-                        <div class="cel">
-                            <label>Web Site :</label>
-                            <input placeholder="<?php echo $user_website ?>" disabled>
-                        </div>
-                    </div>
+        <div class="options">
+            <a href="#" id="button-30">Chats</a>
+        </div>
+
+        <div class="form">
+            <h2>Profile Information</h2>
+            <form>
+                <div class="form_row">
+                    <label>Full Name :</label>
+                    <input placeholder="<?php echo $user_name ?>" disabled>
                 </div>
-            </div>
+                <div class="form_row">
+                    <label>Gender :</label>
+                    <input placeholder="<?php echo $user_gender ?>" disabled>
+                </div>
+                <div class="form_row">
+                    <label>Date of Birth :</label>
+                    <input placeholder="<?php echo $user_birth ?>" disabled>
+                </div>
+                <div class="form_row">
+                    <label>NID Number :</label>
+                    <input placeholder="<?php echo $user_NID ?>" disabled>
+                </div>
+                <div class="form_row">
+                    <label>Since :</label>
+                    <input placeholder="<?php echo $acc_join_date ?>" disabled>
+                </div>
+                <div class="form_row">
+                    <label>Contact Number :</label>
+                    <input placeholder="<?php echo $user_contact ?>" disabled>
+                </div>
+                <div class="form_row">
+                    <label>Web Site :</label>
+                    <input placeholder="<?php echo $user_website ?>" disabled>
+                </div>
+            </form>
         </div>
     </div>
 

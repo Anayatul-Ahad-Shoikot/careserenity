@@ -85,7 +85,7 @@ $active_option = getActiveOption($current_url, $nav_options);
             <span class="h-bar"></span>
             <li><a href="./U_organization.php" class="<?php echo $active_option == 'organizations' ? 'active' : ''; ?>">Organizations</a></li>
             <span class="h-bar"></span>
-            <li><a href="#" class="<?php echo $active_option == 'adoptions' ? 'active' : ''; ?>">Adoptions</a></li>
+            <li><a href="./U_adoption.php" class="<?php echo $active_option == 'adoptions' ? 'active' : ''; ?>">Adoptions</a></li>
             <span class="h-bar"></span>
             <li><a href="./U_seminar.php" class="<?php echo $active_option == 'seminars' ? 'active' : ''; ?>">Seminars</a></li>
             <span class="h-bar"></span>

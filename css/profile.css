@@ -299,6 +299,7 @@
 .adoption table th {
     padding: 12px 0px;
     font-size: 13px;
+    width: 173px;
 }
 .adoption table .x {
     display: flex;
@@ -553,4 +554,23 @@ button:hover {
     justify-content: center;
     gap: 30px;
     width: 100%;
+}
+
+
+.container .form {
+    width: 80%;
+    padding: 3rem;
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 0 60px rgba(0, 0, 0, 0.13);
+    margin-top: 3%;
+}
+
+.form h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    color: var(--primary-title-color);
+    padding: 0;
+    margin: 30px 0px;
+    text-shadow: 2px 5px 30px hsl(0, 0%, 100%);
 }

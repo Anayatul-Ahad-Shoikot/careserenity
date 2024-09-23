@@ -80,10 +80,11 @@
             </form>
         </div>
 
-        <div class="plate">
+        <!-- <div class="plate"> -->
             <?php
             if (isset($_SESSION['search_results'])){
                 foreach ($_SESSION['search_results'] as $row) {
+                    echo '<div class="plate">';
                     echo '<div class="card">';
                     echo '<div class="pb" style="background-image: url(\'./assets/' . htmlspecialchars($row['orphan_image']) . '\');"></div>';
                     echo '<div class="info">';
@@ -94,13 +95,14 @@
                     echo '<a href="./O_orphan_profile.php?orphan_id=' . htmlspecialchars($row['orphan_id']) . '" id="button-30">View</a>';
                     echo '</div>';
                     echo '</div>';
+                    echo '</div>';
                 }
                 unset($_SESSION['search_results']);
             } else {
                 include ('./orphan_view_organization_BE.php');
             }
             ?>
-        </div>
+        <!-- </div> -->
 
     </div>
 

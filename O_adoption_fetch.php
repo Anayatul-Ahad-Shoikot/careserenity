@@ -23,7 +23,6 @@
                 $status = "Rejected";
             }
             echo '<tr>' .
-                '<td id="code_' . $row1['adoption_id'] . '">' . $row1['adoption_id'] . '</td>' .
                 '<td id="name_' . $row1['user_id'] . '">' . $row1['user_name'] . '</td>' .
                 '<td>' . $row1['email'] . '</td>' .
                 '<td id="type_' . $row1['orphan_id'] . '">' . $row1['first_name'] . ' ' . $row1['last_name'] . '</td>' .
@@ -31,12 +30,12 @@
                 '<td>' . $row1['issued_date'] . '</td>' .
                 '<td><p class="' . ($row1['status'] != 0 ? "status delivered" : "status cancelled") . '">' . $status . '</p></td>' .
                 '<td>
-                    <button type="submit" id="rmv_' . $row1['adoption_id'] . '" onclick="rmvData(\'' . $row1['adoption_id'] . '\')" style="display: none;" name="rmvBTN" ><i class="bx bx-trash" ></i></button>
+                    <a href="O_adoption_data_delete_BE.php?adoption_id=' .$row1['adoption_id']. '">Delete</a>
                 </td>' .
                 '</tr>';
         }
     } else {
-        echo '<tr><td colspan="10">No Course records found</td></tr>';
+        echo '<tr><td colspan="10"><p id="notFound">No adoption request yet.</p></td></tr>';
     }
 
     $con->close();

@@ -19,14 +19,8 @@ $nav_options = [
         '/O_see_organization_profile.php',
         '/O_see_orphan_profile.php'
     ],
-    'adoptions' => [
-        '/O_adoption.php'
-    ],
     'seminars' => [
         '/O_seminar.php'
-    ],
-    'joinus' => [
-        '/O_joinus.php'
     ],
     'aboutus' => [
         '/O_aboutus.php'
@@ -36,7 +30,9 @@ $nav_options = [
         '/O_profile_edit.php',
         '/O_chat_list.php',
         '/O_orphan.php',
-        '/O_orphan_profile.php'
+        '/O_orphan_profile.php',
+        '/O_orphan_removed.php',
+        '/O_adoption.php'
     ]
 ];
 
