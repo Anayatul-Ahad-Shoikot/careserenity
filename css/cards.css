@@ -3,7 +3,13 @@
     width: 1350px;
     overflow: hidden;
 }
-
+.ag-format-container .heading-row {
+    font-size: 25px;
+    color: var(--primary-color-dark);
+    text-transform: capitalize;
+    margin: 1.5rem;
+    padding-bottom: 10px;
+}
 .ag-courses_box {
     display: flex;
     overflow-x: auto;
@@ -15,9 +21,10 @@
 
 .ag-courses_item {
     flex: 0 0 auto;
-    margin-right: 15px;
+    margin: 0px 15px;
     min-width: 200px;
-    border: 1px solid lightgray;
+    border: 1px solid rgb(232, 226, 226);
+    border-radius: 8px;
 }
 
 .ag-courses-item_link {
@@ -35,8 +42,9 @@
     color: #FFF;
 }
 
-.ag-courses_item:hover {
-    border: 1px solid black;
+.ag-courses-item_link:hover,
+.ag-courses-item_link:hover h1 {
+    color: var(--primary-color-dark);
 }
 
 .ag-courses-item_link:hover .ag-courses-item_bg {

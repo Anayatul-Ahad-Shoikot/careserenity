@@ -62,12 +62,16 @@ if ($unreadNotificationsResult) {
                 <input type="text" placeholder="<?php echo $user_name ?>" disabled>
             </div>
             <div class="form_row">
+                <label>Requested for:</label>
+                <input type="text" placeholder="<?php echo $first_name, ' ', $last_name ?>" disabled>
+            </div>
+            <div class="form_row">
                 <label>Requested At:</label>
                 <input type="text" placeholder="<?php echo $request_date ?>" disabled>
             </div>
             <div class="form_row">
                 <label>Adoption Process:</label>
-                <input type="text" placeholder="<?php 
+                <input type="text" id="adoptionStatus" placeholder="<?php 
                     if($status == 1){
                         echo 'Approved';
                     } else {
@@ -91,10 +95,7 @@ if ($unreadNotificationsResult) {
                 <label>Applicant's Annual Income:</label>
                 <input type="text" placeholder="<?php echo $income ?>" disabled>
             </div>
-            <div class="form_row">
-                <label>Requested for:</label>
-                <input type="text" placeholder="<?php echo $first_name, ' ', $last_name ?>" disabled>
-            </div>
+            
             <div class="form_row">
                 <label>Applicant's Marital Status:</label>
                 <input type="text" placeholder="<?php echo $maritalStatus ?>" disabled>
@@ -128,11 +129,23 @@ if ($unreadNotificationsResult) {
 
     <?php include "./footer.php" ?>
 
-    <button id="scrollTopBtn" title="Go to top"><i class='bx bx-chevrons-up bx-burst' ></button>
+    <button id="scrollTopBtn" title="Go to top"><i class='bx bx-chevrons-up bx-burst' ></i></button>
 
     <script src="./js/scrollupBTN.js"></script>
     <script src="./js/notification_color.js"></script>
     <script src="./js/feedback.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const adoptionStatus = document.getElementById('adoptionStatus').placeholder;
+            const deleteButton = document.querySelector('.container form .buttons a');
+
+            if (adoptionStatus === 'Approved') {
+                deleteButton.style.pointerEvents = 'none';
+                deleteButton.style.opacity = '0.5';
+                deleteButton.style.backgroundColor = 'lightgrey';
+            }
+        });
+    </script>
 
 </body>
 

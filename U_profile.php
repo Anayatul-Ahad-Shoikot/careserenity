@@ -77,17 +77,24 @@ if ($unreadNotificationsResult) {
 
         <div class="short-reports">
             <div class="ag-format-container">
+                <h1 class="heading-row">Your Adoption requests</h1>
                 <div class="ag-courses_box">
                     <?php include './U_fetch_adoption_cards_BE.php'; ?>
                 </div>
             </div>
 
-            <div class="seminars">
-                <h1>seminers</h1>
+            <div class="ag-format-container">
+                <h1 class="heading-row">Your Seminar</h1>
+                <div class="ag-courses_box">
+                    <?php  ?>
+                </div>
             </div>
 
-            <div class="donations">
-                <h1>donations</h1>
+            <div class="ag-format-container">
+                <h1 class="heading-row">Donation timeline:</h1>
+                <div class="ag-courses_box">
+                    <?php  ?>
+                </div>
             </div>
         </div>
     </div>

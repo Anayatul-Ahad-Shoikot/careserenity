@@ -131,7 +131,9 @@
             <div class="adoption-donation">
 
                 <div class="adoption">
-                    <h3 id="heading">Adoption Requests</h3>
+                    <a href="./O_adoption.php">
+                        <h3 id="heading">Adoption Requests</h3>
+                    </a>
                     <table>
                         <thead>
                             <tr>
