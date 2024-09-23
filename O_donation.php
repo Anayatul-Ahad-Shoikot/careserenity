@@ -94,18 +94,17 @@
             <table>
                 <thead>
                     <tr>
-                        <th> Adopted By </th>
-                        <th> Email </th>
-                        <th> Adopted To </th>
-                        <th> Requested At </th>
-                        <th> Issued Date</th>
-                        <th> Status </th>
+                        <th> Received Date </th>
+                        <th> From </th>
+                        <th> To </th>
+                        <th> Via </th>
+                        <th> Amount </th>
                         <th> Action </th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php
-                        include('./O_adoption_fetch_BE.php');
+                        include('./O_donation_fetch_BE.php');
                     ?>
                 </tbody>
             </table>

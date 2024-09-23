@@ -83,7 +83,7 @@
 
         <div class="short-report">
             <li>
-                <a href="#"><i class='bx bxs-dollar-circle'></i></a>
+                <a href="./O_donation.php"><i class='bx bxs-dollar-circle'></i></a>
                 <span>
                     <p>Donation Received</p>
                     <h3><?php echo $total_amount_received ?></h3>
@@ -172,13 +172,14 @@
 
                 
                 <div class="donation">
-                    <h3 id="heading">Donation Received</h3>
+                    <a href="./O_donation.php" style="text-decoration:none;">
+                        <h3 id="heading" style="border: 2px solid black; border-radius: 10px;">Donations</h3>
+                    </a>
                     <ul class="donation-list">
                         <?php
-                    
                         foreach ($resultArray as $y) {
                             if ($y['receiver_type'] === 'organization') {
-                                echo '<li class="completed"><p>Donation Received ' . $y['amount'] . 'TK from <a href="#?user_id=' . $y['user_id'] . '">' . $y['user_name'] . '</a></p></li>';
+                                echo '<li class="completed"><p>Donation Received ' . $y['amount'] . 'TK from <a href="./O_see_user_profile.php?user_id=' . $y['user_id'] . '">' . $y['user_name'] . '</a></p></li>';
                             } elseif ($y['receiver_type'] === 'orphan') {
                                 echo '<li class="not-completed"><p>' . $y['first_name'] . ' ' . $y['last_name'] . ' received ' . $y['amount'] . 'TK from <a href="./O_see_user_profile.php?user_id=' . $y['user_id'] . '">' . $y['user_name'] . '</a></p></li>';
                             }

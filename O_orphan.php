@@ -80,7 +80,6 @@
             </form>
         </div>
 
-        <!-- <div class="plate"> -->
             <?php
             if (isset($_SESSION['search_results'])){
                 foreach ($_SESSION['search_results'] as $row) {
@@ -102,7 +101,6 @@
                 include ('./orphan_view_organization_BE.php');
             }
             ?>
-        <!-- </div> -->
 
     </div>
 
