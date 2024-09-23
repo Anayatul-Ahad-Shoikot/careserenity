@@ -76,7 +76,7 @@
         <div class="options">
             <a href="#" id="button-30">Chats</a>
             <a href="./O_orphan.php" id="button-30">Orphanage</a>
-            <a href="#" id="button-30">Volunteers</a>
+            <a href="./O_joinus.php" id="button-30">Volunteers</a>
             <a href="./O_profile_edit.php" id="button-30">Profile Info</a>
         </div>
 

@@ -35,7 +35,7 @@ CREATE TABLE `accounts` (
   `acc_join_date` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
   `question` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `answer` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+);
 
 --
 -- Dumping data for table `accounts`
@@ -60,7 +60,7 @@ CREATE TABLE `admin_list` (
   `admin_contact` varchar(30) COLLATE utf8mb4_general_ci DEFAULT NULL,
   `admin_priyority` int DEFAULT NULL,
   `admin_image` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+);
 
 -- --------------------------------------------------------
 
@@ -87,7 +87,7 @@ CREATE TABLE `adoptions` (
   `additionalInfo` varchar(255) DEFAULT NULL,
   `user_delete` int NOT NULL DEFAULT '0' COMMENT ' 1 = user delete',
   `org_delete` int NOT NULL DEFAULT '0' COMMENT ' 1 = organization delete'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+);
 
 --
 -- Dumping data for table `adoptions`
@@ -109,7 +109,7 @@ CREATE TABLE `blog_comment` (
   `viewer_acc_name` varchar(30) COLLATE utf8mb4_general_ci NOT NULL,
   `comment` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
   `comment_date` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+);
 
 --
 -- Dumping data for table `blog_comment`
@@ -129,7 +129,7 @@ INSERT INTO `blog_comment` (`post_id`, `viewer_acc_name`, `comment`, `comment_da
 CREATE TABLE `blog_likes` (
   `post_id` int NOT NULL,
   `likes` int DEFAULT '0'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+);
 
 --
 -- Dumping data for table `blog_likes`
@@ -154,7 +154,7 @@ CREATE TABLE `blog_post` (
   `post_category` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `post_image` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `published` varchar(255) COLLATE utf8mb4_general_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+);
 
 --
 -- Dumping data for table `blog_post`
@@ -178,7 +178,7 @@ CREATE TABLE `chats` (
   `msg` text COLLATE utf8mb4_general_ci,
   `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `is_read` tinyint NOT NULL DEFAULT '0'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+);
 
 -- --------------------------------------------------------
 
@@ -195,7 +195,7 @@ CREATE TABLE `contact_message` (
   `msg_content` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
   `sending_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `is_registerd` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+);
 
 -- --------------------------------------------------------
 
@@ -219,7 +219,7 @@ CREATE TABLE `donations` (
   `Bkash_trans` varchar(20) DEFAULT NULL,
   `amount` float NOT NULL,
   `receiving_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+);
 
 --
 -- Dumping data for table `donations`
@@ -238,7 +238,7 @@ INSERT INTO `donations` (`donation_id`, `donor_id`, `receiver_id`, `receiver_orp
 CREATE TABLE `donations_orphan` (
   `orphan_id` int NOT NULL,
   `total_amount` decimal(10,2) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+);
 
 -- --------------------------------------------------------
 
@@ -252,7 +252,7 @@ CREATE TABLE `gallery` (
   `img_title` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
   `img_path` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
   `img_reacts` int NOT NULL DEFAULT '0'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+);
 
 -- --------------------------------------------------------
 
@@ -263,7 +263,7 @@ CREATE TABLE `gallery` (
 CREATE TABLE `like_handle` (
   `post_id` int NOT NULL,
   `viewer_acc_id` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+);
 
 --
 -- Dumping data for table `like_handle`
@@ -286,7 +286,7 @@ CREATE TABLE `local_orphan_guardian` (
   `guardian_name` varchar(30) COLLATE utf8mb4_general_ci DEFAULT NULL,
   `guardian_contact` varchar(30) COLLATE utf8mb4_general_ci DEFAULT NULL,
   `guardian_location` varchar(30) COLLATE utf8mb4_general_ci DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+);
 
 --
 -- Dumping data for table `local_orphan_guardian`
@@ -312,7 +312,7 @@ CREATE TABLE `notifications` (
   `content` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
   `amount` float(5,2) DEFAULT '0.00',
   `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+);
 
 --
 -- Dumping data for table `notifications`
@@ -359,7 +359,7 @@ CREATE TABLE `org_list` (
   `org_location` varchar(255) DEFAULT NULL,
   `org_vision` varchar(255) DEFAULT NULL,
   `org_reviews` decimal(2,2) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+);
 
 --
 -- Dumping data for table `org_list`
@@ -400,7 +400,7 @@ CREATE TABLE `orphan_list` (
   `orphan_image` varchar(255) DEFAULT NULL,
   `adoption_status` int NOT NULL DEFAULT '0' COMMENT '0 = unadopted, 1 = adopted',
   `removed_status` int NOT NULL DEFAULT '0' COMMENT '1 = removed'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+);
 
 --
 -- Dumping data for table `orphan_list`
@@ -430,7 +430,7 @@ CREATE TABLE `seminars` (
   `org_id` int NOT NULL,
   `visibility` tinyint(1) DEFAULT '0' COMMENT ' 0 = visible, 1 = invisible',
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+);
 
 --
 -- Dumping data for table `seminars`
@@ -448,7 +448,7 @@ INSERT INTO `seminars` (`seminar_id`, `title`, `banner`, `description`, `seminar
 CREATE TABLE `seminar_participants` (
   `seminar_id` int NOT NULL,
   `participant_id` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+);
 
 -- --------------------------------------------------------
 
@@ -470,7 +470,7 @@ CREATE TABLE `user_list` (
   `user_location` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `user_image` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `child_adopted` int NOT NULL DEFAULT '0'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+);
 
 --
 -- Dumping data for table `user_list`
