@@ -24,8 +24,10 @@
     $sql = "INSERT INTO seminars (title, banner, description, seminar_date, subject, guest, type, location, org_id ) 
             VALUES ('$title', '$banner_name', '$description', '$seminar_date', '$subject', '$guest', '$type', '$location', $org_id)";
     if (mysqli_query($con, $sql)) {
-        echo "Seminar created successfully!";
+        $_SESSION['positive'] = "200: Seminar created successfully!";
+        header('Location: ./O_seminar.php');
     } else {
-        echo "Error: " . mysqli_error($con);
+        $_SESSION['negative'] = "404: Seminar creation failed !";
+        header('Location: ./O_seminar.php');
     }
     mysqli_close($con);
