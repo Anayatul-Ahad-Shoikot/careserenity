@@ -81,8 +81,7 @@
 
         <?php 
             $seminarQuery = "SELECT * FROM seminars WHERE org_id = 
-                            (SELECT org_id FROM org_list WHERE acc_id = $acc_id) OR 
-                            org_id IN (SELECT org_id FROM other_orgs)";
+                            (SELECT org_id FROM org_list WHERE acc_id = $acc_id)";
             $seminarResult = mysqli_query($con, $seminarQuery);
 
             while($row = mysqli_fetch_assoc($seminarResult)){
