@@ -123,7 +123,7 @@
                     echo "<p>".htmlspecialchars($row['description'])."</p>";
                     echo "<p>Date: ".htmlspecialchars($row['date'])."</p>";
                     echo "<p>Participants: ".htmlspecialchars($row['participants_count'])."</p>";
-                    echo "<button onnclick='editSeminar(".$row['seminar_id'].")'>Edit</button>";
+                    echo "<a href='./O_seminar_edit.php?id={$seminar_id}'>Edit</a>";
                     echo "<button onclick='removeSeminar(" . $row['seminar_id'] . ")'>Remove</button>";
                     echo "<button onclick='toggleSeminarVisibility(" . $row['seminar_id'] . ")'>Hide/Show</button>";
                     echo "<button onclick='postponeSeminar(" . $row['seminar_id'] . ")'>Postpone</button>";
@@ -145,44 +145,6 @@
     <script src="./js/scrollupBTN.js"></script>
     <script src="./js/notification_color.js"></script>
     <script src="./js/feedback.js"></script>
-
-    <script>
-        function toggleSeminarForm() {
-            var form = document.getElementById("seminarForm");
-            form.style.display = form.style.display == "none" ? "block" : "none";
-        }
-
-        function toggleLocationField() {
-            var type = document.getElementById("type").value;
-            var locationField = document.getElementById("locationField");
-            if(type == "offline"){
-                locationField.style.display = "block";
-            }
-            else{
-                locationField.style.display = "none";
-            }
-        }
-    </script>
-
-    <script>
-        function editSeminar(seminarId){
-            window.location.href = `edit_seminar.php?id=${seminarId}`;
-        }
-
-        function removeSeminar(seminarId){
-            if(confirm("Are you sure you want to remove this seminar?")){
-                window.location.href = `remove_seminar.php?id=${seminarId}`;
-            }
-        }
-
-        function toggleSeminarVisibilty(seminarId){
-            window.location.href = `toggle_seminar_visibilty.php?id=${seminarId}`;
-        }
-
-        function postponeSeminar(seminarId){
-            window.location.href = `postpone_seminar.php?id=${seminarId}`;
-        }
-    </script>
 
 </body>
 </html>
