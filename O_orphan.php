@@ -72,6 +72,7 @@
         
         <div class="options">
             <a href="./O_profile.php" id="button-30">back</a>
+            <a href="./O_adoption.php" id="button-30">Adoptions Request</a>
             <a href="./O_orphan_removed.php" id="button-30">Removed Child</a>
             <a href="./O_orphan_add.php" id="button-30">Add Child</a>
             <form action="./orphan_search_organization_BE.php" method="GET">

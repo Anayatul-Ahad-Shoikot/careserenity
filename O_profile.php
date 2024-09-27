@@ -75,6 +75,7 @@
 
         <div class="options">
             <a href="#" id="button-30">Chats</a>
+            <a href="./O_funds.php" id="button-30">Funds</a>
             <a href="./O_orphan.php" id="button-30">Orphanage</a>
             <a href="./O_joinus.php" id="button-30">Volunteers</a>
             <a href="./O_profile_edit.php" id="button-30">Profile Info</a>
@@ -83,16 +84,16 @@
 
         <div class="short-report">
             <li>
-                <a href="./O_donation.php"><i class='bx bxs-dollar-circle'></i></a>
+                <a href="./O_funds.php"><i class='bx bxs-dollar-circle'></i></a>
                 <span>
-                    <p>Donation Received</p>
+                    <p>Funds</p>
                     <h3><?php echo $total_amount_received ?></h3>
                 </span>
             </li>
             <li>
                 <a href="./O_adoption.php"><i class='bx bxs-face' ></i></i></a>
                 <span>
-                    <p>Adoption Requests</p>
+                    <p>Requests</p>
                     <h3><?php echo $total_adoptions ?></h3>
                 </span>
             </li>

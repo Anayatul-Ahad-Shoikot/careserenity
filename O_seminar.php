@@ -116,7 +116,6 @@
                 $seminarQuery = "SELECT * FROM seminars WHERE org_id != 
                                     (SELECT org_id FROM org_list WHERE acc_id = $acc_id)";
                 $seminarResult = mysqli_query($con, $seminarQuery);
-
                 while ($row = mysqli_fetch_assoc($seminarResult)) {
                     echo "<div class='seminarCard'>
                                 <h3>{$row['title']}</h3>
@@ -133,10 +132,6 @@
                     echo "</div>";
                 }
             ?>
-                    <div class='seminarCard'><h3>xyz</h3><img src='./assets/bg.jpg'alt='Seminar Banner'><p>afsefasd</p><p>Date: 2024-09-24</p><p>Participants: 0</p><a href='./O_seminar_edit.php?id=2' id='button-30'>Edit</a><button onclick='removeSeminar(2)'>Remove</button><button onclick='toggleSeminarVisibility(2)'>Hide/Show</button><button onclick='postponeSeminar(2)'>Postpone</button></div>
-        <div class='seminarCard'><h3>xyz</h3><img src='./assets/bg.jpg'alt='Seminar Banner'><p>afsefasd</p><p>Date: 2024-09-24</p><p>Participants: 0</p><a href='./O_seminar_edit.php?id=2' id='button-30'>Edit</a><button onclick='removeSeminar(2)'>Remove</button><button onclick='toggleSeminarVisibility(2)'>Hide/Show</button><button onclick='postponeSeminar(2)'>Postpone</button></div>
-        <div class='seminarCard'><h3>xyz</h3><img src='./assets/bg.jpg'alt='Seminar Banner'><p>afsefasd</p><p>Date: 2024-09-24</p><p>Participants: 0</p><a href='./O_seminar_edit.php?id=2' id='button-30'>Edit</a><button onclick='removeSeminar(2)'>Remove</button><button onclick='toggleSeminarVisibility(2)'>Hide/Show</button><button onclick='postponeSeminar(2)'>Postpone</button></div>
-        <div class='seminarCard'><h3>xyz</h3><img src='./assets/bg.jpg'alt='Seminar Banner'><p>afsefasd</p><p>Date: 2024-09-24</p><p>Participants: 0</p><a href='./O_seminar_edit.php?id=2' id='button-30'>Edit</a><button onclick='removeSeminar(2)'>Remove</button><button onclick='toggleSeminarVisibility(2)'>Hide/Show</button><button onclick='postponeSeminar(2)'>Postpone</button></div>
         </div>
     </div>
     
