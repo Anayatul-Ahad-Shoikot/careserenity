@@ -15,13 +15,35 @@ include './blog_fetch_BE.php';
     <link rel='stylesheet' href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css'>
     <link rel="stylesheet" href="./css/colors.css">
     <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="./css/feedback.css">
     <link rel="stylesheet" href="./css/navbar.css">
     <link rel="stylesheet" href="./css/footer.css">
+
     <title>CareSenerity</title>
 </head>
 
 <body>
     <?php include "./navbar.php" ?>
+
+    <div class="feedback">
+        <?php
+        session_start();
+        if (isset($_SESSION['positive'])) {
+            echo '<div class="positive">
+                        <h5>' . $_SESSION['positive'] . '</h5>
+                    </div>';
+            unset($_SESSION['positive']);
+        }
+        if (isset($_SESSION['negative'])) {
+            echo '<div class="negative">
+                        <h5>' . $_SESSION['negative'] . '</h5>
+                    </div>';
+            unset($_SESSION['negative']);
+        }
+        ?>
+    </div>
+
+
     <div class="hero">
         <div class="section__container header__container">
             <h1>Join us to make Lives Better</h1>
@@ -209,6 +231,7 @@ include './blog_fetch_BE.php';
 
     <script src="./js/nav_scroll.js"></script>
     <script src="./js/scrollupBTN.js"></script>
+    <script src="./js/feedback.js"></script>
 </body>
 
 </html>

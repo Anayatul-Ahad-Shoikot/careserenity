@@ -17,16 +17,12 @@ $result = mysqli_query($con, $query);
 if (mysqli_num_rows($result) > 0) {
     while ($row = mysqli_fetch_assoc($result)) {
         echo '<div class="card">
-                <div class="card-img">
-                    <img src="./assets/' . $row['post_image'] . '" alt="image">
-                </div>
-                <div class="blog-details">
-                    <h1 class="blog-title">' . $row['post_title'] . '</h1>
-                    <p class="user"></i>' . $row['name'] . '</p>
-                    <p class="user">' . $row['published'] . '</p>
-                    <a href="./default_view_blog.php?post_id=' . $row['post_id'] . '">Read</a>
-                </div>
-            </div>';
+                <img src="./assets/' . $row['post_image'] . '" alt="image">
+                <h1>' . $row['post_title'] . '</h1>
+                <p>' . $row['name'] . '</p>
+                <p>' . $row['published'] . '</p>
+                <a href="./default_view_blog.php?post_id=' . $row['post_id'] . '" id="button-30">Read</a>
+                </div>';
     }
 } else {
     echo '<P id="nothing_found">No blog posts found.</p>';

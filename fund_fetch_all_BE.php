@@ -12,7 +12,7 @@
         echo '<h1>' . htmlspecialchars($fund['name']) . '</h1>';
         echo '<p>' . htmlspecialchars($fund['org_name']) . '</p>';
         echo '<p class="price">' . htmlspecialchars($fund['received']) . '/' . htmlspecialchars($fund['amount']) . '</p>';
-        echo '<a href="./#?fund_id=' . htmlspecialchars($fund['fund_id']) . '" id="button-30">Details</a>';
+        echo '<a href="./fund_donate_loggedout.php?fund_id=' . $fund['fund_id'] . '&org_id='.$fund['org_id'].'" id="button-30">Donate</a>';
         echo '</div>';
     }
     $stmt->close();

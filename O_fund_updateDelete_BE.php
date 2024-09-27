@@ -17,11 +17,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $stmt->close();
             header(`Location: ./O_fund_details.php?fund_id={$fund_id}`);
         } 
-        // else {
-        //     $_SESSION['negative'] =  "Failed to update image !";
-        //     $stmt->close();
-        //     header(`Location: ./O_fund_details.php?fund_id={$fund_id}`);
-        // }
 
         if($name) {
             $update_query = "UPDATE funds SET name = ? WHERE fund_id = ?";
@@ -31,12 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $_SESSION['positive'] = "Fund Name updated successfully.";
             $stmt->close();
             header(`Location: ./O_fund_details.php?fund_id={$fund_id}`);
-        } 
-        // else {
-        //     $_SESSION['negative'] =  "Faild to update funding name !";
-        //     $stmt->close();
-        //     header(`Location: ./O_fund_details.php?fund_id={$fund_id}`);
-        // }
+        }
 
         if($duration) {
             $update_query = "UPDATE funds SET duration = ? WHERE fund_id = ?";
@@ -46,12 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $_SESSION['positive'] = "Date modified successfully.";
             $stmt->close();
             header(`Location: ./O_fund_details.php?fund_id={$fund_id}`);
-        } 
-        // else {
-        //     $_SESSION['negative'] =  "Date modification failed !";
-        //     $stmt->close();
-        //     header(`Location: ./O_fund_details.php?fund_id={$fund_id}`);
-        // }
+        }
 
 
     } elseif (isset($_POST['delete'])) {

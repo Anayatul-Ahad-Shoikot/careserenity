@@ -39,7 +39,7 @@ include('./blog_fetch_BE.php');
         <div class="blog-actions">
             <form action="#" method="post">
             <input type="hidden" name="post_id" value="<?php echo $post_id ?>">
-            <button type="submit" id="button-30" name="like" onclick="storeScrollPosition('LIKE')" disabled><i class='bx bxs-like'></i></button>
+            <button type="submit" id="button-30" name="like" onclick="alert('Please login first!.')"><i class='bx bxs-like'></i></button>
             </form>
             <p class="likes-count"><?php echo $likes ?></p>
         </div>
@@ -50,10 +50,10 @@ include('./blog_fetch_BE.php');
             <?php include('./comment_fetch_BE.php'); ?>
         </div>
 
-        <form id="write-comment" action="#" method="post">
+        <form id="write-comment" action="#">
             <input type="hidden" name="post_id" value="<?php echo $post_id ?>">
-            <input type="text" name="comment" placeholder="To comment login or create account first." required>
-            <button type="submit" id="button-30" name="submit" onclick="storeScrollPosition('COMMENT')" disabled>Comment</button>
+            <input type="text" name="comment" placeholder="To comment login or create account first." disabled>
+            <button id="button-30" onclick="alert('Please login first!.')">Comment</button>
         </form>
         </div>
     </div>
@@ -62,7 +62,6 @@ include('./blog_fetch_BE.php');
   <button id="scrollTopBtn" title="Go to top"><i class='bx bx-chevrons-up bx-burst'></i></button>
 
   <script src="./js/scrollupBTN.js"></script>
-  <script src="./js/react.js"></script>
 </body>
 
 </html>
