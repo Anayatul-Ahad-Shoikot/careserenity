@@ -1,5 +1,7 @@
 <?php
         include('./db_con.php');
+        session_start();
+        $role = $_SESSION['role'];
         $fund_id = $_GET['fund_id'];
         $sql = "SELECT funds.*, org_list.org_name, org_list.org_id FROM funds LEFT JOIN org_list ON funds.org_id = org_list.org_id WHERE funds.fund_id = ?";
         $stmt = $con->prepare($sql);
@@ -22,7 +24,7 @@
 <body style="background-image: url('./assets/<?php echo htmlspecialchars($fund['img']); ?>');">
     <div id="popupForm" class="popup">
         <div class="popup-content">
-            <span class="close" onclick="returnHome()">&times;</span>
+            <span class="close" onclick="returnHome('<?php echo $role ?>')">&times;</span>
             <div class="wrapper">
                 <h1>Fund Donation Form</h1>
                 <form action="./fund_donation_submit_BE.php" method="POST">
@@ -121,8 +123,13 @@
 
 
     <script>
-        function returnHome() {
-            window.location.href = './O_home.php';
+        function returnHome(x) {
+            console.log(x);
+            if (x == 'user'){
+                window.location.href = './U_home.php';
+            } else {
+                window.location.href = './O_home.php';
+            }
         }
 
         const creditCardInputs = document.getElementById("creditCardInputs");

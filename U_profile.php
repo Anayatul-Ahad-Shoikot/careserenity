@@ -76,24 +76,24 @@
         </div>
 
         <div class="short-reports">
+            <h1 id="heading">Your Adoption requests</h1>
             <div class="ag-format-container">
-                <h1 class="heading-row">Your Adoption requests</h1>
                 <div class="ag-courses_box">
                     <?php include './U_fetch_adoption_cards_BE.php'; ?>
                 </div>
             </div>
 
+            <h1 id="heading">Your Seminar</h1>
             <div class="ag-format-container">
-                <h1 class="heading-row">Your Seminar</h1>
                 <div class="ag-courses_box">
-                    <?php  ?>
+                    <p id="notFound">Not added yet</p>
                 </div>
             </div>
 
+            <h1 id="heading">Donation timeline:</h1>
             <div class="ag-format-container">
-                <h1 class="heading-row">Donation timeline:</h1>
                 <div class="ag-courses_box">
-                    <?php  ?>
+                <p id="notFound">Not added yet</p>
                 </div>
             </div>
         </div>

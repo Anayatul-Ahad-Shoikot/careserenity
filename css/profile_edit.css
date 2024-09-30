@@ -1,9 +1,12 @@
 
 .options{
+    display: flex;
     border-bottom: 2px solid black;
     margin: 1rem 15%;
     padding: 10px;
     text-align: right;
+    gap: 20px;
+    justify-content: right;
 }
 
 

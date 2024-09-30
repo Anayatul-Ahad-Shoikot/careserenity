@@ -20,7 +20,7 @@
     <link rel='stylesheet' href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css'>
     <link rel="stylesheet" href="./css/colors.css">
     <link rel="stylesheet" href="./css/navbar.css">
-    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="./css/profile_edit.css">
     <link rel="stylesheet" href="./css/seminar.css">
     <link rel="stylesheet" href="./css/footer.css">
     <link rel="stylesheet" href="./css/notification.css">
@@ -31,100 +31,60 @@
     <body>
         <?php include("./navbarU.php") ?>
 
-        <div id="searchSeminars">
-            <form method="GET" action="">
-                <input type="text" name="search" placeholder="Search seminars by title or description" value="<?php echo isset($_GET['search']) ? htmlspecialchars($_GET['search']) : ''; ?>">
-                <button type="submit">Search</button>
-            </form>
-        </div>
-
-        <!-- main body -->
-
-        <?php
-            include("./db_con.php");
-            $seminarQuery = "SELECT * FROM seminars 
-            -- WHERE org_id = (SELECT org_id FROM org_list WHERE acc_id = $acc_id)
-            --                 OR org_id IN (SELECT org_id FROM other_orgs)
-            ";
-            $result = mysqli_query($con, $seminarQuery);
-        ?>
-
-        <!-- Display All Seminars -->
-        <div id="allSeminars">
-            <h2>All Seminars</h2>
+        <div class="feedback">
             <?php
-                if (mysqli_num_rows($result) > 0) {
-                    while ($row = mysqli_fetch_assoc($result)) {
-                        echo "<div class='seminarCard'>";
-                        echo "<h3>" . htmlspecialchars($row['title']) . "</h3>";
-                        echo "<img src='" . htmlspecialchars($row['banner']) . "' alt='Seminar Banner'>";
-                        echo "<p>" . htmlspecialchars($row['description']) . "</p>";
-                        echo "<p>Date: " . htmlspecialchars($row['seminar_date']) . "</p>";
-                        echo "<p>Type: " . htmlspecialchars($row['type']) . "</p>";
-
-                        // Register Button
-                        echo "<form method='POST' action='register_seminar.php'>";
-                        echo "<input type='hidden' name='seminar_id' value='" . $row['seminar_id'] . "'>";
-                        echo "<button type='submit'>Register</button>";
-                        echo "</form>";
-
-                        echo "</div>";
-                    }
-                } else {
-                    echo "<p>No seminars available.</p>";
-                }
-            ?>
-        </div>
-
-
-        <?php
-                    include("./db_con.php");
-            if (isset($_GET['search'])) {
-                $searchTerm = mysqli_real_escape_string($con, $_GET['search']);
-                $seminarQuery = "SELECT * FROM seminars 
-                                WHERE (org_id = (SELECT org_id FROM org_list WHERE acc_id = $acc_id)
-                                OR org_id IN (SELECT org_id FROM other_orgs))
-                                AND (title LIKE '%$searchTerm%' OR description LIKE '%$searchTerm%')";
+            if (isset($_SESSION['positive'])) {
+                echo '<div class="positive">
+                            <h5>' . $_SESSION['positive'] . '</h5>
+                        </div>';
+                unset($_SESSION['positive']);
             }
-        ?>
-
-        <?php
-            include("./db_con.php");
-            // Fetch registered seminars for the user
-            $registeredSeminarsQuery = "SELECT * 
-                                        FROM seminars 
-                                        JOIN seminar_participants ON seminars.seminar_id = seminar_participants.seminar_id 
-                                        WHERE seminar_participants.participant_id = $acc_id";
-            $registeredResult = mysqli_query($con, $registeredSeminarsQuery);
-        ?>
-
-        <!-- Display Registered Seminars -->
-        <div id="registeredSeminars">
-            <h2>Registered Seminars</h2>
-            <?php
-                if (mysqli_num_rows($registeredResult) > 0) {
-                    while ($row = mysqli_fetch_assoc($registeredResult)) {
-                        echo "<div class='seminarCard'>";
-                        echo "<h3>" . htmlspecialchars($row['title']) . "</h3>";
-                        echo "<img src='" . htmlspecialchars($row['banner']) . "' alt='Seminar Banner'>";
-                        echo "<p>" . htmlspecialchars($row['description']) . "</p>";
-                        echo "<p>Date: " . htmlspecialchars($row['seminar_date']) . "</p>";
-
-                        // Cancel Button
-                        echo "<form method='POST' action='cancel_registration.php'>";
-                        echo "<input type='hidden' name='participant_id' value='" . $row['participant_id'] . "'>";
-                        echo "<button type='submit'>Cancel Registration</button>";
-                        echo "</form>";
-
-                        echo "</div>";
-                    }
-                } else {
-                    echo "<p>You haven't registered for any seminars yet.</p>";
-                }
+            if (isset($_SESSION['negative'])) {
+                echo '<div class="negative">
+                            <h5>' . $_SESSION['negative'] . '</h5>
+                        </div>';
+                unset($_SESSION['negative']);
+            }
             ?>
         </div>
 
-        <!-- main body end -->
+        <div class="options">
+            <form action="#" method="GET">
+                <input type="text" name="query" placeholder="Search Organizations...">
+                <button type="submit"><i class="ri-search-line"></i></button>
+            </form>
+            <a href="./U_seminar.php" id="button-30">Refresh</a>
+        </div>
+
+        <h1 id="heading">Current Seminars</h1>
+    <div class="seminarBlock">
+        <div class="cards">
+            <?php
+                include("./db_con.php");
+                $ownSeminarQuery = "SELECT seminars.*, COUNT(seminar_participants.seminar_id) as participants_count 
+                            FROM seminars 
+                            LEFT JOIN seminar_participants ON seminars.seminar_id = seminar_participants.seminar_id
+                            GROUP BY seminars.seminar_id";
+                $result = mysqli_query($con, $ownSeminarQuery);                        
+                if(mysqli_num_rows($result) > 0){
+                    while($row = mysqli_fetch_assoc($result)){
+                        echo "<div class='seminarCard'>";
+                        echo "<h3>".htmlspecialchars($row['title'])."</h3>";
+                        echo "<img src='./assets/".htmlspecialchars($row['banner'])."'alt='Seminar Banner'>";
+                        echo "<p>".htmlspecialchars($row['description'])."</p>";
+                        echo "<div class='info'><span>Date: ".htmlspecialchars($row['seminar_date'])."</span>";
+                        echo "<span><i class='bx bxs-user-check'></i> ".htmlspecialchars($row['participants_count'])."</span></div>";
+                        echo "<div class='btnclass'><a href='#?id=" . $row['seminar_id'] . "' id='button-30'>View</a>";
+                        echo "</div>";
+                        echo "</div>";
+                    }
+                }
+                else{
+                    echo "<p>You have not created any seminars yet.</p>";
+                }
+            ?>
+        </div>
+    </div>
 
         <?php include "./footer.php" ?>
         

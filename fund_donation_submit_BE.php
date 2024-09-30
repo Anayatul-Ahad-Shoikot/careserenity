@@ -1,6 +1,7 @@
 <?php
     include('./db_con.php');
     session_start();
+    $role = $_SESSION['role'];
     if (isset($_POST['fund_donate_loggedout']) && $_SERVER['REQUEST_METHOD'] == "POST") {
         $fund_id = $_POST['fund_id'];
         $org_id = $_POST['org_id'];
@@ -115,8 +116,14 @@
                 $update_stmt->execute();
 
                 $_SESSION['positive'] = "Fund donated successfully.";
-                header('Location: ./O_home.php');
-                exit(0);
+                if($role == 'org'){
+                    header('Location: ./O_home.php');
+                    exit(0);
+                } else {
+                    header('Location: ./U_home.php');
+                    exit(0);
+                }
+                    
             } else {
                 echo "Error in card donation: " . $stmt->error;
             }
@@ -150,8 +157,13 @@
 
 
                 $_SESSION['positive'] = "Fund donated successfully.";
-                header('Location: ./O_home.php');
-                exit(0);
+                if($role == 'org'){
+                    header('Location: ./O_home.php');
+                    exit(0);
+                } else {
+                    header('Location: ./U_home.php');
+                    exit(0);
+                }
             } else {
                 echo "Error in Bkash donation: " . $stmt->error;
             }

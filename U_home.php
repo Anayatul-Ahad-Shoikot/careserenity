@@ -96,11 +96,6 @@ if ($unreadNotificationsResult) {
         </div>
     </div>
 
-    <div class="highlights">
-        <p>need works for seminar and notice highlights</p>
-    </div>
-
-
     <div class="container">
         <div class="options">
             <a href="./U_create_blog.php" id="button-30">CreatePost</a>

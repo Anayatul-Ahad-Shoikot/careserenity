@@ -73,6 +73,7 @@ if ($unreadNotificationsResult) {
         </div>
 
         <div class="options">
+            <a href="./U_see_organization_profile.php?org_id=<?php echo $org_id ?>" id="button-30" >back</a>
             <a href="./U_see_organization_orphanage.php?org_id=<?php echo $org_id ?>" id="button-30">Refresh</a>
             <a href="#" id="button-30">Inbox</a>
             <form action="#" method="GET">

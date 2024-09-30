@@ -14,9 +14,10 @@
             echo "<p>".htmlspecialchars($row['description'])."</p>";
             echo "<div class='info'><span>Date: ".htmlspecialchars($row['seminar_date'])."</span>";
             echo "<span><i class='bx bxs-user-check'></i> ".htmlspecialchars($row['participants_count'])."</span></div>";
-            echo "<div class='btnclass'><a href='./O_seminar_edit.php?id=" . $row['seminar_id'] . "'>Edit</a>";
-            echo "<a href='#' id='removeBtn' onclick='removeSeminar(" . $row['seminar_id'] . ")'>delete</a>";
-            echo "<a href='#' id='postponeBtn' onclick='postponeSeminar(" . $row['seminar_id'] . ")'>Postpone</a></div>";
+            echo "<div class='btnclass'><a href='./O_seminar_edit.php?id=" . $row['seminar_id'] . "' id='button-30'>Edit</a>";
+            echo "<a href='#' id='button-30' onclick='removeSeminar(" . $row['seminar_id'] . ")'>delete</a>";
+            // echo "<a href='#' id='postponeBtn' onclick='postponeSeminar(" . $row['seminar_id'] . ")'>Postpone</a>";
+            echo "</div>";
             echo "</div>";
         }
     }

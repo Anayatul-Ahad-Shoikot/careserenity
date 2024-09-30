@@ -73,24 +73,21 @@ if ($unreadNotificationsResult) {
         </div>
 
         <div class="options">
-            <a href="./see_organization_profile.php?org_id=<?php echo $org_id ?>" class="btn">back</a>
-            <a href="#" class="btn">Inbox</a>
+            <a href="./O_see_organization_profile.php?org_id=<?php echo $org_id ?>" id="button-30" >back</a>
+            <a href="./O_see_organization_orphanage.php?org_id=<?php echo $org_id ?>" id="button-30">Refresh</a>
+            <a href="#" id="button-30" >Inbox</a>
             <form action="#" method="GET">
                 <input type="text" name="query" placeholder="Search Child...">
                 <button type="submit"><i class="ri-search-line"></i></button>
             </form>
         </div>
-
-
-            <div class="plate">
-                <?php
-                    if(isset($_GET['query'])){
-                        include('/xampp/htdocs/DBMS_Project_Organized_One/Root/Orphanage/USER-PERSPECTIVE/UP_SEARCH_ORPHAN_BE.php');
-                    } else {
-                        include ('./see_organization_orphanage_BE.php');
-                    }
-                ?>
-            </div>
+            <?php
+                if(isset($_GET['query'])){
+                    include('./see_searched_organization_orphanage_BE.php');
+                } else {
+                    include ('./U_see_organization_orphanage_BE.php');
+                }
+            ?>
         </div>
 
     <?php include "./footer.php" ?>

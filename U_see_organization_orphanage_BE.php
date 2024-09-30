@@ -13,8 +13,13 @@
             echo '<h1>' . $row['first_name'] . ' ' . $row['last_name'] . '</h1>';
             echo '</div>';
             echo '<div class="buttons">';
-            echo '<a href="./U_donation.php?orphan_id=' . $row['orphan_id'] . '&org_id=' . $org_id . '" id="button-30">Gift</a>';
-            echo '<a href="./U_see_orphan_profile.php?orphan_id=' . $row['orphan_id'] . '" id="button-30"> View </a>';
+            if ($role == 'user'){
+                echo '<a href="./U_donation.php?orphan_id=' . $row['orphan_id'] . '&org_id=' . $org_id . '" id="button-30">Gift</a>';
+                echo '<a href="./U_see_orphan_profile.php?orphan_id=' . $row['orphan_id'] . '" id="button-30"> View </a>';
+            } else if ($role == 'org'){
+                echo '<a href="#?orphan_id=' . $row['orphan_id'] . '&org_id=' . $org_id . '" id="button-30">Gift</a>';
+                echo '<a href="./O_see_orphan_profile.php?orphan_id=' . $row['orphan_id'] . '" id="button-30"> View </a>';
+            }
             echo '</div>';
             echo '</div>';
             echo '</div>';

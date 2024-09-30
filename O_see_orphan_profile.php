@@ -1,5 +1,5 @@
 <?php
-    include("./organization_profile_fetch_BE.php");
+    include("./O_profile_fetch_BE.php");
     include("./orphan_profile_fetch_BE.php");
     $acc_id = $_SESSION['acc_id'];
     $fetchUnreadNotificationsQuery = "SELECT COUNT(*) as unread_count FROM notifications WHERE is_read = 0 AND org_id = (SELECT org_id FROM org_list WHERE acc_id = $acc_id)";
@@ -58,7 +58,7 @@
             </div>
             <div class="account-data">
                 <h1><?php echo $first_name ?></h1>
-                <p>Belong to : <?php echo $org_name ?></p>
+                <p>Belongs to : <a href="./U_see_organization_profile.php?org_id=<?php echo $org_id ?>"><?php echo $org_name ?></a></p>
                 <p>Location : <?php echo $org_location ?></p>
                 <p>Email : <?php echo $org_email ?></p>
                 <p>Contact : <?php echo $org_phone ?></p>
@@ -72,7 +72,7 @@
         </div>
 
         <div class="options">
-            <a href="./see_organization_orphanage.php?org_id=<?php echo $org_id ?>" class="btn">back</a>
+            <a href="./O_see_organization_orphanage.php?org_id=<?php echo $org_id ?>" id="button-30">back</a>
         </div>
 
 
@@ -181,12 +181,6 @@
                 <div class="form_row">
                     <label>adoption_status :</label>
                     <input type="text" name="adoption_status" placeholder="<?php echo $adoption_status ?>" disabled>
-                </div>
-                <input type="hidden" name="orphan_id" value="<?php echo $row['orphan_id'] ?>">
-                <input type="hidden" name="guardian_id" value="<?php echo $row['guardian_id'] ?>">
-                <div class="btn">
-                    <!-- <button type="submit" name="update">Update</button> -->
-                    need to add buttons for adopt request
                 </div>
             </form>
         </div>

@@ -28,7 +28,7 @@
                     echo '<div class="action_button">';
                         if ($role == 'org') {
                             echo '<a href="./O_see_organization_profile.php?org_id=' . $row['org_id'] . '" id="button-30"> Visit </a>';
-                            echo '<a href="./O_donation.php?org_id=' . $row['org_id'] . '" id="button-30"> Donate </a>';
+                            // echo '<a href="./O_donation.php?org_id=' . $row['org_id'] . '" id="button-30"> Donate </a>';
                         } else if ($role == 'admin') {
                             echo '<a href="#?org_id=' . $row['org_id'] . '"> Visit </a>';
                         } else {
