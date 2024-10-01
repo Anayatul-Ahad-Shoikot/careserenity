@@ -1,13 +1,26 @@
 <?php 
     include("../db_con.php");
     session_start();
+
+    if (!isset($_SESSION['acc_id'])) {
+        header('Location: ../login.php');
+        exit;
+    }
+
     $acc_id = $_SESSION['acc_id'];
+    $role = $_SESSION['role'];  
+
+    if ($role !== 'organization') {
+        echo "<script>alert('Access denied. Only organizations can chat with admin.'); window.location.href = '../index.php';</script>";
+        exit;
+    }
+
     $fetchUnreadNotificationsQuery = "SELECT COUNT(*) as unread_count FROM notifications WHERE is_read = 0 AND org_id = (SELECT org_id FROM org_list WHERE acc_id = $acc_id)";
     $unreadNotificationsResult = mysqli_query($con, $fetchUnreadNotificationsQuery);
     $unreadCount = 0;
     if ($unreadNotificationsResult) {
-    $unreadRow = mysqli_fetch_assoc($unreadNotificationsResult);
-    $unreadCount = $unreadRow['unread_count'];
+        $unreadRow = mysqli_fetch_assoc($unreadNotificationsResult);
+        $unreadCount = $unreadRow['unread_count'];
     }
 ?>
 
