@@ -1,13 +1,13 @@
 <?php
-    include("./user_profile_fetch_BE.php");
-    $acc_id = $_SESSION['acc_id'];
-    $fetchUnreadNotificationsQuery = "SELECT COUNT(*) as unread_count FROM notifications WHERE is_read = 0 AND user_id = (SELECT user_id FROM user_list WHERE acc_id = $acc_id)";
-    $unreadNotificationsResult = mysqli_query($con, $fetchUnreadNotificationsQuery);
-    $unreadCount = 0;
-    if ($unreadNotificationsResult) {
-        $unreadRow = mysqli_fetch_assoc($unreadNotificationsResult);
-        $unreadCount = $unreadRow['unread_count'];
-    }
+include("./user_profile_fetch_BE.php");
+$acc_id = $_SESSION['acc_id'];
+$fetchUnreadNotificationsQuery = "SELECT COUNT(*) as unread_count FROM notifications WHERE is_read = 0 AND user_id = (SELECT user_id FROM user_list WHERE acc_id = $acc_id)";
+$unreadNotificationsResult = mysqli_query($con, $fetchUnreadNotificationsQuery);
+$unreadCount = 0;
+if ($unreadNotificationsResult) {
+    $unreadRow = mysqli_fetch_assoc($unreadNotificationsResult);
+    $unreadCount = $unreadRow['unread_count'];
+}
 ?>
 
 <!DOCTYPE html>
@@ -53,20 +53,21 @@
 
     <div class="container">
         <div class="accounnt-information-container">
-                <div class="account-picture">
-                    <img src="./assets/<?php echo $user_image ?>" alt="profile">
-                </div>
-                <div class="account-data">
-                    <h1><?php echo $user_name ?></h1>
-                    <p>Location : <?php echo $user_address, ", ", $user_location ?></p>
-                    <p>Email : <?php echo $acc_email ?></p>
-                    <p>Contact : <?php echo $user_contact ?></p>
-                    <p>Account Type : <?php echo $role ?></p>
-                </div>
-                <div class="biography">
-                    <h1>Occupation</h1>
-                    <p><?php echo $user_job ?></p></p>
-                </div>
+            <div class="account-picture">
+                <img src="./assets/<?php echo $user_image ?>" alt="profile">
+            </div>
+            <div class="account-data">
+                <h1><?php echo $user_name ?></h1>
+                <p>Location : <?php echo $user_address, ", ", $user_location ?></p>
+                <p>Email : <?php echo $acc_email ?></p>
+                <p>Contact : <?php echo $user_contact ?></p>
+                <p>Account Type : <?php echo $role ?></p>
+            </div>
+            <div class="biography">
+                <h1>Occupation</h1>
+                <p><?php echo $user_job ?></p>
+                </p>
+            </div>
         </div>
 
         <div class="options">
@@ -85,15 +86,39 @@
 
             <h1 id="heading">Your Seminar</h1>
             <div class="ag-format-container">
-                <div class="ag-courses_box">
-                    <p id="notFound">Not added yet</p>
+                <div class="card_boxes">
+                <?php
+                    include("db_con.php");
+                    $query = "SELECT S.* FROM seminars AS S LEFT JOIN seminar_participants as SP ON S.seminar_id = SP.seminar_id WHERE (SP.participant_id = {$user_id} AND S.isRemoved = 0 AND S.visibility = 0)";
+                    $result = mysqli_query($con, $query);
+                    if (mysqli_num_rows($result) > 0) {
+                        while ($row1 = mysqli_fetch_assoc($result)) {
+                            echo '
+                            <div class="card">
+                                <div class="card_price">' . $row1['seminar_date'] . '</div>
+                                <div class="card_image">
+                                    <img src="./assets/' . $row1['banner'] . '">
+                                </div>
+                                <div class="card_content">
+                                    <h2 class="card_title">' . $row1['title'] . '</h2>
+                                    <div class="card_text">
+                                        <p>' . $row1['description'] . '</p>
+                                    </div>
+                                </div>
+                            </div>';
+                        }
+                    } else {
+                        echo "<p id='notFound'>Not added yet</p>";
+                    }
+                    mysqli_close($con);
+                    ?>
                 </div>
             </div>
 
             <h1 id="heading">Donation timeline:</h1>
             <div class="ag-format-container">
                 <div class="ag-courses_box">
-                <p id="notFound">Not added yet</p>
+                    <p id="notFound">Not added yet</p>
                 </div>
             </div>
         </div>
@@ -102,7 +127,7 @@
 
     <?php include "./footer.php" ?>
 
-    <button id="scrollTopBtn" title="Go to top"><i class='bx bx-chevrons-up bx-burst' ></i></button>
+    <button id="scrollTopBtn" title="Go to top"><i class='bx bx-chevrons-up bx-burst'></i></button>
 
     <script src="./js/scrollupBTN.js"></script>
     <script src="./js/notification_color.js"></script>

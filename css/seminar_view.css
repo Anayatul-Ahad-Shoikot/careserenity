@@ -103,6 +103,7 @@ span.badge {
     font-size: 35px;
     font-weight: 500;
     font-style: normal;
+    text-transform: capitalize;
 }
 
 h5.card-title.text-white {
@@ -118,6 +119,7 @@ h5.card-title.text-white {
 .card-subtitle {
     font-weight: 400;
     margin-top: 0.2rem;
+    text-transform: capitalize;
 }
 .card-subtitle, .card-text:last-child {
     margin-bottom: 0;

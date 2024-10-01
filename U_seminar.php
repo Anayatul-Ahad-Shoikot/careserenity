@@ -2,7 +2,7 @@
     include("./db_con.php");
     session_start();
     $acc_id = $_SESSION['acc_id'];
-    $fetchUnreadNotificationsQuery = "SELECT COUNT(*) as unread_count FROM notifications WHERE is_read = 0 AND org_id = (SELECT org_id FROM org_list WHERE acc_id = $acc_id)";
+    $fetchUnreadNotificationsQuery = "SELECT COUNT(*) as unread_count FROM notifications WHERE is_read = 0 AND user_id = (SELECT user_id FROM user_list WHERE acc_id = $acc_id)";
     $unreadNotificationsResult = mysqli_query($con, $fetchUnreadNotificationsQuery);
     $unreadCount = 0;
     if ($unreadNotificationsResult) {
@@ -71,7 +71,7 @@
                         echo "<p>".htmlspecialchars($row['description'])."</p>";
                         echo "<div class='info'><span>Date: ".htmlspecialchars($row['seminar_date'])."</span>";
                         echo "<span><i class='bx bxs-user-check'></i> ".htmlspecialchars($row['participants_count'])."</span></div>";
-                        echo "<div class='btnclass'><a href='#?id=" . $row['seminar_id'] . "' id='button-30'>View</a>";
+                        echo "<div class='btnclass'><a href='./seminar_view.php?seminar_id=" . $row['seminar_id'] . "&org_id=" . $row['org_id'] . "' id='button-30'>View</a>";
                         echo "</div>";
                         echo "</div>";
                     }
@@ -85,6 +85,9 @@
 
         <?php include "./footer.php" ?>
         
-        <script src="" async defer></script>
+    <script src="" async defer></script>
+    <script src="./js/scrollupBTN.js"></script>
+    <script src="./js/notification_color.js"></script>
+    <script src="./js/feedback.js"></script>
     </body>
 </html>

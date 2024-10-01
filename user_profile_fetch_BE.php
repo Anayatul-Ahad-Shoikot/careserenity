@@ -18,6 +18,7 @@ if (!isset($_SESSION['acc_id']) && !isset($_SESSION['role'])) {
         $row = mysqli_fetch_array($sql_result);
 
         $_SESSION['user_id'] = $row['user_id'];
+        $user_id = $row['user_id'];
         $acc_email = $row['acc_email'];
         $role = $row['role'];
         $acc_join_date = $row['acc_join_date'];
@@ -37,4 +38,3 @@ if (!isset($_SESSION['acc_id']) && !isset($_SESSION['role'])) {
     }
 }
 
-?>
