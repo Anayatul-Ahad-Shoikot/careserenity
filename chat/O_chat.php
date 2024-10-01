@@ -1,14 +1,14 @@
 <?php 
-    // include("./db_con.php");
-    // session_start();
-    // $acc_id = $_SESSION['acc_id'];
-    // $fetchUnreadNotificationsQuery = "SELECT COUNT(*) as unread_count FROM notifications WHERE is_read = 0 AND org_id = (SELECT org_id FROM org_list WHERE acc_id = $acc_id)";
-    // $unreadNotificationsResult = mysqli_query($con, $fetchUnreadNotificationsQuery);
-    // $unreadCount = 0;
-    // if ($unreadNotificationsResult) {
-    // $unreadRow = mysqli_fetch_assoc($unreadNotificationsResult);
-    // $unreadCount = $unreadRow['unread_count'];
-    // }
+    include("../db_con.php");
+    session_start();
+    $acc_id = $_SESSION['acc_id'];
+    $fetchUnreadNotificationsQuery = "SELECT COUNT(*) as unread_count FROM notifications WHERE is_read = 0 AND org_id = (SELECT org_id FROM org_list WHERE acc_id = $acc_id)";
+    $unreadNotificationsResult = mysqli_query($con, $fetchUnreadNotificationsQuery);
+    $unreadCount = 0;
+    if ($unreadNotificationsResult) {
+    $unreadRow = mysqli_fetch_assoc($unreadNotificationsResult);
+    $unreadCount = $unreadRow['unread_count'];
+    }
 ?>
 
 <!DOCTYPE html>
@@ -29,10 +29,14 @@
 </head>
 <body onload="loadMessages()">
 
-    <h2>Chat with Organization/Admin</h2>
+    <?php include "../navbarU.php" ?>
+
+    <h2>Chat with Admin</h2>
     <div id="chat-box" style="border:1px solid #ccc; padding:10px; height:300px; overflow:auto;"></div>
     <input type="text" id="message" placeholder="Type your message...">
     <button onclick="sendMessage()">Send</button>
+
+    <?php include "../footer.php" ?>
 
     <script src="../js/chat_mine.js"></script>
     
