@@ -162,7 +162,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        
+                        <?php include ('./seminar_participant_fetch_BE.php') ?>
                     </tbody>
                 </table>
             </section>

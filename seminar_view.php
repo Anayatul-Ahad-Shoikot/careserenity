@@ -97,7 +97,13 @@
         </div>
 
         <div class="options">
-            <a href="./O_seminar.php" id="button-30">back</a>
+            <?php 
+                if ($role == 'user') {
+                    echo '<a href="./u_seminar.php" id="button-30">back</a>';
+                } else {
+                    echo '<a href="./O_seminar.php" id="button-30">back</a>';
+                }
+            ?>
         </div>
 
         <div class="card border-0">

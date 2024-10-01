@@ -27,7 +27,7 @@
     <link rel="stylesheet" href="./css/notification.css">
     <link rel="stylesheet" href="./css/feedback.css">
     <link rel="icon" href="./assets/LOGO.png" type="image/x-icon">
-    <title>CareSenerity | Organization</title>
+    <title>CareSenerity | Adoption</title>
 </head>
 
 <body>
@@ -59,15 +59,39 @@
                     <button type="submit"><i class="ri-search-line"></i></button>
                 </form>
         </div>
-        <div class="plate">
+        <!-- <div class="plate"> -->
             <?php
+                include('./db_con.php');
                 if(isset($_GET['query'])){
-                    include('./U_fetch_all_orphans_BE.php');
+                    $searchTerm = $_GET['query'];
+                    $query = "SELECT orphan_image, first_name, last_name, orphan_id, org_id FROM orphan_list 
+                                WHERE first_name LIKE '%$searchTerm%' 
+                                OR last_name LIKE '%$searchTerm%'
+                                OR age LIKE '%$searchTerm%' OR gender LIKE '%$searchTerm%' OR religion LIKE '%$searchTerm%'";
+                    $result = mysqli_query($con, $query);
+                    if (mysqli_num_rows($result) > 0) {
+                        echo '<div class="plate">';
+                        while ($row = mysqli_fetch_assoc($result)) {
+                            echo '<div class="card">';
+                            echo '<div class="pb"  style="background-image: url(\'./assets/' . $row['orphan_image'] . '\');"></div>';
+                            echo '<div class="info">';
+                            echo '<h1>' . $row['first_name'] . ' ' . $row['last_name'] . '</h1>';
+                            echo '</div>';
+                            echo '<div class="buttons">';
+                            echo '<a href="./U_donation.php?orphan_id=' . $row['orphan_id'] . '&org_id=' . $row['org_id'] . '" id="button-30">Gift</a>';
+                            echo '<a href="./U_see_orphan_profile.php?orphan_id=' . $row['orphan_id'] . '" id="button-30"> View </a>';
+                            echo '</div>';
+                            echo '</div>';
+                        }
+                        echo '</div>';
+                    } else {
+                        echo '<p id="notFound">No orphans found</p>';
+                    }
                 } else {
                     include ('./U_fetch_all_orphans_BE.php');
                 }
             ?>
-        </div>
+        <!-- </div> -->
     </div>
 
     <?php include "./footer.php" ?>
