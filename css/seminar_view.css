@@ -1,0 +1,166 @@
+
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0, 0, 0, .125);
+    border-radius: 15px;
+    font-family: 'Poppins';
+}
+
+.card.border-0 {
+    width: 70%;
+    height: 50%;
+    box-shadow: 0 1px 3px #0000001f, 0 1px 2px #0000003d !important;
+    background: hsl(220deg 14% 97%) !important;
+    text-align: left;
+    background-color: #fff !important;
+    position: relative;
+    margin-top: 12px !important;
+    border: 1px solid #eee !important;
+    transition: 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+    color: #000 !important;
+}
+
+.position-relative {
+    position: relative !important;
+}
+
+.card-img-overlay {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 1.25rem;
+    border-radius: calc(.25rem - 1px);
+}
+
+.card-img-overlay.three {
+    content: " ";
+    height: 290px;
+    width: 100%;
+    display: block;
+    position: relative;
+    background-size: cover;
+    background-position: 50% 50%;
+    border-radius: 13px;
+}
+
+span.badge.badge-light {
+    padding: 3.5px 5.5px;
+    font-size: 12px;
+    background-image: linear-gradient(#c1353e, #c22b3a, #e42d49, #e32c3e);
+    box-shadow: 0 0 0.25px #e42d49, -0.5px -0.75px 1px rgb(241 249 255 / 15%) inset, -0.75px -1.5px 1.5px rgb(44 6 13 / 5%) inset, 0 -0.5px 0.75px 0.25px #c1353e, 0 0.5px 0.75px 0.25px #e32c3e, 0 -0.75px 2px -0.75px #c1353e, 0 0.75px 2px -0.75px #e32c3e, -0.5px -2px 3px 0.75px rgb(44 6 13 / 85%), -1.75px -2.5px 2.5px -0.25px rgb(150 90 64 / 35%), -0.75px -0.75px 0.625px 0.25px rgb(150 90 64 / 50%), -0.85px -0.35px 0.85px 0 rgb(201 149 135 / 55%), -1.25px -1.25px 1.65px 0 rgb(201 149 135 / 25%);
+    border-radius: 4px;
+    color: #fff;
+}
+
+span.badge {
+    color: #f9fafb !important;
+    font-weight: 400;
+    border-radius: 5px !important;
+    letter-spacing: 0.135em !important;
+    padding: 4px 5px !important;
+    box-shadow: 0 0 0.25px hsl(208deg 7% 46%), -0.5px -0.75px 1px 0.25px hsl(206deg 100% 97% / 30%) inset, -0.75px -1.5px 1.5px 0.5px hsl(349deg 5% 10% / 10%) inset, 0 -0.5px 0.75px 0.25px hsl(210deg 17% 50% / 15%), 0 0.5px 0.75px 0.25px hsl(210deg 17% 50% / 15%), 0 -0.75px 2px -0.75px hsl(210deg 16% 50% / 15%), 0 0.75px 2px -0.75px hsl(0deg 0% 4% / 25%), -0.5px -2px 3px 0.75px hsl(349deg 4% 10% / 10%), -1.75px -2.5px 2.5px -0.25px hsl(0deg 0% 42% / 7%), -0.75px -0.75px 0.625px 0.25px hsl(18deg 40% 2% / 10%), -0.85px -0.35px 0.85px 0 hsl(13deg 38% 4% / 12%), -1.25px -1.25px 1.65px 0 hsl(13deg 38% 4% / 5%);
+}
+
+.badge {
+    display: inline-block;
+    padding: .25em .4em;
+    font-size: 75%;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25rem;
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+.card-smooth-caption {
+    background: linear-gradient(#00000000, #000000fa) #00000000;
+    padding: 3.5rem;
+}
+.card-smooth-caption, .card-img-overlay {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.mr-auto, .mx-auto {
+    margin-right: auto !important;
+}
+
+.card-title {
+    line-height: 1.5;
+    margin-bottom: 0.5rem;
+    font-size: 35px;
+    font-weight: 500;
+    font-style: normal;
+}
+
+h5.card-title.text-white {
+    line-height: 1.25;
+    margin-bottom: 5px;
+    text-overflow: clip;
+    line-clamp: 1 !important;
+    -webkit-box-orient: vertical;
+    display: -webkit-box;
+    overflow: hidden;
+}
+
+.card-subtitle {
+    font-weight: 400;
+    margin-top: 0.2rem;
+}
+.card-subtitle, .card-text:last-child {
+    margin-bottom: 0;
+}
+.text-white {
+    color: #fff !important;
+}
+
+.card-body {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    padding: 2rem 5rem;
+}
+.card-body p{
+    font-size: 18px;
+    width: 100%;
+    text-align: left;
+}
+
+.card-body a {
+    margin: 1rem 0rem;
+    width: 40% !important; 
+}
+
+.card-text{
+    font-size: 20px;
+    color: var(--text-color-dark);
+}
+
+
+#guest{
+    text-transform: capitalize;
+    padding-top: 8px;
+    font-size: 12px;
+    margin-bottom: 10px;
+}
+
+#location {
+    margin-top: 10px;
+    font-size: 11px;
+    color: red;
+    font-weight: 500;
+}

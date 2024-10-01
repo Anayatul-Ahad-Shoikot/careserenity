@@ -20,7 +20,8 @@ $nav_options = [
         '/O_see_orphan_profile.php'
     ],
     'seminars' => [
-        '/O_seminar.php'
+        '/O_seminar.php',
+        '/seminar_view.php'
     ],
     'aboutus' => [
         '/O_aboutus.php'
