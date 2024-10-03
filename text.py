@@ -3,7 +3,7 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 import time
 
-# Set up the driver (adjust the path to your webdriver)
+# Set up the drive
 driver = webdriver.Edge()
 
 # Test URL
@@ -19,17 +19,17 @@ def login(username, password, role):
     driver.find_element(By.CLASS_NAME, "login_button").click()
     time.sleep(2)
 
-    # Check if login was successful by verifying the role's dashboard page
+    # if login was successful by verifying the role's dashboard page
     assert role in driver.page_source, "Login Failed for user role: " + role
 
 def sign_up(email, password, confirm_password, role, question, answer):
     driver.get(url + 'signup.php')
     time.sleep(2)
     
-    # Fill out the signup form using the 'name' attribute in the HTML
-    driver.find_element(By.NAME, "acc_email").send_keys(email)  # Use name='acc_email' for email field
-    driver.find_element(By.NAME, "acc_pass").send_keys(password)  # Use name='acc_pass' for password
-    driver.find_element(By.NAME, "confirm_pass").send_keys(confirm_password)  # Use name='confirm_pass' for confirm password
+    # Fill out the signup form
+    driver.find_element(By.NAME, "acc_email").send_keys(email)
+    driver.find_element(By.NAME, "acc_pass").send_keys(password)
+    driver.find_element(By.NAME, "confirm_pass").send_keys(confirm_password)
     
     # Select account type (role)
     select_role = driver.find_element(By.NAME, "role")
@@ -52,7 +52,7 @@ def sign_up(email, password, confirm_password, role, question, answer):
     driver.find_element(By.NAME, "signup_btn").click()
     time.sleep(2)
 
-    # Check if signup was successful
+    # if signup was successful
     assert "Account created" in driver.page_source, "Signup Failed"
 
 def arrange_seminar(seminar_name, date, description):
@@ -67,7 +67,7 @@ def arrange_seminar(seminar_name, date, description):
     driver.find_element(By.CLASS_NAME, "create_seminar_button").click()
     time.sleep(2)
 
-    # Check if seminar was created successfully
+    # if seminar was created successfully
     assert "Seminar created successfully" in driver.page_source, "Seminar Creation Failed"
 
 def create_blog(blog_title, content):
@@ -81,7 +81,7 @@ def create_blog(blog_title, content):
     driver.find_element(By.CLASS_NAME, "create_blog_button").click()
     time.sleep(2)
 
-    # Check if blog post was created successfully
+    # if blog post was created successfully
     assert "Blog created successfully" in driver.page_source, "Blog Creation Failed"
 
 def donate_to_child(organization_id, child_id, amount, payment_method):
@@ -95,7 +95,7 @@ def donate_to_child(organization_id, child_id, amount, payment_method):
     driver.find_element(By.CLASS_NAME, "donate_button").click()
     time.sleep(2)
 
-    # Check if donation was successful
+    # if donation was successful
     assert "Donation successful" in driver.page_source, "Donation Failed"
 
 def join_seminar(seminar_id):
@@ -108,19 +108,29 @@ def join_seminar(seminar_id):
     seminar_button.click()
     time.sleep(2)
 
-    # Check if user has joined the seminar successfully
+    # if user has joined the seminar successfully
     assert "You have successfully joined the seminar" in driver.page_source, "Failed to Join Seminar"
 
 # Run tests
 try:
     # Test 1: User Signup and Login
-    sign_up("Test User", "testuser@example.com", "password123", "user")
-    login("testuser@example.com", "password123", "user")
+    sign_up("testuser@example.com", "1234", "1234", "user", "What is your favorite movie?", "Avengers")
+    login("testuser@example.com", "1234", "role")
 
     # Test 2: Organization Signup and Login, Create Seminar and Blog
-    sign_up("Test Org", "org@example.com", "password123", "organization")
-    login("org@example.com", "password123", "organization")
-    arrange_seminar("Charity Event", "2024-12-25", "Helping children in need")
+    sign_up("org@example.com", "pas123", "organization")
+    login("org@example.com", "pas123", "organization")
+    arrange_seminar(
+        seminar_name="Charity Event",
+        subject="Helping Children",
+        description="A seminar on providing assistance to orphaned children.",
+        date="2024-12-25",
+        guest="John Doe, Jane Smith",
+        seminar_type="offline",
+        location="1234 Main St, City",
+        banner_path="./assets/banner_3.jpg"
+    )
+
     create_blog("New Blog Post", "This is a sample blog post for the organization.")
 
     # Test 3: User Donation to a Child
