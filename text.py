@@ -31,7 +31,7 @@ def sign_up(email, password, confirm_password, role, question, answer):
     driver.find_element(By.NAME, "acc_pass").send_keys(password)
     driver.find_element(By.NAME, "confirm_pass").send_keys(confirm_password)
     
-    # Select account type (role)
+    # Select account type
     select_role = driver.find_element(By.NAME, "role")
     for option in select_role.find_elements(By.TAG_NAME, 'option'):
         if option.text == role:
@@ -123,11 +123,11 @@ try:
     arrange_seminar(
         seminar_name="Charity Event",
         subject="Helping Children",
-        description="A seminar on providing assistance to orphaned children.",
+        description="AAAAAAAAAAAAAAAAA",
         date="2024-12-25",
-        guest="John Doe, Jane Smith",
+        guest="abc, xyz",
         seminar_type="offline",
-        location="1234 Main St, City",
+        location="1234, Dhaka, BD",
         banner_path="./assets/banner_3.jpg"
     )
 
