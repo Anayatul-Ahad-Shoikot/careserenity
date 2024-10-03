@@ -35,7 +35,7 @@
                 echo '</div>';
                 }
             } else {
-                echo '<<p id="notFound">Searched Organization not found.</p>';
+                echo '<p id="notFound">Searched Organization not found.</p>';
             }
         } else {
             echo '<p id="notFound">There is no empty Organization</p>';

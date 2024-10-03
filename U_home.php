@@ -61,7 +61,7 @@ if ($unreadNotificationsResult) {
             </p>
         </div>
         <div class="row diag-ro" id="info_web">
-            <div class="about-diag" id="info_cell">
+        <div class="about-diag" id="info_cell">
                 <div class="icon"><i class="fas fa-arrow-right"></i></div>
                 <div class="tex">
                     <p id="text">There are over</p>
@@ -80,17 +80,25 @@ if ($unreadNotificationsResult) {
             <div class="about-diag" id="info_cell">
                 <div class="icon"><i class="fas fa-arrow-right"></i></div>
                 <div class="tex">
-                    <p id="text">There are over</p>
-                    <h3 id="count">12K</h3>
-                    <p id="text">Volunteers</p>
+                    <p id="text">We serverd over</p>
+                    <h3 id="count"><?php echo $total_amount ?></h3>
+                    <p id="text">BDT as Donation</p>
                 </div>
             </div>
             <div class="about-diag" id="info_cell">
                 <div class="icon"><i class="fas fa-arrow-right"></i></div>
                 <div class="tex">
-                    <p id="text">We serverd over</p>
-                    <h3 id="count"><?php echo $total_donation_Serverd ?></h3>
-                    <p id="text">BDT as Donation</p>
+                    <p id="text">Almost</p>
+                    <h3 id="count"><?php echo $total_users ?></h3>
+                    <p id="text">users</p>
+                </div>
+            </div>
+            <div class="about-diag" id="info_cell">
+                <div class="icon"><i class="fas fa-arrow-right"></i></div>
+                <div class="tex">
+                    <p id="text">We have</p>
+                    <h3 id="count"><?php echo 5 ?></h3>
+                    <p id="text">Volunteers</p>
                 </div>
             </div>
         </div>

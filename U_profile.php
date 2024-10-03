@@ -77,14 +77,14 @@ if ($unreadNotificationsResult) {
         </div>
 
         <div class="short-reports">
-            <h1 id="heading">Your Adoption requests</h1>
+            <h1 id="heading">Adoption requests :</h1>
             <div class="ag-format-container">
                 <div class="ag-courses_box">
                     <?php include './U_fetch_adoption_cards_BE.php'; ?>
                 </div>
             </div>
 
-            <h1 id="heading">Your Seminar</h1>
+            <h1 id="heading">Seminar :</h1>
             <div class="ag-format-container">
                 <div class="card_boxes">
                 <?php
@@ -112,13 +112,6 @@ if ($unreadNotificationsResult) {
                     }
                     mysqli_close($con);
                     ?>
-                </div>
-            </div>
-
-            <h1 id="heading">Donation timeline:</h1>
-            <div class="ag-format-container">
-                <div class="ag-courses_box">
-                    <p id="notFound">Not added yet</p>
                 </div>
             </div>
         </div>

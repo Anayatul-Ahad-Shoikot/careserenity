@@ -21,7 +21,8 @@ if ($unreadNotificationsResult) {
     <link rel='stylesheet' href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css'>
     <link rel="stylesheet" href="./css/colors.css">
     <link rel="stylesheet" href="./css/navbar.css">
-    <link rel="stylesheet" href="./css/profile_edit.css">
+    <link rel="stylesheet" href="./css/orphan_profile.css">
+    <link rel="stylesheet" href="./css/adoption_form.css">
     <link rel="stylesheet" href="./css/footer.css">
     <link rel="stylesheet" href="./css/notification.css">
     <link rel="stylesheet" href="./css/feedback.css">
@@ -50,21 +51,27 @@ if ($unreadNotificationsResult) {
         ?>
     </div>
 
-    <div class="options">
-        <a href="./U_profile.php" id="button-30">back</a>
-    </div>
-
 
     <div class="container">
-        <h2>Edit Profile</h2>
-        <form action="./U_profile_edit_BE.php" method="post" enctype="multipart/form-data">
+
+        <div class="options">
+            <a href="./U_profile.php" id="button-30">back</a>
+        </div>
+
+        <div class="form" id="aform">
+            <div class="img" style="background-image:url('./assets/<?php echo $user_image ?>')">
+                <div class="overlay"></div>
+                <h1 class="name"><?php echo $user_name ?></h1>
+            </div>
+            <h2>Profile Details</h2>
+            <form action="./U_profile_edit_BE.php" method="post" enctype="multipart/form-data">
             <div class="form_row">
                 <label>Full Name :</label>
                 <input type="text" name="user_name" placeholder="<?php echo $user_name ?>" >
             </div>
             <div class="form_row">
                 <label>Email :</label>
-                <input type="text" name="user_contact" placeholder="<?php echo $acc_email ?>" >
+                <input type="text" name="user_email" placeholder="<?php echo $acc_email ?>" >
             </div>
             <div class="form_row">
                 <label>Contact :</label>
@@ -110,7 +117,7 @@ if ($unreadNotificationsResult) {
             </div>
             <div class="form_row">
                 <label>Birth Date :</label>
-                <input type="date" name="user_birth" >
+                <input type="date" name="user_birth" value="<?php echo $user_birth ?>">
             </div>
             <div class="form_row">
                 <label>Profile Picture :</label>
@@ -120,6 +127,8 @@ if ($unreadNotificationsResult) {
                 <button type="submit" name="update" id="button-30">Update</button>
             </div>
         </form>
+        </div>
+
     </div>
 
     <?php include "./footer.php" ?>

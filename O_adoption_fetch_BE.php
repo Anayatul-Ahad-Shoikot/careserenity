@@ -30,7 +30,8 @@
                 '<td>' . $row1['issued_date'] . '</td>' .
                 '<td><p class="' . ($row1['status'] != 0 ? "status delivered" : "status cancelled") . '">' . $status . '</p></td>' .
                 '<td>
-                    <a href="O_adoption_data_delete_BE.php?adoption_id=' .$row1['adoption_id']. '">Delete</a>
+                    <a href="./O_adoption_data_delete_BE.php?adoption_id=' .$row1['adoption_id']. '" id="button-30"><i class="bx bx-trash-alt"></i></a>
+                    <a href="./O_adoption_request_details.php?adoption_id=' .$row1['adoption_id']. '&user_id=' .$row1['user_id']. '&orphan_id=' .$row1['orphan_id']. '" id="button-30"><i class="bx bx-file-blank"></i></a>
                 </td>' .
                 '</tr>';
         }

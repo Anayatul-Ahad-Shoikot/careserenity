@@ -53,7 +53,7 @@
                 <input type="text" name="query" placeholder="Search Organizations...">
                 <button type="submit"><i class="ri-search-line"></i></button>
             </form>
-            <a href="./U_seminar.php" id="button-30">Refresh</a>
+            <a href="./U_seminar.php" id="button-30"><i class='bx bx-refresh' style="color:black"></i></a>
         </div>
 
         <h1 id="heading">Current Seminars</h1>
@@ -69,8 +69,8 @@
                         echo "<h3>".htmlspecialchars($row['title'])."</h3>";
                         echo "<img src='./assets/".htmlspecialchars($row['banner'])."'alt='Seminar Banner'>";
                         echo "<p>".htmlspecialchars($row['description'])."</p>";
-                        echo "<div class='info'><span>Date: ".htmlspecialchars($row['seminar_date'])."</span>";
-                        echo "<span><i class='bx bxs-user-check'></i> ".htmlspecialchars($row['participants_count'])."</span></div>";
+                        echo "<div class='info'><span><i class='bx bxs-user-check'></i> ".htmlspecialchars($row['participants_count'])."</span>";
+                        echo "<span>Date: ".htmlspecialchars($row['seminar_date'])."</span></div>";
                         echo "<div class='btnclass'><a href='./seminar_view.php?seminar_id=" . $row['seminar_id'] . "&org_id=" . $row['org_id'] . "' id='button-30'>View</a>";
                         echo "</div>";
                         echo "</div>";

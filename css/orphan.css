@@ -121,7 +121,7 @@
   position: relative;
   width: 240px;
   height: 210px;
-  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.35);
+  box-shadow: 8px 8px 4px rgba(0, 0, 0, 0.15);
   border-radius: 15px;
   transition: all 0.4s ease-in-out;
 }
@@ -143,8 +143,9 @@
 .info h1 {
   font-weight: 700;
   font-size: 19px;
-  color: var(--primary-color-light);
+  color: var(--secondary-color-dark);
   text-transform: capitalize;
+  text-wrap: wrap;
 }
 
 .pb {
@@ -158,9 +159,8 @@
   height: 170px;
   width: 170px;
   border-radius: 8px;
-  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.35);
+  box-shadow: -8px -8px 4px rgba(0, 0, 0, 0.15);
   transition: all 0.4s ease-in-out;
-  border: 3px solid rgb(0, 0, 0);
 }
 
 .buttons {

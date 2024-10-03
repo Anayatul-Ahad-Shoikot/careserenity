@@ -7,7 +7,7 @@
     $row1 = mysqli_fetch_assoc($result1);
     $org_id = $row1['org_id'];
 
-    $query2 = "SELECT orphan_id, first_name, orphan_image, adoption_status FROM orphan_list WHERE org_id = $org_id AND removed_status != '1'";
+    $query2 = "SELECT orphan_id, first_name, last_name, orphan_image, adoption_status FROM orphan_list WHERE org_id = $org_id AND removed_status != '1'";
     $result2 = mysqli_query($con, $query2);
     if (mysqli_num_rows($result2) > 0) {
         echo '<div class="plate">';
@@ -15,7 +15,7 @@
             echo '<div class="card">';
             echo '<div class="pb"  style="background-image: url(\'./assets/' . $row2['orphan_image'] . '\');"></div>';
             echo '<div class="info">';
-            echo '<h1>' . $row2['first_name'] . '</h1>';
+            echo '<h1>' . htmlspecialchars($row2['first_name']) .' '. htmlspecialchars($row2['last_name']) . '</h1>';
             echo '</div>';
             echo '<div class="buttons">';
             echo '<a href="./orphan_remove_organization_BE.php?orphan_id=' . $row2['orphan_id'] . '" id="button-30">Remove</a>';

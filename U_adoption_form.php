@@ -23,6 +23,7 @@
     <link rel="stylesheet" href="./css/colors.css">
     <link rel="stylesheet" href="./css/navbar.css">
     <link rel="stylesheet" href="./css/orphan_profile.css">
+    <link rel="stylesheet" href="./css/adoption_form.css">
     <link rel="stylesheet" href="./css/footer.css">
     <link rel="stylesheet" href="./css/notification.css">
     <link rel="stylesheet" href="./css/feedback.css">
@@ -53,22 +54,20 @@
 
     <div class="container">
 
+        <div class="options">
+            <a href="./U_adoption.php" id="button-30">back</a>
+        </div>
+
         <div class="form" id="aform">
+            <div class="img" style="background-image:url('./assets/<?php echo $orphan_image ?>')">
+                <div class="overlay"></div>
+                <h1 class="name"><?php echo $first_name ?>  <?php echo $last_name ?></h1>
+                <p class="org"><?php echo $org_name ?></p>
+            </div>
             <h2>Adoption Application Form</h2>
             <form action="./U_adoption_form_BE.php" method="POST">
-
                 <input type="hidden" name="orphan_id" value="<?php echo $_GET['orphan_id'] ?>">
                 <input type="hidden" name="acc_id" value="<?php echo $acc_id ?>">
-                
-                <div class="form_row">
-                    <label>Adopting :</label>
-                    <input type="text" placeholder="<?php echo $first_name, '  ' ,$last_name ?>" disabled>
-                </div>
-            
-                <div class="form_row">
-                    <label>From :</label>
-                    <input type="text" placeholder="<?php echo $org_name ?>" disabled>
-                </div>
                 <div class="form_row">
                     <label for="email">Email:</label>
                     <input type="email" id="email" name="email" required>

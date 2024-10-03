@@ -2,6 +2,7 @@
 
 include('./db_con.php');
 session_start();
+$acc_id = $_SESSION['acc_id'];
 if (!isset($_SESSION['acc_id']) && !isset($_SESSION['role'])) {
     $_SESSION['negative'] = "Warning: Please login first.";
     header("Location: ./login.php");
@@ -30,6 +31,14 @@ if (!isset($_SESSION['acc_id']) && !isset($_SESSION['role'])) {
             $SQL = "UPDATE user_list SET user_contact = ? WHERE user_id = ? LIMIT 1";
             $stmt = mysqli_prepare($con, $SQL);
             mysqli_stmt_bind_param($stmt, "si", $user_contact, $user_id);
+            mysqli_stmt_execute($stmt);
+            mysqli_stmt_close($stmt);
+        }
+        if (isset($_POST['user_email']) && !empty($_POST['user_email'])) {
+            $user_email = $_POST['user_email'];
+            $SQL = "UPDATE accounts SET acc_email = ? WHERE acc_id = ? LIMIT 1";
+            $stmt = mysqli_prepare($con, $SQL);
+            mysqli_stmt_bind_param($stmt, "si", $user_email, $acc_id);
             mysqli_stmt_execute($stmt);
             mysqli_stmt_close($stmt);
         }

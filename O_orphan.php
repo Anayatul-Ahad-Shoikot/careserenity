@@ -71,30 +71,44 @@
         </div>
         
         <div class="options">
+            <a href="./O_orphan.php" id="button-30"><i class='bx bx-refresh' style="color:black"></i></a>
             <a href="./O_profile.php" id="button-30">back</a>
-            <a href="./O_adoption.php" id="button-30">Adoptions Request</a>
+            <a href="./O_adoption.php" id="button-30">Request</a>
             <a href="./O_orphan_removed.php" id="button-30">Removed Child</a>
-            <a href="./O_orphan_add.php" id="button-30">Add Child</a>
+            <a href="./O_orphan_add.php" id="button-30">Child+</a>
             <form action="./orphan_search_organization_BE.php" method="GET">
+                <div style="padding-right: 8px; border-right: 1px solid black; color:white">
+                    <label><input type="checkbox" name="gender" value="male"> Boy </label>
+                    <label><input type="checkbox" name="gender" value="female"> Girl </label>
+                    <label><input type="checkbox" name="adoption_status" value="1"> Adopted </label>
+                    <label><input type="checkbox" name="adoption_status" value="0"> Available </label>
+                </div>
+                &nbsp;
+                &nbsp;
                 <input type="text" name="query" placeholder="Search Child...">
-                <button type="submit"><i class='bx bx-search bx-rotate-90' ></i></button>
+                <button type="submit"><i class='bx bx-search-alt'></i></button>
             </form>
         </div>
 
             <?php
             if (isset($_SESSION['search_results'])){
-                foreach ($_SESSION['search_results'] as $row) {
+                if ($_SESSION['search_results'] === "<P id='notFound'>No result found !</P>"){
+                    echo "<P id='notFound'>No result found !</P>";
+                }
+                else {
                     echo '<div class="plate">';
-                    echo '<div class="card">';
-                    echo '<div class="pb" style="background-image: url(\'./assets/' . htmlspecialchars($row['orphan_image']) . '\');"></div>';
-                    echo '<div class="info">';
-                    echo '<h1>' . htmlspecialchars($row['first_name']) . '</h1>';
-                    echo '</div>';
-                    echo '<div class="buttons">';
-                    echo '<a href="./orphan_remove_organization_BE.php?orphan_id=' . htmlspecialchars($row['orphan_id']) . '" id="button-30">Remove</a>';
-                    echo '<a href="./O_orphan_profile.php?orphan_id=' . htmlspecialchars($row['orphan_id']) . '" id="button-30">View</a>';
-                    echo '</div>';
-                    echo '</div>';
+                    foreach ($_SESSION['search_results'] as $row) {
+                        echo '<div class="card">';
+                        echo '<div class="pb" style="background-image: url(\'./assets/' . htmlspecialchars($row['orphan_image']) . '\');"></div>';
+                        echo '<div class="info">';
+                        echo '<h1>' . htmlspecialchars($row['first_name']) .' '. htmlspecialchars($row['last_name']) . '</h1>';
+                        echo '</div>';
+                        echo '<div class="buttons">';
+                        echo '<a href="./orphan_remove_organization_BE.php?orphan_id=' . htmlspecialchars($row['orphan_id']) . '" id="button-30">Remove</a>';
+                        echo '<a href="./O_orphan_profile.php?orphan_id=' . htmlspecialchars($row['orphan_id']) . '" id="button-30">View</a>';
+                        echo '</div>';
+                        echo '</div>';
+                    }
                     echo '</div>';
                 }
                 unset($_SESSION['search_results']);

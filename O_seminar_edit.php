@@ -85,7 +85,7 @@
                     </button>
                 </div>
             </form>
-            <a href="./O_seminar_edit.php?id=<?php echo $seminar_id ?>" id="button-30">Reload</a>
+            <a href="./O_seminar_edit.php?id=<?php echo $seminar_id ?>" id="button-30"><i class='bx bx-refresh' style="color:black"></i></a>
             <a href="./O_seminar.php" id="button-30">Back</a>
         </div>
 
@@ -158,11 +158,10 @@
                             <th> Email </th>
                             <th> Contact </th>
                             <th> Date </th>
-                            <th> Action </th>
                         </tr>
                     </thead>
                     <tbody>
-                        <?php include ('./seminar_participant_fetch_BE.php') ?>
+                        <?php include ('./O_seminar_participant_fetch_BE.php') ?>
                     </tbody>
                 </table>
             </section>

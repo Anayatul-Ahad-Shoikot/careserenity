@@ -30,6 +30,7 @@
 .container h3 {
     font-size: 18px;
     padding: 5px 0px;
+    color: var(--text-color-lighter);
 }
 
 .container p {
