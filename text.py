@@ -1,53 +1,134 @@
 from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import Select
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
 import time
 
+# Set up the driver (adjust the path to your webdriver)
+driver = webdriver.Edge()
 
-# Start the WebDriver
-driver = webdriver.Chrome()
-driver.get("E:\Careserenity-dev-final\login.php")
-time.sleep(2)
+# Test URL
+url = "http://careserenity-org.free.nf/index.php"
 
+def login(username, password, role):
+    driver.get(url + 'login.php')
+    time.sleep(2)
+    
+    # Find login elements and perform login
+    driver.find_element(By.CLASS_NAME, "rb@gmail.com").send_keys(username)
+    driver.find_element(By.CLASS_NAME, "1111").send_keys(password)
+    driver.find_element(By.CLASS_NAME, "login_button").click()
+    time.sleep(2)
 
-# Click the agree button
-agree_btn = WebDriverWait(driver, 10).until(
-    EC.element_to_be_clickable((By.XPATH, "/html/body/app-root/app-home/app-disclaimer-modal/div/div/div[2]/div[2]/button"))
-)
-agree_btn.click()
+    # Check if login was successful by verifying the role's dashboard page
+    assert role in driver.page_source, "Login Failed for user role: " + role
 
+def sign_up(email, password, confirm_password, role, question, answer):
+    driver.get(url + 'signup.php')
+    time.sleep(2)
+    
+    # Fill out the signup form using the 'name' attribute in the HTML
+    driver.find_element(By.NAME, "acc_email").send_keys(email)  # Use name='acc_email' for email field
+    driver.find_element(By.NAME, "acc_pass").send_keys(password)  # Use name='acc_pass' for password
+    driver.find_element(By.NAME, "confirm_pass").send_keys(confirm_password)  # Use name='confirm_pass' for confirm password
+    
+    # Select account type (role)
+    select_role = driver.find_element(By.NAME, "role")
+    for option in select_role.find_elements(By.TAG_NAME, 'option'):
+        if option.text == role:
+            option.click()
+            break
 
-# Input the destination details
-dest_from = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.ID, "dest_from")))
-dest_from.click()
-dest_from.send_keys("Dhaka")
-time.sleep(1)
+    # Select security question
+    select_question = driver.find_element(By.NAME, "question")
+    for option in select_question.find_elements(By.TAG_NAME, 'option'):
+        if option.text == question:
+            option.click()
+            break
 
+    # Input the answer to the security question
+    driver.find_element(By.NAME, "answer").send_keys(answer)
+    
+    # Submit the form
+    driver.find_element(By.NAME, "signup_btn").click()
+    time.sleep(2)
 
-dest_to = driver.find_element(By.ID, "dest_to")
-dest_from.click()
-dest_to.send_keys("Chattogram")
-time.sleep(1)
+    # Check if signup was successful
+    assert "Account created" in driver.page_source, "Signup Failed"
 
+def arrange_seminar(seminar_name, date, description):
+    # Navigate to the organization dashboard and seminar page
+    driver.get(url + 'dashboard/org_seminar.php')
+    time.sleep(2)
+    
+    # Fill out seminar details
+    driver.find_element(By.CLASS_NAME, "seminar_name").send_keys(seminar_name)
+    driver.find_element(By.CLASS_NAME, "seminar_date").send_keys(date)
+    driver.find_element(By.CLASS_NAME, "seminar_desc").send_keys(description)
+    driver.find_element(By.CLASS_NAME, "create_seminar_button").click()
+    time.sleep(2)
 
-# Interact with the date picker
-datepicker = driver.find_element(By.XPATH, "/html/body/app-root/app-home/div/div/app-search-widget/div/div[3]/div[1]/form/div/div[2]/div[1]/div/img")
-datepicker.click()
+    # Check if seminar was created successfully
+    assert "Seminar created successfully" in driver.page_source, "Seminar Creation Failed"
 
+def create_blog(blog_title, content):
+    # Navigate to blog creation page for organizations
+    driver.get(url + 'dashboard/org_blog.php')
+    time.sleep(2)
+    
+    # Fill out blog form
+    driver.find_element(By.CLASS_NAME, "blog_title").send_keys(blog_title)
+    driver.find_element(By.CLASS_NAME, "blog_content").send_keys(content)
+    driver.find_element(By.CLASS_NAME, "create_blog_button").click()
+    time.sleep(2)
 
-# Select a specific date (adjust if needed based on the calendar structure)
-datepick = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, "/html/body/div/table/tbody/tr[4]/td[6]/a")))
-datepick.click()
+    # Check if blog post was created successfully
+    assert "Blog created successfully" in driver.page_source, "Blog Creation Failed"
 
+def donate_to_child(organization_id, child_id, amount, payment_method):
+    # Navigate to the donation page
+    driver.get(url + f'donation_page.php?org_id={organization_id}&child_id={child_id}')
+    time.sleep(2)
 
-# Select class (Snigdha in this case)
-choose_class = Select(WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.ID, "choose_class"))))
-choose_class.select_by_value("SNIGDHA")
-time.sleep(1)
+    # Fill out donation form
+    driver.find_element(By.CLASS_NAME, "donation_amount").send_keys(str(amount))
+    driver.find_element(By.CLASS_NAME, "payment_method").send_keys(payment_method)
+    driver.find_element(By.CLASS_NAME, "donate_button").click()
+    time.sleep(2)
 
+    # Check if donation was successful
+    assert "Donation successful" in driver.page_source, "Donation Failed"
 
-# Click the search button
-search_btn = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, "/html/body/app-root/app-home/div/div/app-search-widget/div/div[3]/div[1]/form/div/div[3]/div[2]/div/button")))
-search_btn.click()
+def join_seminar(seminar_id):
+    # Navigate to seminar list page
+    driver.get(url + 'seminars.php')
+    time.sleep(2)
+
+    # Find the seminar and click to join
+    seminar_button = driver.find_element(By.XPATH, f"//button[@data-seminar-id='{seminar_id}']")
+    seminar_button.click()
+    time.sleep(2)
+
+    # Check if user has joined the seminar successfully
+    assert "You have successfully joined the seminar" in driver.page_source, "Failed to Join Seminar"
+
+# Run tests
+try:
+    # Test 1: User Signup and Login
+    sign_up("Test User", "testuser@example.com", "password123", "user")
+    login("testuser@example.com", "password123", "user")
+
+    # Test 2: Organization Signup and Login, Create Seminar and Blog
+    sign_up("Test Org", "org@example.com", "password123", "organization")
+    login("org@example.com", "password123", "organization")
+    arrange_seminar("Charity Event", "2024-12-25", "Helping children in need")
+    create_blog("New Blog Post", "This is a sample blog post for the organization.")
+
+    # Test 3: User Donation to a Child
+    donate_to_child(organization_id=1, child_id=2, amount=100, payment_method="BKash")
+
+    # Test 4: User Joins a Seminar
+    join_seminar(seminar_id=1)
+
+finally:
+    # Close the browser after testing
+    driver.quit()
