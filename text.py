@@ -14,9 +14,9 @@ def login(username, password, role):
     time.sleep(2)
     
     # Find login elements and perform login
-    driver.find_element(By.CLASS_NAME, "rb@gmail.com").send_keys(username)
-    driver.find_element(By.CLASS_NAME, "1111").send_keys(password)
-    driver.find_element(By.CLASS_NAME, "login_button").click()
+    driver.find_element(By.NAME, "acc_email").send_keys(username)
+    driver.find_element(By.NAME, "acc_pass").send_keys(password)
+    driver.find_element(By.NAME, "login_btn").click()
     time.sleep(2)
 
     # if login was successful by verifying the role's dashboard page
@@ -115,11 +115,11 @@ def join_seminar(seminar_id):
 try:
     # Test 1: User Signup and Login
     sign_up("testuser@example.com", "1234", "1234", "user", "What is your favorite movie?", "Avengers")
-    login("testuser@example.com", "1234", "role")
+    login("testuser@example.com", "1234", "user")
 
     # Test 2: Organization Signup and Login, Create Seminar and Blog
-    sign_up("org@example.com", "pas123", "organization")
-    login("org@example.com", "pas123", "organization")
+    sign_up("org@example.com", "pas123", "Organization")
+    login("org@example.com", "pas123", "Organization")
     arrange_seminar(
         seminar_name="Charity Event",
         subject="Helping Children",
