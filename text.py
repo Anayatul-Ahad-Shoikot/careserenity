@@ -57,7 +57,7 @@ def sign_up(email, password, confirm_password, role, question, answer):
 
 def arrange_seminar(seminar_name, date, description):
     # Navigate to the organization dashboard and seminar page
-    driver.get(url + 'dashboard/org_seminar.php')
+    driver.get(url + 'O_seminar.php')
     time.sleep(2)
     
     # Fill out seminar details
@@ -72,7 +72,7 @@ def arrange_seminar(seminar_name, date, description):
 
 def create_blog(blog_title, content):
     # Navigate to blog creation page for organizations
-    driver.get(url + 'dashboard/org_blog.php')
+    driver.get(url + 'U_create_blog.php')
     time.sleep(2)
     
     # Fill out blog form
@@ -86,7 +86,7 @@ def create_blog(blog_title, content):
 
 def donate_to_child(organization_id, child_id, amount, payment_method):
     # Navigate to the donation page
-    driver.get(url + f'donation_page.php?org_id={organization_id}&child_id={child_id}')
+    driver.get(url + f'U_donation.php?org_id={organization_id}&child_id={child_id}')
     time.sleep(2)
 
     # Fill out donation form
@@ -100,7 +100,7 @@ def donate_to_child(organization_id, child_id, amount, payment_method):
 
 def join_seminar(seminar_id):
     # Navigate to seminar list page
-    driver.get(url + 'seminars.php')
+    driver.get(url + 'U_seminar.php')
     time.sleep(2)
 
     # Find the seminar and click to join
