@@ -27,6 +27,7 @@
     <link rel="stylesheet" href="./css/navbar.css">
     <link rel="stylesheet" href="./css/profile_edit.css">
     <link rel="stylesheet" href="./css/seminar.css">
+    <link rel="stylesheet" href="./css/volunteer.css">
     <link rel="stylesheet" href="./css/footer.css">
     <link rel="stylesheet" href="./css/notification.css">
     <link rel="stylesheet" href="./css/feedback.css">
@@ -66,14 +67,6 @@
         <form action="./O_recruite_volunteer_BE.php" method="POST" enctype="multipart/form-data" >
             <h2>Volunteer Form</h2>
             <div class="form_row">
-                <label for="title">Title :</label>
-                <input type="text" id="title" name="title" required>
-            </div>
-            <div class="form_row">
-                <label for="No_of_vol">Number of Volunteers :</label>
-                <input type="number" id="No_of_vol" name="No_of_vol" required>
-            </div>
-            <div class="form_row">
                 <label for="seminar">Choose Seminar :</label>
                 <select name="seminar" id="seminar">
                     <?php
@@ -92,6 +85,10 @@
                 </select>
             </div>
             <div class="form_row">
+                <label for="No_of_vol">Number of Volunteers :</label>
+                <input type="number" id="No_of_vol" name="No_of_vol" required>
+            </div>
+            <div class="form_row">
                 <label for="service_type">Service Type :</label>
                 <select name="service_type" id="service_type" onchange="toggleRemuneration()">
                     <option value='' selected disabled>Select service type</option>
@@ -107,8 +104,8 @@
                 <label for="food">Food Type :</label>
                 <select name="food" id="food">
                     <option value='' selected disabled>Select food type</option>
-                    <option value="With Food">With Food</option>
-                    <option value="Without Food">Without Food</option>
+                    <option value="WithFood">With Food</option>
+                    <option value="WithoutFood">Without Food</option>
                 </select>
             </div>
             <input type="hidden" name="org_id" value="<?php echo $org_id ?>">
@@ -121,9 +118,7 @@
 
     <h1 id="heading">Recruitment Posts :</h1>
     <div class="seminarBlock">
-        <div class="cards">
-            <?php include('./O_recruite_vol_fetch_BE.php') ?>
-        </div>
+        <?php include('./O_recruite_vol_fetch_BE.php') ?>
     </div>
 
 
@@ -163,6 +158,14 @@
         document.addEventListener('DOMContentLoaded', function() {
             toggleRemuneration();
         });
+
+        function confirmDelete(event) {
+            event.stopPropagation();
+            const confirmation = confirm("Do you want to close this recruitment ?");
+            if (confirmation) {
+                alert("deleted");
+            }
+        }
     </script>
 </body>
 
