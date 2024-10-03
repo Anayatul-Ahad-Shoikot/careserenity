@@ -22,7 +22,6 @@ if (mysqli_num_rows($result2) > 0) {
             '<td>' . $row2['acc_email'] . '</td>' .
             '<td>' . $row2['user_contact'] . '</td>' .
             '<td>' . $row2['reg_date'] . '</td>' .
-            '<td><a href="#?fund_id=' . $row2['seminar_id'] . '">Delete</a></td>' .
             '</tr>';
     }
 } else {

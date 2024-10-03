@@ -1,0 +1,49 @@
+.form {
+    position: relative;
+}
+
+.form .img {
+    width: 100%;
+    height: 420px;
+    background-size: cover;
+    position: relative;
+}
+
+.form .img .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0));
+    z-index: 1;
+}
+
+.name, .org {
+    position: absolute;
+    z-index: 2;
+    color: white;
+    text-align: center;
+}
+
+.name {
+    font-size: 44px;
+    bottom: 50px;
+    left: 40px;
+    text-transform: capitalize;
+}
+
+.org {
+    font-size: 16px;
+    bottom: 30px;
+    left: 40px;
+    text-transform: capitalize;
+}
+
+.form form {
+    margin: 0px 20px;
+}
+
+.form form .btn button{
+    margin-top: 20px;
+}

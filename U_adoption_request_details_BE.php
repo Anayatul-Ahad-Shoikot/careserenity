@@ -28,18 +28,21 @@ $result2 = mysqli_query($con, $query2);
 $row2 = mysqli_fetch_assoc($result2);
 $user_name = $row2['user_name'];
 
-$query3 = "SELECT first_name, last_name, org_id FROM orphan_list WHERE orphan_id = $orphan_id";
+$query3 = "SELECT orphan_image, first_name, last_name, org_id FROM orphan_list WHERE orphan_id = $orphan_id";
 $result3 = mysqli_query($con, $query3);
 $row3 = mysqli_fetch_assoc($result3);
 $first_name = $row3['first_name'];
 $last_name = $row3['last_name'];
 $org_id = $row3['org_id'];
+$orphan_image = $row3['orphan_image'];
 
 
-$query4 = "SELECT org_name FROM org_list WHERE org_id = $org_id";
+$query4 = "SELECT org_name, org_email, org_phone FROM org_list WHERE org_id = $org_id";
 $result4 = mysqli_query($con, $query4);
 $row4 = mysqli_fetch_assoc($result4);
 $org_name = $row4['org_name'];
+$org_email = $row4['org_email'];
+$org_phone = $row4['org_phone'];
 
 
 

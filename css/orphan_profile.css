@@ -48,7 +48,6 @@
     font-size: 3rem;
     color: var(--primary-title-color);
     text-transform: capitalize;
-    margin: 10px 0px 20px 0px;
 }
 .account-data p {
     font-size: 15px;

@@ -1,10 +1,16 @@
 <?php
     include('./db_con.php');
 
-    $query1 = "SELECT SUM(amount) AS total_amount FROM donations";
+    $query1 = "SELECT SUM(total_amount) AS total_amount FROM (
+                    SELECT SUM(amount) AS total_amount
+                    FROM fund_donation_received
+                    UNION ALL
+                    SELECT SUM(amount) AS total_amount
+                    FROM donations
+                ) AS combined_totals;";
     $result1 = mysqli_query($con, $query1);
     $row1 = mysqli_fetch_assoc($result1);
-    $total_donation_Serverd = $row1['total_amount'];
+    $total_amount = $row1['total_amount'];
 
     $query2 = "SELECT COUNT(*) AS total_organizations FROM org_list";
     $result2 = mysqli_query($con, $query2);

@@ -21,7 +21,8 @@
     <link rel='stylesheet' href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css'>
     <link rel="stylesheet" href="./css/colors.css">
     <link rel="stylesheet" href="./css/navbar.css">
-    <link rel="stylesheet" href="./css/profile_edit.css">
+    <link rel="stylesheet" href="./css/orphan_profile.css">
+    <link rel="stylesheet" href="./css/adoption_form.css">
     <link rel="stylesheet" href="./css/footer.css">
     <link rel="stylesheet" href="./css/notification.css">
     <link rel="stylesheet" href="./css/feedback.css">
@@ -50,13 +51,19 @@
         ?>
     </div>
 
+
+    <div class="container">
+
     <div class="options">
         <a href="./O_profile.php" id="button-30">back</a>
     </div>
 
-
-    <div class="container">
-        <h2>Profile Information</h2>
+    <div class="form" id="aform">
+        <div class="img" style="background-image:url('./assets/<?php echo $org_logo ?>'); background-position:center;">
+                <div class="overlay"></div>
+                <h1 class="name"><?php echo $org_name ?></h1>
+        </div>
+        <h2>Profile Details</h2>
         <form action="./O_profile_edit_BE.php" method="post" enctype="multipart/form-data">
             <div class="form_row">
                 <label>Organization's Name :</label>
@@ -98,6 +105,7 @@
                 <button type="submit" name="update" id="button-30">Update</button>
             </div>
         </form>
+        </div>
     </div>
 
     <?php include "./footer.php" ?>

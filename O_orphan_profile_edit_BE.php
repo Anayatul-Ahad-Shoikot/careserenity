@@ -174,19 +174,18 @@
             $sql = "SELECT first_name FROM orphan_list WHERE orphan_id = $orphan_id";
             $row = mysqli_fetch_assoc(mysqli_query($con, $sql));
             $orphan_name = $row['first_name'];
-            $orphan_name = preg_replace("/[^a-zA-Z0-9]/", "", $orphan_name);
             $file_extension = pathinfo($image_name, PATHINFO_EXTENSION);
-            $new_image_name = $orphan_name . "_" . uniqid() . "." . $file_extension;
+            $new_image_name = 'Orphan_img_' . $orphan_name . '.' . $file_extension;
             $image_path = "./assets/" . $new_image_name;
             move_uploaded_file($image_tmp_name, $image_path);
             $SQL="UPDATE orphan_list SET orphan_image = '$new_image_name' WHERE orphan_id = $orphan_id LIMIT 1";
             mysqli_query($con, $SQL);
         }
-        $_SESSION['positive'] = "Orphan profile updated successfully.";
+        $_SESSION['positive'] = "Orphan profile has been updated.";
         header("Location: ./O_orphan_profile.php?orphan_id=$orphan_id");
         } 
         else {
-            $_SESSION['negative'] = "Failed to update orphan profile.";
+            $_SESSION['negative'] = "Orphan profile update failed.";
             header("Location: ./O_orphan_profile.php?orphan_id=$orphan_id");
         }
     mysqli_close($con);

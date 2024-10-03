@@ -24,10 +24,12 @@ if (mysqli_num_rows($result1) == 1) {
     $additionalInfo = $row1['additionalInfo'];
 }
 
-$query2 = "SELECT user_name FROM user_list WHERE user_id = $user_id";
+$query2 = "SELECT user_name, user_contact, user_image FROM user_list WHERE user_id = $user_id";
 $result2 = mysqli_query($con, $query2);
 $row2 = mysqli_fetch_assoc($result2);
 $user_name = $row2['user_name'];
+$user_contact = $row2['user_contact'];
+$user_image = $row2['user_image'];
 
 $query3 = "SELECT first_name, last_name FROM orphan_list WHERE orphan_id = $orphan_id";
 $result3 = mysqli_query($con, $query3);

@@ -57,7 +57,7 @@
                 <img src="./assets/<?php echo $orphan_image ?>" alt="profile">
             </div>
             <div class="account-data">
-                <h1><?php echo $first_name ?></h1>
+                <h1><?php echo $first_name ?> <?php echo $last_name ?></h1>
                 <p>Belong to : <?php echo $org_name ?></p>
                 <p>Location : <?php echo $org_location ?></p>
                 <p>Email : <?php echo $org_email ?></p>
@@ -78,10 +78,14 @@
 
         <div class="form">
             <h2>Profile Information</h2>
-            <form action="./orphan_profile_edit_BE.php" method="post" enctype="multipart/form-data">
+            <form action="./O_orphan_profile_edit_BE.php" method="post" enctype="multipart/form-data">
                 <div class="form_row">
-                    <label>Full Name:</label>
+                    <label>First Name:</label>
                     <input type="text" name="first_name" placeholder="<?php echo $first_name ?>">
+                </div>
+                <div class="form_row">
+                    <label>Last Name:</label>
+                    <input type="text" name="last_name" placeholder="<?php echo $last_name ?>">
                 </div>
                 <div class="form_row">
                     <label>Age:</label>
@@ -121,7 +125,7 @@
                 </div>
                 <div class="form_row">
                     <label>Date of Birth :</label>
-                    <input type="date" name="date_of_birth" placeholder="<?php echo $date_of_birth ?>">
+                    <input type="date" name="date_of_birth" value="<?php echo $date_of_birth ?>">
                 </div>
                 <div class="form_row">
                     <label>Family Status :</label>

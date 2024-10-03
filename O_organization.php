@@ -53,7 +53,7 @@
 
     <div class="container">
       <div class="options">
-        <a href="./O_organization.php" id="button-30">Refresh</a>
+        <a href="./O_organization.php" id="button-30"><i class='bx bx-refresh' style="color:black"></i></a>
         <form action="#" method="GET">
           <input type="text" name="query" placeholder="Search Organizations...">
           <button type="submit"><i class="ri-search-line"></i></button>

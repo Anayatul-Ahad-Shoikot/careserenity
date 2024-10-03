@@ -57,7 +57,7 @@
                 <img src="./assets/<?php echo $orphan_image ?>" alt="profile">
             </div>
             <div class="account-data">
-                <h1><?php echo $first_name ?></h1>
+                <h1><?php echo $first_name ?> <?php echo $last_name ?></h1>
                 <p>Belongs to : <a href="./U_see_organization_profile.php?org_id=<?php echo $org_id ?>"><?php echo $org_name ?></a></p>
                 <p>Location : <?php echo $org_location ?></p>
                 <p>Email : <?php echo $acc_email ?></p>
@@ -80,11 +80,11 @@
                 <form>
                     <div class="form_row">
                         <label>Full Name:</label>
-                        <input type="text" name="first_name" placeholder="<?php echo $first_name ?>" disabled>
+                        <input type="text" name="first_name" placeholder="<?php echo $first_name.' '.$last_name ?>" disabled>
                     </div>
                     <div class="form_row">
                         <label>Age:</label>
-                        <input type="number" name="age" placeholder="<?php echo $age ?>" disabled>
+                        <input type="number" name="age" placeholder="<?php echo $age ?> years old" disabled>
                     </div>
                     <div class="form_row">
                         <label>Gender :</label>

@@ -21,12 +21,13 @@ if ($unreadNotificationsResult) {
     <link rel='stylesheet' href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css'>
     <link rel="stylesheet" href="./css/colors.css">
     <link rel="stylesheet" href="./css/navbar.css">
-    <link rel="stylesheet" href="./css/profile_edit.css">
+    <link rel="stylesheet" href="./css/orphan_profile.css">
+    <link rel="stylesheet" href="./css/adoption_form.css">
     <link rel="stylesheet" href="./css/footer.css">
     <link rel="stylesheet" href="./css/notification.css">
     <link rel="stylesheet" href="./css/feedback.css">
     <link rel="icon" href="./assets/LOGO.png" type="image/x-icon">
-    <title>CareSenerity | Profile </title>
+    <title>CareSenerity | Adoption Request </title>
 </head>
 
 <body>
@@ -50,11 +51,18 @@ if ($unreadNotificationsResult) {
         ?>
     </div>
 
+    <div class="container">
+
     <div class="options">
         <a href="./O_profile.php" id="button-30">back</a>
     </div>
 
-    <div class="container">
+
+    <div class="form" id="aform">
+        <div class="img" style="background-image:url('./assets/<?php echo $user_image ?>')">
+            <div class="overlay"></div>
+            <h1 class="name"><?php echo $user_name ?></h1>
+        </div>
         <h2>Adoption Application Form</h2>
         <form>
             <div class="form_row">
@@ -70,6 +78,8 @@ if ($unreadNotificationsResult) {
                 <input type="text" placeholder="<?php 
                     if($status == 1){
                         echo 'Approved';
+                    } else if ($status == 2) {
+                        echo 'Rejected';
                     } else {
                         echo 'Pending';
                     }
@@ -120,11 +130,12 @@ if ($unreadNotificationsResult) {
                 <input type="text" placeholder="<?php echo $additionalInfo ?>" disabled>
             </div>
 
-            <div class="buttons">
+            <div class="btn" style="gap: 20px;">
                 <a href="./O_accept_adoption_request_BE.php?adoption_id=<?php echo $_GET['adoption_id'] ?>&user_id=<?php echo $_GET['user_id'] ?>&orphan_id=<?php echo $_GET['orphan_id']?>" id="button-30">Accept</a>
                 <a href="./O_reject_adoption_request_BE.php?adoption_id=<?php echo $_GET['adoption_id'] ?>&user_id=<?php echo $_GET['user_id'] ?>&orphan_id=<?php echo $_GET['orphan_id']?>" id="button-30">Reject</a>
             </div>
         </form>
+        </div>
     </div>
 
     <?php include "./footer.php" ?>
