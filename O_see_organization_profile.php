@@ -81,6 +81,60 @@ if ($unreadNotificationsResult) {
         </div>
 
         <div class="short-reports">
+
+        <h1 id="heading">Funds :</h1>
+            <div class="ag-format-container">
+                <?php
+                include("./db_con.php");
+                $acc_id = $_SESSION['acc_id'];
+                $id = $_GET['org_id'];
+                $sql = "SELECT 
+                            funds.fund_id, 
+                            funds.name, 
+                            funds.amount, 
+                            funds.received, 
+                            org_list.org_name, 
+                            funds.img 
+                        FROM 
+                            funds 
+                        LEFT JOIN 
+                            org_list ON funds.org_id = org_list.org_id 
+                        WHERE 
+                            funds.completed = ? AND funds.org_id = $id";
+
+                $value = 0;
+                $stmt = $con->prepare($sql);
+                $stmt->bind_param('i', $value);
+                $stmt->execute();
+                $result = $stmt->get_result();
+
+                if ($result->num_rows > 0) {
+                    echo "<div class='funds'>";
+                    while ($fund = $result->fetch_assoc()) {
+                        echo '<div class="card">';
+                        echo '<img src="./assets/' . htmlspecialchars($fund['img']) . '" alt="">';
+                        echo '<h1>' . htmlspecialchars($fund['name']) . '</h1>';
+                        echo '<p>' . htmlspecialchars($fund['org_name']) . '</p>';
+                        echo '<p class="price">' . htmlspecialchars($fund['received']) . '/' . htmlspecialchars($fund['amount']) . '</p>';
+                        echo '<a href="./fund_donate_loggedin.php?fund_id=' . htmlspecialchars($fund['fund_id']) . '" id="button-30">Donate</a>';
+                        echo '</div>';
+                    }
+                    echo '</div>';
+                } else {
+                    echo '<p id="notFound">Currently no funds are available.</p>';
+                }
+
+                $stmt->close();
+                $con->close();
+                ?>
+            </div>
+
+
+
+
+
+
+
             <h1 id="heading">Volunteers Recruitment:</h1>
             <div class="ag-format-container">
                 <div class="ag-courses_box">
