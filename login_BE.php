@@ -18,7 +18,7 @@ if (isset($_POST['login_btn'])) {
             $_SESSION['role'] = $row['role'];
             switch ($_SESSION['role']) {
                 case 'admin':
-                    header("Location: #");
+                    header("Location: ./admin_dashboard.php");
                     exit(0);
                 case 'org':
                     $_SESSION['positive'] = "Welcome back, $acc_email ";

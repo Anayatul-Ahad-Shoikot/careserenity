@@ -101,7 +101,7 @@ if ($unreadNotificationsResult) {
                 <a href="#"><i class='bx bxs-user-plus'></i></a>
                 <span>
                     <p>Volunteers</p>
-                    <h3>9</h3>
+                    <h3>3</h3>
                 </span>
             </li>
             <li>

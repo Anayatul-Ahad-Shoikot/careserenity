@@ -175,7 +175,7 @@ include './blog_fetch_BE.php';
         </div>
         <div class="cards-container">
             <?php
-                include('./blog_show_for_landing_page_BE.php');
+            include('./blog_show_for_landing_page_BE.php');
             ?>
         </div>
     </div>
@@ -199,8 +199,13 @@ include './blog_fetch_BE.php';
                 <div class="inputbox"><input type="email" name="email" placeholder="Enter Email Address"></div>
             </div>
             <div class="form_row">
+                <!-- <div class="label"><label>Mobile Number</label><span>:</span></div>
+                <div class="inputbox"><input type="text" name="mobile" placeholder="Enter Mobile Number"></div> -->
                 <div class="label"><label>Mobile Number</label><span>:</span></div>
-                <div class="inputbox"><input type="text" name="mobile" placeholder="Enter Mobile Number"></div>
+                <div class="inputbox">
+                    <input type="text" id="mobile" name="mobile" placeholder="Enter Mobile Number" required>
+                    <span id="mobile-error" style="color:red !important; display:none !important;">Mobile number cannot exceed 11 digits</span>
+                </div>
             </div>
             <div class="form_row">
                 <div class="label"><label>Enter Message</label><span>:</span></div>
@@ -211,7 +216,7 @@ include './blog_fetch_BE.php';
             <div class="form_row">
                 <button type="submit" id="button-30">Send Message</button>
             </div>
-        </form>
+        </form>l,d
         <div class="contact_address">
             <div class="address">
                 <h2 id="highlight">Address</h2>
@@ -232,6 +237,25 @@ include './blog_fetch_BE.php';
     <script src="./js/nav_scroll.js"></script>
     <script src="./js/scrollupBTN.js"></script>
     <script src="./js/feedback.js"></script>
+
+    <!-- contact form mobile validatin check -->
+    <script>
+        function validateForm() {
+            var mobileField = document.getElementById('mobile');
+            var mobileError = document.getElementById('mobile-error');
+
+            if (mobileField.value.length > 11) {
+                mobileError.style.display = 'block';
+                mobileField.style.borderColor = 'red'; // Apply red border
+                return false; // Prevent form submission
+            } else {
+                mobileError.style.display = 'none';
+                mobileField.style.borderColor = ''; // Reset border color
+            }
+
+            return true;
+        }
+    </script>
 </body>
 
 </html>

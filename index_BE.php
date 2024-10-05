@@ -26,5 +26,17 @@
     $result4 = mysqli_query($con, $query4);
     $row4 = mysqli_fetch_assoc($result4);
     $total_users = $row4['total_users'];
+
+
+    $query5 = "SELECT COUNT(*) AS total_admins FROM admin_list";
+    $result5 = mysqli_query($con, $query5);
+    $row5 = mysqli_fetch_assoc($result5);
+    $total_admins = $row5['total_admins'];
+
+
+    $query6 = "SELECT COUNT(*) AS total_accounts FROM accounts";
+    $result6 = mysqli_query($con, $query6);
+    $row6 = mysqli_fetch_assoc($result6);
+    $total_accounts = $row6['total_accounts'];
     
 ?>
