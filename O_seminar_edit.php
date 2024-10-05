@@ -141,7 +141,7 @@
                 <button id="button-30" name="Public">Public</button>
             </form>
             <div style="Display: flex; flex-direction:column; gap:30px">
-                <p style="background-color:lightgoldenrodyellow;padding:8px; font-weight:500">Total perticipants : <?php echo $total_participents ?></p>
+                <p style="background-color:lightgoldenrodyellow;padding:8px; font-weight:500">Total participants : <?php echo $total_participants ?></p>
                 <img src="./assets/<?php echo $banner ?>" style="width:450px; height:250px; border-radius:15px;">
             </div>
             
@@ -151,20 +151,38 @@
 
         <section class="table__body">
             <h1>Participant List :</h1>
-                <table>
-                    <thead>
-                        <tr>
-                            <th> Name </th>
-                            <th> Email </th>
-                            <th> Contact </th>
-                            <th> Date </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php include ('./O_seminar_participant_fetch_BE.php') ?>
-                    </tbody>
-                </table>
-            </section>
+            <table>
+                <thead>
+                    <tr>
+                        <th> Name </th>
+                        <th> Email </th>
+                        <th> Contact </th>
+                        <th> Date </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php include ('./O_seminar_participant_fetch_BE.php') ?>
+                </tbody>
+            </table>
+        </section>
+
+        <br>
+        <section class="table__body">
+            <h1>Volunteer List :</h1>
+            <table>
+                <thead>
+                    <tr>
+                        <th> Name </th>
+                        <th> Contact </th>
+                        <th> Gender </th>
+                        <th> Address </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php include ('./O_seminar_volunteer_fetch_BE.php') ?>
+                </tbody>
+            </table>
+        </section>
     </div>
 
     <?php include "./footer.php" ?>

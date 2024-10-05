@@ -26,4 +26,4 @@
     $query2 = "SELECT COUNT(*) as count FROM seminar_participants WHERE seminar_id = $seminar_id";
     $result2 = mysqli_query($con, $query2);
     $row2 = mysqli_fetch_assoc($result2);
-    $total_participents = $row2['count'];
+    $total_participants = $row2['count'];

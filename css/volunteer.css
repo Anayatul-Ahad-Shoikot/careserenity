@@ -4,43 +4,64 @@
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
     width: 100%;
+    white-space: nowrap;
 }
-.card {
+#Recruitment_Posts .Vcard {
     position: relative;
-    background-color: #fff;
+    background-color: #ffffff;
     border-radius: 8px; 
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     padding: 20px; 
     margin: 15px; 
+    width: 295px;
     transition: transform 0.3s;
-    border-left: 30px solid var(--primary-color-dark);
+    border: 1px solid lightgray;
+    border-left: 10px solid var(--primary-color-dark);
 }
 
-.card:hover {
+#Recruitment_Posts .Vcard:hover {
     transform: translateY(-5px);
 }
 
-.info-container {
+#Recruitment_Posts .Vinfo-container {
+    text-align: center;
     display: flex;
     flex-direction: column;
+    gap: 10px;
 }
 
-h2 {
+.Vinfo-container h2 {
+    text-align: center;
     font-size: 15px; 
-    margin: 0 0 10px 0;
     color: #333;
+    text-wrap: wrap;
+    text-transform: capitalize;
 }
 
-p {
-    margin: 5px 0;
+.Vinfo-container .img img{
+    width: 100%;
+    height: 150px;
+}
+
+.Vinfo-container .row {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.Vinfo-container .row p {
+    flex: 1;
+    background-color: rgb(255, 182, 193, 0.7);
+    padding: 3px 15px;
     color: #555;
+    border-radius: 5px;
 }
 
-a {
+#Recruitment_Posts a {
     text-decoration: none;
 }
 
-.del-btn {
+#Recruitment_Posts .del-btn {
     position: absolute;
     top: 10px; 
     left: 5px;
@@ -49,4 +70,24 @@ a {
     color: #000000;
     cursor: pointer;
     outline: none;
+}
+
+.Vinfo-container .register-btn {
+    background-color: none;
+    border-radius: 8px;
+    border: 1px double black;
+    color: black;
+    padding: 8px 15px;
+    text-decoration: none;
+    text-align: center;
+    margin-top: 10px;
+    transition: .3s;
+    cursor: pointer;
+}
+
+.Vinfo-container .register-btn:hover {
+    background-color: black;
+    color: white;
+    border: 1px double white;
+    transition: .3s;
 }

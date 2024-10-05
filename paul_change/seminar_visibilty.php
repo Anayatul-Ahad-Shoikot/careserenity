@@ -23,4 +23,3 @@
     } else {
         echo "Invalid seminar ID.";
     }
-?>

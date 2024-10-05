@@ -12,7 +12,7 @@
                 INNER JOIN seminar_participants AS SP ON SP.seminar_id = S.seminar_id
                 INNER JOIN user_list AS U ON U.user_id = SP.participant_id
                 INNER JOIN accounts AS AC ON AC.acc_id = U.acc_id
-                WHERE S.org_id = $org_id";
+                WHERE S.org_id = $org_id AND S.seminar_id = $seminar_id";
 
 $result2 = mysqli_query($con, $query2);
 if (mysqli_num_rows($result2) > 0) {

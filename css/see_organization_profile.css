@@ -42,7 +42,7 @@
 }
 .account-data h1 {
     font-size: 3rem;
-    color: var(--secondary-color-dark);
+    color: var(--primary-title-color);
     text-transform: capitalize;
 }
 .account-data p {

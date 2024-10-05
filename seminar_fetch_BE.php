@@ -15,5 +15,5 @@
         }
     }
     else{
-        echo "<p>You have not created any seminars yet.</p>";
+        echo "<p id='notFound'>You have not created any seminars yet.</p>";
     }

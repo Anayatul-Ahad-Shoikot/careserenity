@@ -1,11 +1,30 @@
 <?php
-    include './db_con.php';
-    $sql = "SELECT funds.fund_id, funds.name, funds.amount, funds.received, org_list.org_name, funds.img FROM funds LEFT JOIN org_list ON funds.org_id = org_list.org_id WHERE funds.completed = ?";
-    $value = 0;
-    $stmt = $con->prepare($sql);
-    $stmt->bind_param('i', $value);
-    $stmt->execute();
-    $result = $stmt->get_result();
+include './db_con.php';
+
+// Prepare the SQL statement
+$sql = "SELECT 
+            funds.fund_id, 
+            funds.name, 
+            funds.amount, 
+            funds.received, 
+            org_list.org_name, 
+            funds.img 
+        FROM 
+            funds 
+        LEFT JOIN 
+            org_list ON funds.org_id = org_list.org_id 
+        WHERE 
+            funds.completed = ?";
+
+$value = 0;
+$stmt = $con->prepare($sql);
+$stmt->bind_param('i', $value);
+$stmt->execute();
+$result = $stmt->get_result();
+
+// Check if there are results
+if ($result->num_rows > 0) {
+echo "<div class='funds'>";
     while ($fund = $result->fetch_assoc()) {
         echo '<div class="card">';
         echo '<img src="./assets/' . htmlspecialchars($fund['img']) . '" alt="">';
@@ -15,5 +34,12 @@
         echo '<a href="./fund_donate_loggedin.php?fund_id=' . htmlspecialchars($fund['fund_id']) . '" id="button-30">Donate</a>';
         echo '</div>';
     }
-    $stmt->close();
-    $con->close();
+    echo '</div>';
+} 
+else {
+    echo '<p id="notFound">Currently no funds are available.</p>';
+}
+
+$stmt->close();
+$con->close();
+?>

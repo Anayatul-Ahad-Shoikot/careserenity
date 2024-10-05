@@ -23,9 +23,12 @@ if ($unreadNotificationsResult) {
     <link rel="stylesheet" href="./css/colors.css">
     <link rel="stylesheet" href="./css/navbar.css">
     <link rel="stylesheet" href="./css/see_organization_profile.css">
+    <link rel="stylesheet" href="./css/profile.css">
     <link rel="stylesheet" href="./css/footer.css">
     <link rel="stylesheet" href="./css/notification.css">
     <link rel="stylesheet" href="./css/feedback.css">
+    <link rel="stylesheet" href="./css/cards.css">
+    <link rel="stylesheet" href="./css/volunteer.css">
     <link rel="icon" href="./assets/LOGO.png" type="image/x-icon">
     <title>CareSenerity | Organization</title>
 </head>
@@ -77,9 +80,103 @@ if ($unreadNotificationsResult) {
             <a href="./O_see_organization_orphanage.php?org_id=<?php echo $org_id ?>" id="button-30" >Orphanage</a>
         </div>
 
-        <div class="short-report">
-            <h1>Need idea what to put here</h1>
+        <div class="short-reports">
+            <h1 id="heading">Volunteers Recruitment:</h1>
+            <div class="ag-format-container">
+                <div class="ag-courses_box">
+                <?php
+                    include("./db_con.php");
+                    $acc_id = $_SESSION['acc_id'];
+                    $id = $_GET['org_id'];
+
+                    $ownSeminarQuery = "SELECT 
+                                            r.service_type, 
+                                            r.remuneration, 
+                                            r.food_type, 
+                                            r.no_of_vol, 
+                                            r.recruite_id, 
+                                            s.title, 
+                                            s.seminar_date,
+                                            s.banner,
+                                            COUNT(v.user_id) AS total_participants
+                                        FROM 
+                                            volunteer_recruite AS r
+                                        LEFT JOIN 
+                                            vol_participants AS v ON r.recruite_id = v.recruite_id
+                                        LEFT JOIN 
+                                            seminars AS s ON s.seminar_id = r.seminar_id
+                                        WHERE 
+                                            r.isClosed != 1 AND s.org_id = $id
+                                        GROUP BY 
+                                            r.recruite_id, r.service_type, r.remuneration, r.food_type, r.no_of_vol, s.title, s.seminar_date";
+
+                    $result = mysqli_query($con, $ownSeminarQuery);                        
+                    if(mysqli_num_rows($result) > 0){
+                        echo '<div class="cards" id="Recruitment_Posts">';
+                        while($row = mysqli_fetch_assoc($result)){
+                            echo "<div class='Vcard'>";
+                                echo "<div class='Vinfo-container'>";
+                                    echo "<h2>" . htmlspecialchars($row['title']) . "</h2>";
+                                    echo "<div class='img'>
+                                            <img src='./assets/" . $row['banner'] . "'>
+                                        </div>";
+                                    echo "<div class='row'>";
+                                        echo "<p>" . htmlspecialchars($row['seminar_date']) . "</p>";
+                                        echo "<p>" . htmlspecialchars($row['service_type']) . "</p>";
+                                        echo "<p>" . htmlspecialchars($row['remuneration']) . "</p>";
+                                    echo "</div>";
+                                    echo "<div class='row'>";
+                                        echo "<p>" . htmlspecialchars($row['food_type']) . "</p>";
+                                        echo "<p>" . htmlspecialchars($row['total_participants']) . " / " . htmlspecialchars($row['no_of_vol']) . "</p>";
+                                    echo "</div>";
+                                echo "</div>";
+                            echo "</div>";
+                        }
+                        echo "</div>";
+                    }
+                    else{
+                        echo "<p id='notFound'>No volunteer recruitments available.</p>";
+                    }
+                    ?>
+                </div>
+            </div>
+
+            <h1 id="heading">Seminars :</h1>
+            <div class="ag-format-container">
+                <div class="card_boxes">
+                <?php
+                    include("./db_con.php");
+                    $id = $_GET['org_id'];
+                    $query = "SELECT * FROM seminars WHERE isRemoved = 0 AND visibility = 0 AND org_id = $id";
+                    $result = mysqli_query($con, $query);
+                    
+                    if (mysqli_num_rows($result) > 0) {
+                        while ($row1 = mysqli_fetch_assoc($result)) {
+                            echo '<a href="/seminar_view.php?seminar_id='. $row1['seminar_id'] .'&org_id='. $row1['org_id'] .'" style="text-decoration: none;">
+                                    <div class="card">
+                                        <div class="card_price">' . $row1['seminar_date'] . '</div>
+                                        <div class="card_image">
+                                            <img src="./assets/' . $row1['banner'] . '">
+                                        </div>
+                                        <div class="card_content">
+                                            <h2 class="card_title">' . $row1['title'] . '</h2>
+                                            <div class="card_text">
+                                                <p>' . $row1['description'] . '</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>';
+                        }
+                    } else {
+                        echo "<p id='notFound'>No seminars found!</p>";
+                    }
+                    
+                    mysqli_close($con);
+                ?>
+                </div>
+            </div>
         </div>
+
 
     </div>
 

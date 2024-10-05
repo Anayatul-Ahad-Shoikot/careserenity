@@ -1,13 +1,13 @@
 <?php
-include("./user_profile_fetch_BE.php");
-$acc_id = $_SESSION['acc_id'];
-$fetchUnreadNotificationsQuery = "SELECT COUNT(*) as unread_count FROM notifications WHERE is_read = 0 AND user_id = (SELECT user_id FROM user_list WHERE acc_id = $acc_id)";
-$unreadNotificationsResult = mysqli_query($con, $fetchUnreadNotificationsQuery);
-$unreadCount = 0;
-if ($unreadNotificationsResult) {
-    $unreadRow = mysqli_fetch_assoc($unreadNotificationsResult);
-    $unreadCount = $unreadRow['unread_count'];
-}
+    include("./user_profile_fetch_BE.php");
+    $acc_id = $_SESSION['acc_id'];
+    $fetchUnreadNotificationsQuery = "SELECT COUNT(*) as unread_count FROM notifications WHERE is_read = 0 AND user_id = (SELECT user_id FROM user_list WHERE acc_id = $acc_id)";
+    $unreadNotificationsResult = mysqli_query($con, $fetchUnreadNotificationsQuery);
+    $unreadCount = 0;
+    if ($unreadNotificationsResult) {
+        $unreadRow = mysqli_fetch_assoc($unreadNotificationsResult);
+        $unreadCount = $unreadRow['unread_count'];
+    }
 ?>
 
 <!DOCTYPE html>
@@ -84,7 +84,7 @@ if ($unreadNotificationsResult) {
                 </div>
             </div>
 
-            <h1 id="heading">Seminar :</h1>
+            <h1 id="heading">Registered Seminars :</h1>
             <div class="ag-format-container">
                 <div class="card_boxes">
                 <?php
@@ -93,22 +93,23 @@ if ($unreadNotificationsResult) {
                     $result = mysqli_query($con, $query);
                     if (mysqli_num_rows($result) > 0) {
                         while ($row1 = mysqli_fetch_assoc($result)) {
-                            echo '
-                            <div class="card">
-                                <div class="card_price">' . $row1['seminar_date'] . '</div>
-                                <div class="card_image">
-                                    <img src="./assets/' . $row1['banner'] . '">
-                                </div>
-                                <div class="card_content">
-                                    <h2 class="card_title">' . $row1['title'] . '</h2>
-                                    <div class="card_text">
-                                        <p>' . $row1['description'] . '</p>
+                            echo '<a href="/seminar_view.php?seminar_id='. $row1['seminar_id'] .'&org_id='. $row1['org_id'] .'" style="text-decoration: none;">
+                                    <div class="card">
+                                        <div class="card_price">' . $row1['seminar_date'] . '</div>
+                                        <div class="card_image">
+                                            <img src="./assets/' . $row1['banner'] . '">
+                                        </div>
+                                        <div class="card_content">
+                                            <h2 class="card_title">' . $row1['title'] . '</h2>
+                                            <div class="card_text">
+                                                <p>' . $row1['description'] . '</p>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                            </div>';
+                                </a>';
                         }
                     } else {
-                        echo "<p id='notFound'>Not added yet</p>";
+                        echo "<p id='notFound'>No registerd seminar found !</p>";
                     }
                     mysqli_close($con);
                     ?>

@@ -7,6 +7,7 @@
                             GROUP BY seminars.seminar_id";
     $result = mysqli_query($con, $ownSeminarQuery);                        
     if(mysqli_num_rows($result) > 0){
+        echo "<div class='cards'>";
         while($row = mysqli_fetch_assoc($result)){
             echo "<div class='seminarCard'>";
             echo "<h3>".htmlspecialchars($row['title'])."</h3>";
@@ -19,7 +20,8 @@
             echo "</div>";
             echo "</div>";
         }
+        echo "</div>";
     }
     else{
-        echo "<p>You have not created any seminars yet.</p>";
+        echo "<p id='notFound'>You haven't created any seminar yet.</p>";
     }

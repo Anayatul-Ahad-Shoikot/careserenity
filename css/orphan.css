@@ -46,7 +46,7 @@
 }
 .account-data h1 {
   font-size: 3rem;
-  color: var(--secondary-color-dark);
+  color: var(--primary-title-color);
   text-transform: capitalize;
   margin: 10px 0px 20px 0px;
 }
@@ -167,7 +167,7 @@
   position: relative;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   gap: 20px;
   padding: 10px 15px;
   opacity: 0;

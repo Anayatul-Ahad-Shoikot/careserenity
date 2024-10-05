@@ -144,7 +144,7 @@ h5.card-title.text-white {
 
 .card-body a {
     margin: 1rem 0rem;
-    width: 40% !important; 
+    /* width: 50% !important; */
 }
 
 .card-text{

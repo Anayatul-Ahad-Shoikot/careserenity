@@ -3,7 +3,7 @@
     session_start();
     $acc_id = $_SESSION['acc_id'];
     $role = $_SESSION['role'];
-    if($role == 'org') {
+    if($role === 'org') {
         $fetchUnreadNotificationsQuery = "SELECT COUNT(*) as unread_count FROM notifications WHERE is_read = 0 AND org_id = (SELECT org_id FROM org_list WHERE acc_id = $acc_id)";
         $unreadNotificationsResult = mysqli_query($con, $fetchUnreadNotificationsQuery);
         $unreadCount = 0;
@@ -59,7 +59,14 @@
 </head>
 <body>
 
-    <?php include "./navbarO.php" ?>
+
+    <?php 
+        if ($role === 'user') {
+            include "./navbarU.php";
+        } else {
+            include "./navbarO.php";
+        } 
+    ?>
 
     <div class="feedback">
         <?php
@@ -98,7 +105,7 @@
 
         <div class="options">
             <?php 
-                if ($role == 'user') {
+                if ($role === 'user') {
                     echo '<a href="./u_seminar.php" id="button-30">back</a>';
                 } else {
                     echo '<a href="./O_seminar.php" id="button-30">back</a>';
@@ -121,10 +128,20 @@
             <div class="card-body">
                 <p id="guest">Special Guest : <?php echo $row2['guest'] ?></p>
                 <p><?php echo $row2['description'] ?></p>
-                <p id="location"><?php echo $row2['type'] == "online" ? "**[ Will be held Online ]**" : "Location: {$row2['location']}"; ?></p>
+                <p id="location"><?php echo $row2['type'] == "online" ? "**[ Will be held Online ]**" : "**[ Location: {$row2['location']} ]**"; ?></p>
                 <?php
                     if ($role == 'user') {
-                    echo '<a href="./seminar_register_BE.php?seminar_id=' . $seminar_id .'&user_id=' . $row['user_id'] .'" class="register" id="button-30">Register</a>';
+                        echo '<div style="display :flex; gap: 20px;">';
+                            include './db_con.php';
+                            $user_id = $row['user_id'];
+                            $checkQuery = "SELECT * FROM seminar_participants WHERE seminar_id = $seminar_id AND participant_id = $user_id";
+                            $checkResult = mysqli_query($con, $checkQuery);
+                            if (mysqli_num_rows($checkResult) > 0) {
+                                echo '<a href="./seminar_deregister_BE.php?seminar_id=' . $seminar_id . '&user_id=' . $user_id . '" class="cancel" id="button-30">Cancel Registration</a>';
+                            } else {
+                                echo '<a href="./seminar_register_BE.php?seminar_id=' . $seminar_id . '&user_id=' . $user_id . '" class="register" id="button-30">Register</a>';
+                            }
+                        echo '</div>';
                     }
                 ?>
             </div>

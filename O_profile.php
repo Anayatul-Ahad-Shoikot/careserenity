@@ -1,15 +1,15 @@
 <?php
-    include("./O_profile_fetch_BE.php");
-    include('./adoption_request_fetch_BE.php');
-    include('./donation_request_fetch_BE.php');
-    $acc_id = $_SESSION['acc_id'];
-    $fetchUnreadNotificationsQuery = "SELECT COUNT(*) as unread_count FROM notifications WHERE is_read = 0 AND org_id = (SELECT org_id FROM org_list WHERE acc_id = $acc_id)";
-    $unreadNotificationsResult = mysqli_query($con, $fetchUnreadNotificationsQuery);
-    $unreadCount = 0;
-    if ($unreadNotificationsResult) {
-        $unreadRow = mysqli_fetch_assoc($unreadNotificationsResult);
-        $unreadCount = $unreadRow['unread_count'];
-    }
+include("./O_profile_fetch_BE.php");
+include('./adoption_request_fetch_BE.php');
+include('./donation_request_fetch_BE.php');
+$acc_id = $_SESSION['acc_id'];
+$fetchUnreadNotificationsQuery = "SELECT COUNT(*) as unread_count FROM notifications WHERE is_read = 0 AND org_id = (SELECT org_id FROM org_list WHERE acc_id = $acc_id)";
+$unreadNotificationsResult = mysqli_query($con, $fetchUnreadNotificationsQuery);
+$unreadCount = 0;
+if ($unreadNotificationsResult) {
+    $unreadRow = mysqli_fetch_assoc($unreadNotificationsResult);
+    $unreadCount = $unreadRow['unread_count'];
+}
 ?>
 
 <!DOCTYPE html>
@@ -59,12 +59,12 @@
                 <img src="./assets/<?php echo $org_logo ?>" alt="profile" width="250px" height="250px">
             </div>
             <div class="account-data">
-                    <h1><?php echo $org_name ?></h1>
-                    <p>Location : <?php echo $org_location ?>, Bangladesh</p>
-                    <p>Email : <?php echo $org_email ?></p>
-                    <p>Contact : <?php echo $org_phone ?></p>
-                    <p>Established : <?php echo $established ?>, Joined : <?php echo $acc_join_date ?></p>
-                    <p>Account Type : <?php echo $role ?></p>
+                <h1><?php echo $org_name ?></h1>
+                <p>Location : <?php echo $org_location ?>, Bangladesh</p>
+                <p>Email : <?php echo $org_email ?></p>
+                <p>Contact : <?php echo $org_phone ?></p>
+                <p>Established : <?php echo $established ?>, Joined : <?php echo $acc_join_date ?></p>
+                <p>Account Type : <?php echo $role ?></p>
             </div>
             <div class="biography">
                 <h1><?php echo $org_vision ?></h1>
@@ -74,7 +74,7 @@
 
 
         <div class="options">
-            <a href="#" id="button-30">Chats</a>
+            <a href="./O_chat.php" id="button-30">Chats</a>
             <a href="./O_funds.php" id="button-30">Funds</a>
             <a href="./O_orphan.php" id="button-30">Orphanage</a>
             <a href="./O_volunteer.php" id="button-30">Volunteers</a>
@@ -91,14 +91,14 @@
                 </span>
             </li>
             <li>
-                <a href="./O_adoption.php"><i class='bx bxs-face' ></i></i></a>
+                <a href="./O_adoption.php"><i class='bx bxs-face'></i></i></a>
                 <span>
                     <p>Requests</p>
                     <h3><?php echo $total_adoptions ?></h3>
                 </span>
             </li>
             <li>
-                <a href="#"><i class='bx bxs-user-plus' ></i></a>
+                <a href="#"><i class='bx bxs-user-plus'></i></a>
                 <span>
                     <p>Volunteers</p>
                     <h3>9</h3>
@@ -119,12 +119,11 @@
                 <div class="search">
                     <input type="text" placeholder="Search...">
                 </div>
-                <div class="search-list">
-
+                <div class="search-list" id="chat-content">
+                    
                 </div>
                 <div class="inbox-list">
                     <p>Previous chats</p>
-                    
                 </div>
             </div>
 
@@ -145,7 +144,7 @@
                         </thead>
                         <tbody>
                             <?php
-                            
+
                             foreach ($namesArray as $names) {
                                 echo '<tr>
                                     <td>
@@ -171,7 +170,7 @@
                     </table>
                 </div>
 
-                
+
                 <div class="donation">
                     <a href="./O_donation.php" style="text-decoration:none;">
                         <h3 id="heading" style="border: 2px solid black; border-radius: 10px;">Donations</h3>
@@ -190,7 +189,7 @@
                 </div>
 
             </div>
-            
+
         </div>
         <div class="chatbox hide">
 
@@ -203,11 +202,22 @@
 
     <?php include "./footer.php" ?>
 
-    <button id="scrollTopBtn" title="Go to top"><i class='bx bx-chevrons-up bx-burst' ></i></button>
+    <button id="scrollTopBtn" title="Go to top"><i class='bx bx-chevrons-up bx-burst'></i></button>
 
     <script src="./js/scrollupBTN.js"></script>
     <script src="./js/notification_color.js"></script>
     <script src="./js/feedback.js"></script>
+
+    <!-- <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            fetch('./O_chat.php')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('chat-content').innerHTML = data;
+                })
+                .catch(error => console.error('Error loading chat content: ', error));
+        });
+    </script> -->
 </body>
 
 </html>

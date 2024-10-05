@@ -159,11 +159,21 @@
             toggleRemuneration();
         });
 
-        function confirmDelete(event) {
+        function confirmDelete(event, recruitmentId) {
             event.stopPropagation();
-            const confirmation = confirm("Do you want to close this recruitment ?");
+            const confirmation = confirm("Do you want to close this recruitment?");
             if (confirmation) {
-                alert("deleted");
+                const xhr = new XMLHttpRequest();
+                xhr.open("POST", "./O_volunteer_recruitment_delete_BE.php", true);
+                xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState === 4 && xhr.status === 200) {
+                        alert("Recruitment deleted successfully.");
+                    } else if (xhr.readyState === 4) {
+                        alert("An error occurred while deleting the recruitment.");
+                    }
+                };
+                xhr.send("id=" + recruitmentId);
             }
         }
     </script>

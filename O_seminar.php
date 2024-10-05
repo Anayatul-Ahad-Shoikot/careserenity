@@ -51,11 +51,11 @@
         }
         ?>
     </div>
+
     <div class="options">
         <button onclick="showForm(this)" id="button-30">Create Seminar</button>
     </div>
     
-
     <div class="container" id="seminarForm" style="display: none;">
         <form action="./O_seminar_create_BE.php" method="POST" enctype="multipart/form-data" >
             <h2>Launch Seminar</h2>
@@ -102,22 +102,20 @@
     </div>
 
     <h1 id="heading">My Seminars</h1>
+
     <div class="seminarBlock">
-        <div class="cards">
-            <?php include('./O_seminar_own_fetch_BE.php') ?>
-        </div>
+        <?php include('./O_seminar_own_fetch_BE.php') ?>
     </div>
 
-
-
     <h1 id="heading">Current Seminars</h1>
+
     <div class="seminarBlock">
-        <div class="cards">
             <?php
                 include("./db_con.php");
                 $ownSeminarQuery = "SELECT seminars.*, COUNT(seminar_participants.seminar_id) as participants_count FROM seminars LEFT JOIN seminar_participants ON seminars.seminar_id = seminar_participants.seminar_id LEFT JOIN org_list ON org_list.org_id = seminars.org_id WHERE ( seminars.isRemoved = 0 AND seminars.isFinished = 0 AND seminars.visibility = 0 ) GROUP BY seminars.seminar_id";
                 $result = mysqli_query($con, $ownSeminarQuery);                        
                 if(mysqli_num_rows($result) > 0){
+                    echo "<div class='cards'>";
                     while($row = mysqli_fetch_assoc($result)){
                         echo "<div class='seminarCard'>";
                         echo "<h3>".htmlspecialchars($row['title'])."</h3>";
@@ -129,12 +127,12 @@
                         echo "</div>";
                         echo "</div>";
                     }
+                    echo "</div>";
                 }
                 else{
-                    echo "<p>You have not created any seminars yet.</p>";
+                    echo "<p id='notFound'>Currently no seminars are available.</p>";
                 }
             ?>
-        </div>
     </div>
     
     <?php include "./footer.php" ?>

@@ -1,12 +1,17 @@
 <?php 
     include("../db_con.php");
     session_start();
+
+    if (!isset($_SESSION['acc_id'])) {
+        header('Location: ../login.php');
+        exit;
+    }
+
     $acc_id = $_SESSION['acc_id'];
+    $role = $_SESSION['role'];  
 
-    $role = $_SESSION['role'];
-
-    if ($role !== 'user') {
-        echo "<script>alert('Access denied. Only users can chat with organizations.'); window.location.href = '../index.php';</script>";
+    if ($role !== 'org') {
+        echo "<script>alert('Access denied. Only organizations can chat with admin.'); window.location.href = '../index.php';</script>";
         exit;
     }
 
@@ -39,7 +44,7 @@
 
     <?php include "../navbarU.php" ?>
 
-    <h2>Chat with Organization</h2>
+    <h2>Chat with Admin</h2>
     <div id="chat-box" style="border:1px solid #ccc; padding:10px; height:300px; overflow:auto;"></div>
     <input type="text" id="message" placeholder="Type your message...">
     <button onclick="sendMessage()">Send</button>

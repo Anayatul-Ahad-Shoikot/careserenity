@@ -28,7 +28,6 @@
         } else {
             $_SESSION['positive'] = "Registration failed!";
         }
-
         if($_SESSION['role'] == 'org'){
             header("Location: ./O_seminar.php");
             exit(0); 

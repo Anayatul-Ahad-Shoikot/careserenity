@@ -89,8 +89,8 @@ $active_option = getActiveOption($current_url, $nav_options);
             <span class="h-bar"></span>
             <li><a href="./U_seminar.php" class="<?php echo $active_option == 'seminars' ? 'active' : ''; ?>">Seminars</a></li>
             <span class="h-bar"></span>
-            <li><a href="./U_joinus.php" class="<?php echo $active_option == 'joinus' ? 'active' : ''; ?>">Join Us</a></li>
-            <span class="h-bar"></span>
+            <!-- <li><a href="./U_joinus.php" class="<?php echo $active_option == 'joinus' ? 'active' : ''; ?>">Join Us</a></li>
+            <span class="h-bar"></span> -->
             <li><a href="./U_aboutus.php" class="<?php echo $active_option == 'aboutus' ? 'active' : ''; ?>">About Us</a></li>
             <li class="icon" onclick="toggleNotifi()">
                 <i class='bx bxs-bell' style="<?php echo ($unreadCount > 0) ? 'display:none;' : ''; ?>"></i>

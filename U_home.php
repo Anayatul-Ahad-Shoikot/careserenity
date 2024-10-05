@@ -24,6 +24,7 @@ if ($unreadNotificationsResult) {
     <link rel="stylesheet" href="./css/colors.css">
     <link rel="stylesheet" href="./css/home.css">
     <link rel="stylesheet" href="./css/navbar.css">
+    <link rel="stylesheet" href="./css/volunteer.css">
     <link rel="stylesheet" href="./css/footer.css">
     <link rel="stylesheet" href="./css/notification.css">
     <link rel="stylesheet" href="./css/feedback.css">
@@ -110,21 +111,17 @@ if ($unreadNotificationsResult) {
         </div>
         <div class="highlights">
             <h1 id="heading">Recent Funds</h1>
-            <div class="funds">
                 <?php include('./fund_fetch_BE.php') ?>
-            </div>
             <h1 id="heading">Upcoming Seminars</h1>
             <div class="seminars">
                 <?php include('./seminar_fetch_BE.php') ?>
             </div>
             <h1 id="heading">Volunteers Recruitment</h1>
-            <div class="volunteers">
-                
+            <div class="volunteers" id="Recruitment_Posts">
+                <?php include('./U_volunteer_recruite_fetch_BE.php') ?>
             </div>
             <h1 id="heading">Recent Blogs</h1>
-            <?php
-                include('./blog_show_BE.php');
-            ?>
+                <?php include('./blog_show_BE.php'); ?>
         </div>
     </div>
 
@@ -135,6 +132,16 @@ if ($unreadNotificationsResult) {
     <script src="./js/scrollupBTN.js"></script>
     <script src="./js/notification_color.js"></script>
     <script src="./js/feedback.js"></script>
+    <script>
+        function confirmAction(action) {
+            if (action === 'register') {
+                return confirm('Are you sure you want to register?');
+            } else if (action === 'cancel') {
+                return confirm('Are you sure you want to cancel your registration?');
+            }
+            return false;
+        }
+    </script>
 
 </body>
 
