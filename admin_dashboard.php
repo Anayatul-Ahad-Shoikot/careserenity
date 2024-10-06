@@ -83,7 +83,7 @@ include('./index_BE.php');
                     </span>
                 </li>
                 <li>
-                    <a href="/Root/Admin_Side/Dash/Users/USER_DASH.php"><i class="fa fa-users" aria-hidden="true"></i></a>
+                    <a href="./admin_user.php"><i class="fa fa-users" aria-hidden="true"></i></a>
                     <span class="text">
                         <p>Users</p>
                         <h3><?php echo $total_users ?></h3>

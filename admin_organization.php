@@ -12,6 +12,7 @@ include('./index_BE.php');
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <link rel="stylesheet" href="./css/admin_dashboard.css" />
+    <link rel="stylesheet" href="./css/admin_table_list.css">
     <title>CareSerenity | Admin Panel</title>
 </head>
 
@@ -63,51 +64,52 @@ include('./index_BE.php');
 
             <div class="head-title">
                 <div class="left">
-                    <h1>Dashboard</h1>
+                    <h1>Organizations</h1>
                 </div>
             </div>
 
-            <div class="table-data">
+            <div class="table-dataa">
 
                 <div class="order">
-                    <div class="head">
-                        <h3>Orphans :</h3>
-                        <i class="fas fa-filter"></i>
-                    </div>
 
                     <table>
                         <thead>
                             <tr>
+                                <th>Image</th>
                                 <th>Name</th>
-                                <th>Age</th>
-                                <th>Gender</th>
-                                <th class="x"></th>
+                                <th>Bio</th>
+                                <th>Vision</th>
+                                <th>Email</th>
+                                <th>Contact</th>
+                                <th>Website</th>
+                                <th>Location</th>
+                                <th>Childs</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php
                                 include('./db_con.php');
-                                $query = "SELECT o.org_list, COUNT(r.orphan_id) AS orphan_count
+                                $query = "SELECT o.*, COUNT(r.orphan_id) AS orphan_count
                                             FROM org_list AS o
                                             LEFT JOIN orphan_list AS r ON r.org_id = o.org_id
-                                            GROUP BY o.org_list";
+                                            GROUP BY o.org_id";
                                 $result = mysqli_query($con, $query);
                                 if (mysqli_num_rows($result) > 0) {
                                     while ($row = mysqli_fetch_assoc($result)) {
                                         echo '<tr>
-                                                <td>' . $row['org_name'] . ' ' . $row['last_name'] . '</td>
+                                                <td><img src="./assets/' . $row['org_logo'] . '"></td>
+                                                <td>' . $row['org_name'] . '</td>
                                                 <td>' . $row['org_description'] . '</td>
+                                                <td>' . $row['org_vision'] . '</td>
                                                 <td>' . $row['org_email'] . '</td>
                                                 <td>' . $row['org_phone'] . '</td>
                                                 <td>' . $row['org_website'] . '</td>
-                                                <td>' . $row['org_logo'] . '</td>
-                                                <td>' . $row['established'] . '</td>
                                                 <td>' . $row['org_location'] . '</td>
-                                                <td>' . $row['org_vision'] . '</td>
-                                                <td>' . $row['org_review'] . '</td>
+                                                <td>' . $row['orphan_count'] . '</td>
                                                 <td>
                                                     <div class="btn">
-                                                        <a href="./admin_remove_organizations.php?orphan_id=' . $row['org_id'] . '" id="button-30">Remove</a>
+                                                        <a href="./admin_remove_organizations.php?org_id=' . $row['org_id'] . '" id="button-30">Remove</a>
                                                     </div>
                                                 </td>
                                             </tr>';

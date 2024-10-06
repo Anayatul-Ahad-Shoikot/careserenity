@@ -1,4 +1,4 @@
-<?php
+w<?php
     include('./db_con.php');
 
     if (isset($_GET['acc_id'])) {
