@@ -160,14 +160,14 @@ if ($unreadNotificationsResult) {
             
             <div class="card">
                 <div class="img-ctn">
-                    <img src="./assets/ahnaf.jpg" alt="">
+                    <img src="./assets/kakon.jpg" alt="">
                 </div>
-                <h2>Ahnaf Tahmid</h2>
-                <p>Co-Founder</p>
+                <h2>Jannatul Ferdous Kakon</h2>
+                <p>Trustee</p>
                 <div class="icons">
                     <a href="#"><i class='bx bxl-github'></i></a>
                     <a href="#"><i class='bx bxl-linkedin-square'></i></a>
-                    <a href="https://www.facebook.com/ahnaf.fahid"><i class='bx bxl-facebook-circle'></i></a>
+                    <a href="https://www.facebook.com/profile.php?id=100014323750499"><i class='bx bxl-facebook-circle'></i></a>
                 </div>
             </div>
 
@@ -186,14 +186,27 @@ if ($unreadNotificationsResult) {
 
             <div class="card">
                 <div class="img-ctn">
-                    <img src="./assets/ela.jpg" alt="">
+                    <img src="./assets/sowrin.png" alt="sowrin">
                 </div>
-                <h2>Afia Zahin</h2>
-                <p>Trustee</p>
+                <h2>Sowrin Paul</h2>
+                <p>Co-Founder & Developer</p>
                 <div class="icons">
                     <a href="#"><i class='bx bxl-github'></i></a>
                     <a href="#"><i class='bx bxl-linkedin-square'></i></a>
-                    <a href="https://www.facebook.com/profile.php?id=100070131402177"><i class='bx bxl-facebook-circle'></i></a>
+                    <a href="https://www.facebook.com/paulsowrin"><i class='bx bxl-facebook-circle'></i></a>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="img-ctn">
+                    <img src="./assets/pata.jpeg" alt="">
+                </div>
+                <h2>Paromita Choudhury</h2>
+                <p>CEO</p>
+                <div class="icons">
+                    <a href="#"><i class='bx bxl-github'></i></a>
+                    <a href="#"><i class='bx bxl-linkedin-square'></i></a>
+                    <a href="https://www.facebook.com/profile.php?id=100024507141495"><i class='bx bxl-facebook-circle'></i></a>
                 </div>
             </div>
 

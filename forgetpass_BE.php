@@ -7,10 +7,9 @@
         $acc_email = $_POST['acc_email'];
     
         if ($action == 'check_account') {
-            $acc_name = $_POST['acc_name'];
-            $sql = "SELECT * FROM accounts WHERE acc_email = ? AND acc_name = ?";
+            $sql = "SELECT * FROM accounts WHERE acc_email = ?";
             $stmt = $con->prepare($sql);
-            $stmt->bind_param("ss", $acc_email, $acc_name);
+            $stmt->bind_param("s", $acc_email);
             $stmt->execute();
             $result = $stmt->get_result();
             if ($result->num_rows > 0) {

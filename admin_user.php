@@ -105,7 +105,7 @@ include('./index_BE.php');
                                                 <td>' . $row['child_adopted'] . '</td>
                                                 <td>
                                                     <div class="btn">
-                                                        <a href="./admin_remove_organizations.php?user_id=' . $row['user_id'] . '" id="button-30">Remove</a>
+                                                        <a href="./admin_user_remove.php?user_id=' . $row['user_id'] . '" id="button-30">Remove</a>
                                                     </div>
                                                 </td>
                                             </tr>';

@@ -38,7 +38,6 @@
                 <form id="phase1-form">
                     <label>Account verification: </label>
                     <input type="text" name="acc_email" id="acc_email" placeholder="Account email" required>
-                    <input type="text" name="acc_name" id="acc_name" placeholder="Account name" required>
                     <button type="button" id="check-account">Next</button>
                 </form>
             </div>
