@@ -12,6 +12,7 @@ include('./index_BE.php');
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <link rel="stylesheet" href="./css/admin_dashboard.css" />
+    <link rel="stylesheet" href="./css/admin_table_list.css">
     <title>CareSerenity | Admin Panel</title>
 </head>
 
@@ -63,86 +64,51 @@ include('./index_BE.php');
 
             <div class="head-title">
                 <div class="left">
-                    <h1>Dashboard</h1>
+                    <h1>Organizations</h1>
                 </div>
             </div>
 
-            <div class="box-info fst">
-                <li>
-                    <a href="/Root/Admin_Side/Dash/Orphans/ORPHAN_DASH.php"><i class="fa fa-child" aria-hidden="true"></i></a>
-                    <span class="text">
-                        <p>Orphans</p>
-                        <h3><?php echo $total_orphans ?></h3>
-                    </span>
-                </li>
-            </div>
-
-            <div class="box-info sec">
-                <li>
-                    <a href="#"><i class="fa fa-id-badge" aria-hidden="true"></i></a>
-                    <span class="text">
-                        <p>Accounts</p>
-                        <h3><?php echo $total_accounts ?></h3>
-                    </span>
-                </li>
-                <li>
-                    <a href="./admin_profile.php"><i class="fa fa-user-secret" aria-hidden="true"></i></a>
-                    <span class="text">
-                        <p>Admins</p>
-                        <h3><?php echo $total_admins ?></h3>
-                    </span>
-                </li>
-                <li style="visibility:hidden;">
-                    <i class="fas fa-calendar-check"></i>
-                    <span class="text">
-                        <p>Accounts</p>
-                        <h3>1.5K</h3>
-                    </span>
-                </li>
-            </div>
-
-            <div class="table-data">
+            <div class="table-dataa">
 
                 <div class="order">
-                    <div class="head">
-                        <h3>Users :</h3>
-                        <i class="fas fa-filter"></i>
-                    </div>
 
                     <table>
                         <thead>
                             <tr>
+                                <th>Image</th>
                                 <th>Name</th>
-                                <th>Age</th>
                                 <th>Gender</th>
-                                <th class="x"></th>
+                                <th>Birth</th>
+                                <th>Contact</th>
+                                <th>Email</th>
+                                <th>Address</th>
+                                <th>Adopted</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php
                                 include('./db_con.php');
-                                $query = "SELECT * FROM user_list";
+                                $query = "SELECT u.*, a.acc_email FROM user_list AS u
+                                            INNER JOIN accounts AS a ON a.acc_id = u.acc_id";
                                 $result = mysqli_query($con, $query);
                                 if (mysqli_num_rows($result) > 0) {
                                     while ($row = mysqli_fetch_assoc($result)) {
                                         echo '<tr>
+                                                <td><img src="./assets/' . $row['user_image'] . '"></td>
                                                 <td>' . $row['user_name'] . '</td>
+                                                <td>' . $row['user_gender'] . '</td>
                                                 <td>' . $row['user_birth'] . '</td>
                                                 <td>' . $row['user_contact'] . '</td>
-                                                <td>' . $row['user_gender'] . '</td>
-                                                <td>' . $row['user_NID'] . '</td>
+                                                <td>' . $row['acc_email'] . '</td>
                                                 <td>' . $row['user_address'] . '</td>
-                                                <td>' . $row['user_website'] . '</td>
-                                                <td>' . $row['user_job'] . '</td>
-                                                <td>' . $row['user_location'] . '</td>
-                                                <td><img src="' . $row['user_image'] . '" alt="User Image" width="50" height="50"></td>
-                                                <td>' . ($row['child_adopted'] == 1 ? "Adopted" : "Not Adopted") . '</td>
+                                                <td>' . $row['child_adopted'] . '</td>
                                                 <td>
                                                     <div class="btn">
-                                                        <a href="./admin_remove_user.php?user_id=' . $row['user_id'] . '" id="button-30">Remove</a>
+                                                        <a href="./admin_remove_organizations.php?user_id=' . $row['user_id'] . '" id="button-30">Remove</a>
                                                     </div>
                                                 </td>
-                                              </tr>';
+                                            </tr>';
                                     }
                                 } else {
                                     echo '<tr><td colspan="11">No orphans are available.</td></tr>';
