@@ -17,10 +17,13 @@
         while ($row1 = mysqli_fetch_assoc($result1)) {
             if($row1['status'] == 0) {
                 $status = "Pending";
+                $statusClass = "status pending";
             } else if($row1['status'] == 1) {
                 $status = "Approved";
+                $statusClass = "status approved";
             } else {
                 $status = "Rejected";
+                $statusClass = "status rejected";
             }
             echo '<tr>' .
                 '<td id="name_' . $row1['user_id'] . '">' . $row1['user_name'] . '</td>' .
@@ -28,9 +31,9 @@
                 '<td id="type_' . $row1['orphan_id'] . '">' . $row1['first_name'] . ' ' . $row1['last_name'] . '</td>' .
                 '<td>' . $row1['request_date'] . '</td>' .
                 '<td>' . $row1['issued_date'] . '</td>' .
-                '<td><p class="' . ($row1['status'] != 0 ? "status delivered" : "status cancelled") . '">' . $status . '</p></td>' .
+                '<td><p class="' . $statusClass . '">' . $status . '</p></td>' .
                 '<td>
-                    <a href="./O_adoption_data_delete_BE.php?adoption_id=' .$row1['adoption_id']. '" id="button-30"><i class="bx bx-trash-alt"></i></a>
+                    <a href="./O_adoption_data_delete_BE.php?adoption_id=' .$row1['adoption_id']. '" id="button-30" onclick="return confirmation2()"><i class="bx bx-trash-alt"></i></a>
                     <a href="./O_adoption_request_details.php?adoption_id=' .$row1['adoption_id']. '&user_id=' .$row1['user_id']. '&orphan_id=' .$row1['orphan_id']. '" id="button-30"><i class="bx bx-file-blank"></i></a>
                 </td>' .
                 '</tr>';

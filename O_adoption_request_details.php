@@ -54,7 +54,7 @@ if ($unreadNotificationsResult) {
     <div class="container">
 
     <div class="options">
-        <a href="./O_profile.php" id="button-30">back</a>
+        <a href="./O_adoption.php" id="button-30">back</a>
     </div>
 
 
@@ -130,9 +130,9 @@ if ($unreadNotificationsResult) {
                 <input type="text" placeholder="<?php echo $additionalInfo ?>" disabled>
             </div>
 
-            <div class="btn" style="gap: 20px;">
-                <a href="./O_accept_adoption_request_BE.php?adoption_id=<?php echo $_GET['adoption_id'] ?>&user_id=<?php echo $_GET['user_id'] ?>&orphan_id=<?php echo $_GET['orphan_id']?>" id="button-30">Accept</a>
-                <a href="./O_reject_adoption_request_BE.php?adoption_id=<?php echo $_GET['adoption_id'] ?>&user_id=<?php echo $_GET['user_id'] ?>&orphan_id=<?php echo $_GET['orphan_id']?>" id="button-30">Reject</a>
+            <div style="display: flex; justify-content:center; gap: 20px; text-align:center;">
+                <a href="./O_adoption_request_accept_BE.php?adoption_id=<?php echo $_GET['adoption_id'] ?>&user_id=<?php echo $_GET['user_id'] ?>&orphan_id=<?php echo $_GET['orphan_id']?>" id="button-30">Accept</a>
+                <a href="./O_adoption_request_reject_BE.php?adoption_id=<?php echo $_GET['adoption_id'] ?>&user_id=<?php echo $_GET['user_id'] ?>&orphan_id=<?php echo $_GET['orphan_id']?>" id="button-30">Reject</a>
             </div>
         </form>
         </div>

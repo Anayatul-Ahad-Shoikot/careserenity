@@ -69,7 +69,7 @@ include('./index_BE.php');
 
             <div class="box-info fst">
                 <li>
-                    <a href="/Root/Admin_Side/Dash/Orphans/ORPHAN_DASH.php"><i class="fa fa-child" aria-hidden="true"></i></a>
+                    <a href="./admin_orphan.php"><i class="fa fa-child" aria-hidden="true"></i></a>
                     <span class="text">
                         <p>Orphans</p>
                         <h3><?php echo $total_orphans ?></h3>

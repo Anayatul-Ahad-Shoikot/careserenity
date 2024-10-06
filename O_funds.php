@@ -113,6 +113,13 @@ if ($unreadNotificationsResult) {
             </form>
         </div>
 
+        <div class="MyFunds">
+            <h1>My Funds :</h1>
+            <div class="row">
+                <?php include("./O_fund_fetch_BE.php") ?>
+            </div>
+        </div>
+
         <div class="FundList">
             <h1>Fund received List :</h1>
             <section class="table__body">
@@ -133,13 +140,6 @@ if ($unreadNotificationsResult) {
                     </tbody>
                 </table>
             </section>
-        </div>
-
-        <div class="MyFunds">
-            <h1>My Funds :</h1>
-            <div class="row">
-                <?php include("./O_fund_fetch_BE.php") ?>
-            </div>
         </div>
 
     </div>

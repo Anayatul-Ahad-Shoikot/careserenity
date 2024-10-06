@@ -125,7 +125,7 @@
 
     <?php include "./footer.php" ?>
 
-    <button id="scrollTopBtn" title="Go to top"><i class='bx bx-chevrons-up bx-burst' ></i></button>
+    <button id="scrollTopBtn" title="Go to top"><i class='bx bx-chevrons-up bx-burst'></i></button>
 
     <script src="./js/scrollupBTN.js"></script>
     <script src="./js/notification_color.js"></script>

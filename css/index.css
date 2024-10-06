@@ -213,11 +213,12 @@
     transition: .3s;
     margin: 0px 10px;
     flex: 1;
+    transition: .4s;
 }
 
 .card:hover {
-    transform: scale(1.1);
-
+    transform: scale(.95);
+    transition: .4s;
 }
 
 .card img {

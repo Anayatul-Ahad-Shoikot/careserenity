@@ -56,31 +56,28 @@
             <a href="./U_seminar.php" id="button-30"><i class='bx bx-refresh' style="color:black"></i></a>
         </div>
 
-        <h1 id="heading">Current Seminars</h1>
+        <h1 id="heading">Available Seminars :</h1>
     <div class="seminarBlock">
-        <div class="cards">
             <?php
                 include("./db_con.php");
                 $ownSeminarQuery = "SELECT seminars.*, COUNT(seminar_participants.seminar_id) as participants_count FROM seminars LEFT JOIN seminar_participants ON seminars.seminar_id = seminar_participants.seminar_id LEFT JOIN org_list ON org_list.org_id = seminars.org_id WHERE ( seminars.isRemoved = 0 AND seminars.isFinished = 0 AND seminars.visibility = 0 ) GROUP BY seminars.seminar_id";
                 $result = mysqli_query($con, $ownSeminarQuery);                        
                 if(mysqli_num_rows($result) > 0){
+                    echo "<div class='cards'>";
                     while($row = mysqli_fetch_assoc($result)){
-                        echo "<div class='seminarCard'>";
-                        echo "<h3>".htmlspecialchars($row['title'])."</h3>";
+                        echo "<a href='./seminar_view.php?seminar_id=" . $row['seminar_id'] . "&org_id=" . $row['org_id'] . "'><div class='seminarCard'>";
                         echo "<img src='./assets/".htmlspecialchars($row['banner'])."'alt='Seminar Banner'>";
-                        echo "<p>".htmlspecialchars($row['description'])."</p>";
-                        echo "<div class='info'><span><i class='bx bxs-user-check'></i> ".htmlspecialchars($row['participants_count'])."</span>";
-                        echo "<span>Date: ".htmlspecialchars($row['seminar_date'])."</span></div>";
-                        echo "<div class='btnclass'><a href='./seminar_view.php?seminar_id=" . $row['seminar_id'] . "&org_id=" . $row['org_id'] . "' id='button-30'>View</a>";
-                        echo "</div>";
-                        echo "</div>";
+                        echo "<h3>".htmlspecialchars($row['title'])."</h3>";
+                        echo "<div class='info'><span>".htmlspecialchars($row['seminar_date'])."</span>";
+                        echo "<span><i class='bx bxs-user-check'></i> ".htmlspecialchars($row['participants_count'])."</span></div>";
+                        echo "</div></a>";
                     }
+                    echo "</div>";
                 }
                 else{
-                    echo "<p>You have not created any seminars yet.</p>";
+                    echo "<p id='notFound'>Currently no seminars are available.</p>";
                 }
             ?>
-        </div>
     </div>
 
         <?php include "./footer.php" ?>

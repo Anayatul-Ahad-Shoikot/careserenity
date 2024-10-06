@@ -110,18 +110,19 @@ if ($unreadNotificationsResult) {
             <a href="./U_create_blog.php" id="button-30">CreatePost</a>
         </div>
         <div class="highlights">
+
             <h1 id="heading">Recent Funds</h1>
-                <?php include('./fund_fetch_BE.php') ?>
+            <?php include('./fund_fetch_BE.php') ?>
+
             <h1 id="heading">Upcoming Seminars</h1>
-            <div class="seminars">
-                <?php include('./seminar_fetch_BE.php') ?>
-            </div>
+            <?php include('./seminar_fetch_BE.php') ?>
+
             <h1 id="heading">Volunteers Recruitment</h1>
-            <div class="volunteers" id="Recruitment_Posts">
-                <?php include('./U_volunteer_recruite_fetch_BE.php') ?>
-            </div>
+            <?php include('./U_volunteer_recruite_fetch_BE.php') ?>
+
             <h1 id="heading">Recent Blogs</h1>
-                <?php include('./blog_show_BE.php'); ?>
+            <?php include('./blog_show_BE.php') ?>
+
         </div>
     </div>
 

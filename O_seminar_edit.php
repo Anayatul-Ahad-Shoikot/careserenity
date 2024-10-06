@@ -139,6 +139,7 @@
                 <button id="button-30" name="update">Update</button>
                 <button id="button-30" name="hide">Hide</button>
                 <button id="button-30" name="Public">Public</button>
+                <button id='button-30' onclick="removeSeminar(<?php echo $_GET['id'] ?>)">Delete</button>
             </form>
             <div style="Display: flex; flex-direction:column; gap:30px">
                 <p style="background-color:lightgoldenrodyellow;padding:8px; font-weight:500">Total participants : <?php echo $total_participants ?></p>

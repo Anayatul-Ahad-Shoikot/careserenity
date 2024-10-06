@@ -165,6 +165,10 @@
             })
             .map(sorted_row => document.querySelector('tbody').appendChild(sorted_row));
         }
+
+        function confirmation2() {
+            return confirm("Are you sure you want to delete this record?");
+        }
     </script>
 </body>
 

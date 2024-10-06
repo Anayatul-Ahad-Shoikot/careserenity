@@ -36,8 +36,8 @@
             mysqli_stmt_close($stmtNotifications);
 
             $_SESSION['positive'] = "Request rejected.";
-            header("Location: ./O_profile.php");
+            header("Location: ./O_adoption.php");
             } else {
                 $_SESSION['negative'] = "Error occured, query failed";
-                header("Location: ./O_profile.php");
+                header("Location: ./O_adoption.php");
             }

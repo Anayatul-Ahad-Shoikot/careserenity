@@ -110,20 +110,16 @@
         </div>
 
         <div class="highlights">
+            
             <h1 id="heading">Recent Funds</h1>
-                <?php include('./fund_fetch_BE.php') ?>
-            <h1 id="heading">Upcoming Seminars</h1>
-            <div class="seminars">
-                <?php include('./seminar_fetch_BE.php') ?>
-            </div>
-            <!-- <h1 id="heading">Volunteers Recruitment</h1>
-            <div class="volunteers">
+            <?php include('./fund_fetch_BE.php') ?>
 
-            </div> -->
+            <h1 id="heading">Upcoming Seminars</h1>
+            <?php include('./seminar_fetch_BE.php') ?>
+
             <h1 id="heading">Recent Blogs</h1>
-            <?php
-                include('./blog_show_BE.php');
-            ?>
+            <?php include('./blog_show_BE.php') ?>
+
         </div>
 
     </div>

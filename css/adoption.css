@@ -260,26 +260,21 @@ tbody .modal .modal-buttons {
     width: 100%;
 }
 
-.status.delivered {
+.status.approved {
     background-color: rgb(134, 228, 157, .5);
     color: #006b21;
     font-size: smaller;
-
 }
 
-.status.cancelled {
+.status.pending {
     background-color: rgb(216, 147, 163, .5);
     color: #b30021;
     font-size: smaller;
 }
 
-.status.pending {
-    background-color: #ebc474;
-    font-size: smaller;
-}
-
-.status.shipped {
-    background-color: #6fcaea;
+.status.rejected {
+    background-color: rgb(116, 197, 235, .5);
+    color: rgb(0, 110, 255);
     font-size: smaller;
 }
 

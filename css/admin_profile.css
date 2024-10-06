@@ -546,6 +546,12 @@ body.dark {
   align-items: center;
   width: 15rem;
   justify-content: space-evenly ;
+  outline: none;
+  border: none;
+}
+
+.box.nd button:hover {
+  cursor: pointer;
 }
 
 

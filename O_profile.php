@@ -10,6 +10,12 @@ if ($unreadNotificationsResult) {
     $unreadRow = mysqli_fetch_assoc($unreadNotificationsResult);
     $unreadCount = $unreadRow['unread_count'];
 }
+
+    $sql2 = "SELECT COUNT(*) as total FROM orphan_list WHERE org_id = $org_id";
+    $res2 = mysqli_query($con, $sql2);
+    $row2 = mysqli_fetch_assoc($res2);
+    $total_child = $row2['total'];
+
 ?>
 
 <!DOCTYPE html>
@@ -105,10 +111,10 @@ if ($unreadNotificationsResult) {
                 </span>
             </li>
             <li>
-                <a href="#"><i class='bx bxs-report'></i></i></a>
+                <a href="./O_orphan.php"><i class='bx bxs-report'></i></i></a>
                 <span>
                     <p>Orphans</p>
-                    <h3><?php echo $total_adoptions ?></h3>
+                    <h3><?php echo $total_child ?></h3>
                 </span>
             </li>
         </div>

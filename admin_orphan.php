@@ -12,6 +12,7 @@ include('./index_BE.php');
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <link rel="stylesheet" href="./css/admin_dashboard.css" />
+    <link rel="stylesheet" href="./css/admin_table_list.css">
     <title>CareSerenity | Admin Panel</title>
 </head>
 
@@ -67,40 +68,6 @@ include('./index_BE.php');
                 </div>
             </div>
 
-            <div class="box-info fst">
-                <li>
-                    <a href="/Root/Admin_Side/Dash/Orphans/ORPHAN_DASH.php"><i class="fa fa-child" aria-hidden="true"></i></a>
-                    <span class="text">
-                        <p>Orphans</p>
-                        <h3><?php echo $total_orphans ?></h3>
-                    </span>
-                </li>
-            </div>
-
-            <div class="box-info sec">
-                <li>
-                    <a href="#"><i class="fa fa-id-badge" aria-hidden="true"></i></a>
-                    <span class="text">
-                        <p>Accounts</p>
-                        <h3><?php echo $total_accounts ?></h3>
-                    </span>
-                </li>
-                <li>
-                    <a href="./admin_profile.php"><i class="fa fa-user-secret" aria-hidden="true"></i></a>
-                    <span class="text">
-                        <p>Admins</p>
-                        <h3><?php echo $total_admins ?></h3>
-                    </span>
-                </li>
-                <li style="visibility:hidden;">
-                    <i class="fas fa-calendar-check"></i>
-                    <span class="text">
-                        <p>Accounts</p>
-                        <h3>1.5K</h3>
-                    </span>
-                </li>
-            </div>
-
             <div class="table-data">
 
                 <div class="order">
@@ -110,30 +77,37 @@ include('./index_BE.php');
                     </div>
 
                     <table>
-                        <thead>
+                        <thead style="position:stick;">
                             <tr>
+                                <th>Image</th>
                                 <th>Name</th>
                                 <th>Age</th>
                                 <th>Gender</th>
-                                <th class="x"></th>
+                                <th>Religion</th>
+                                <th>From</th>
+                                <th>Email</th>
+                                <th>Contact</th>
+                                <th>Adoption</th>
+                                <th>Active</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php
                                 include('./db_con.php');
-                                $query = "SELECT orphan_id, first_name, last_name, age, gender, religion, date_of_birth, family_status, physical_condition, education_level, adoption_status, removed_status FROM orphans";
+                                $query = "SELECT a.*, o.org_name, o.org_email, o.org_phone FROM orphan_list AS a INNER JOIN org_list AS o ON o.org_id = a.org_id";
                                 $result = mysqli_query($con, $query);
                                 if (mysqli_num_rows($result) > 0) {
                                     while ($row = mysqli_fetch_assoc($result)) {
                                         echo '<tr>
+                                                <td><img src="./assets/' . $row['orphan_image'] . '"></td>
                                                 <td>' . $row['first_name'] . ' ' . $row['last_name'] . '</td>
                                                 <td>' . $row['age'] . '</td>
                                                 <td>' . $row['gender'] . '</td>
                                                 <td>' . $row['religion'] . '</td>
-                                                <td>' . $row['date_of_birth'] . '</td>
-                                                <td>' . $row['family_status'] . '</td>
-                                                <td>' . $row['physical_condition'] . '</td>
-                                                <td>' . $row['education_level'] . '</td>
+                                                <td>' . $row['org_name'] . '</td>
+                                                <td>' . $row['org_email'] . '</td>
+                                                <td>' . $row['org_phone'] . '</td>
                                                 <td>' . ($row['adoption_status'] == 1 ? "Adopted" : "Unadopted") . '</td>
                                                 <td>' . ($row['removed_status'] == 1 ? "Removed" : "Active") . '</td>
                                                 <td>
