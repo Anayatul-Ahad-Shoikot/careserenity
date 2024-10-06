@@ -64,18 +64,13 @@ include('./index_BE.php');
 
             <div class="head-title">
                 <div class="left">
-                    <h1>Dashboard</h1>
+                    <h1>Orphans</h1>
                 </div>
             </div>
 
-            <div class="table-data">
+            <div class="table-dataa">
 
                 <div class="order">
-                    <div class="head">
-                        <h3>Orphans :</h3>
-                        <i class="fas fa-filter"></i>
-                    </div>
-
                     <table>
                         <thead style="position:stick;">
                             <tr>

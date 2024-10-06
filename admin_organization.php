@@ -67,40 +67,6 @@ include('./index_BE.php');
                 </div>
             </div>
 
-            <div class="box-info fst">
-                <li>
-                    <a href="/Root/Admin_Side/Dash/Orphans/ORPHAN_DASH.php"><i class="fa fa-child" aria-hidden="true"></i></a>
-                    <span class="text">
-                        <p>Orphans</p>
-                        <h3><?php echo $total_orphans ?></h3>
-                    </span>
-                </li>
-            </div>
-
-            <div class="box-info sec">
-                <li>
-                    <a href="#"><i class="fa fa-id-badge" aria-hidden="true"></i></a>
-                    <span class="text">
-                        <p>Accounts</p>
-                        <h3><?php echo $total_accounts ?></h3>
-                    </span>
-                </li>
-                <li>
-                    <a href="./admin_profile.php"><i class="fa fa-user-secret" aria-hidden="true"></i></a>
-                    <span class="text">
-                        <p>Admins</p>
-                        <h3><?php echo $total_admins ?></h3>
-                    </span>
-                </li>
-                <li style="visibility:hidden;">
-                    <i class="fas fa-calendar-check"></i>
-                    <span class="text">
-                        <p>Accounts</p>
-                        <h3>1.5K</h3>
-                    </span>
-                </li>
-            </div>
-
             <div class="table-data">
 
                 <div class="order">
@@ -121,7 +87,10 @@ include('./index_BE.php');
                         <tbody>
                             <?php
                                 include('./db_con.php');
-                                $query = "SELECT * FROM org_list";
+                                $query = "SELECT o.org_list, COUNT(r.orphan_id) AS orphan_count
+                                            FROM org_list AS o
+                                            LEFT JOIN orphan_list AS r ON r.org_id = o.org_id
+                                            GROUP BY o.org_list";
                                 $result = mysqli_query($con, $query);
                                 if (mysqli_num_rows($result) > 0) {
                                     while ($row = mysqli_fetch_assoc($result)) {

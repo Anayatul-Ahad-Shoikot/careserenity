@@ -76,7 +76,7 @@ include('./index_BE.php');
                     </span>
                 </li>
                 <li>
-                    <a href="/Root/Admin_Side/Dash/Organizations/ORG_DASH.php"><i class="fa fa-building" aria-hidden="true"></i></a>
+                    <a href="./admin_organization.php"><i class="fa fa-building" aria-hidden="true"></i></a>
                     <span class="text">
                         <p>Organizations</p>
                         <h3><?php echo $total_organizations ?></h3>
