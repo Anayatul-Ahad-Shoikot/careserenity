@@ -18,9 +18,6 @@
             $query_acc = "DELETE FROM accounts WHERE acc_id = '$acc_id'";
             mysqli_query($con, $query_acc);
 
-            $query_reviews = "DELETE FROM org_reviews WHERE org_id = '$org_id'";
-            mysqli_query($con, $query_reviews);
-
             mysqli_commit($con);
 
             echo "<script>alert('Organization and related records removed successfully!'); window.location.href='admin_dashboard.php';</script>";
