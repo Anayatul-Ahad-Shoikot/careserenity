@@ -201,7 +201,7 @@ if ($unreadNotificationsResult) {
 
             <div class="card">
                 <div class="img-ctn">
-                    <img src="./assets/pata.jpg" alt="">
+                    <img src="./assets/pata.jpeg" alt="">
                 </div>
                 <h2>Paromita Choudhury</h2>
                 <p>CEO</p>
